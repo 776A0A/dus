@@ -1,7 +1,7 @@
 <template>
   <div
     ref="sliderContainerEl"
-    class="flex relative overflow-hidden slider-container children:(w-1/3 h-full flex-shrink-0 absolute top-0 left-0 center-flex )"
+    class="flex relative overflow-hidden slider-container"
   >
     <div v-for="item in activeImages" class="slider-item will-change-transform">
       <img
@@ -113,4 +113,8 @@ function transition(el: HTMLElement, transition: string) {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.slider-container {
+  @apply children:(h-full flex-shrink-0 top-0 left-0 w-1/3 absolute center-flex) ;
+}
+</style>
