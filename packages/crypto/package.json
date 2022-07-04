@@ -1,0 +1,12 @@
+{
+  "name": "@dz7/crypto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jsencrypt": "^3.2.1"
+  }
+}

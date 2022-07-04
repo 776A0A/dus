@@ -1,0 +1,10 @@
+/* 通用的高亮样式 */
+.highlight-bg {
+  animation: highlight 3s ease-out;
+}
+
+@keyframes highlight {
+  0% {
+    background-color: #ffff00;
+  }
+}
