@@ -1,3 +1,4 @@
+export * from './src/array';
 export * from './src/arrayBufferToBase64';
 export * from './src/base64ToArrayBuffer';
 export * from './src/base64ToFile';
