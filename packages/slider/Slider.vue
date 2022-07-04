@@ -2,6 +2,8 @@
   <div
     ref="sliderContainerEl"
     class="flex relative overflow-hidden slider-container"
+    @mouseover="pause"
+    @mouseleave="slide"
   >
     <div v-for="item in activeImages" class="slider-item will-change-transform">
       <img
@@ -30,6 +32,7 @@ const sliderContainerEl = ref<HTMLDivElement>()
 const active = ref(1)
 const sliderItemEls = reactive<HTMLDivElement[]>([])
 const activeImages = reactive<string[]>([])
+let timer: NodeJS.Timer
 
 onMounted(async () => {
   if (!props.images.length) return
@@ -40,6 +43,10 @@ onMounted(async () => {
   reset()
   slide()
 })
+
+function pause() {
+  clearTimeout(timer)
+}
 
 function fill() {
   activeImages.push(...props.images.slice(0, 4))
@@ -80,7 +87,7 @@ function teleport() {
 }
 
 function slide() {
-  setTimeout(() => {
+  timer = setTimeout(() => {
     window.addEventListener('transitionend', teleport)
     active.value++
 
