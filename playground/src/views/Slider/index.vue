@@ -1,0 +1,17 @@
+<template>
+  <main class="flex h-screen">
+    <Slider class="m-auto h-100 w-300" :images="images" :scale="0.8" />
+  </main>
+</template>
+
+<script lang="ts" setup>
+import { Slider } from '@dz7/slider'
+import slider1 from './assets/slider-1.png'
+import slider2 from './assets/slider-2.png'
+import slider3 from './assets/slider-3.png'
+import slider4 from './assets/slider-4.png'
+
+const images = [slider1, slider2, slider3, slider4]
+</script>
+
+<style scoped></style>

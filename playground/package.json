@@ -8,6 +8,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@dz7/slider": "workspace:^1.0.0",
+    "@dz7/styles": "workspace:^1.0.0",
+    "@dz7/windicss": "workspace:^1.0.0",
     "vue": "^3.2.25"
   },
   "devDependencies": {

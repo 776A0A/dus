@@ -212,6 +212,9 @@ importers:
 
   playground:
     specifiers:
+      '@dz7/slider': workspace:^1.0.0
+      '@dz7/styles': workspace:^1.0.0
+      '@dz7/windicss': workspace:^1.0.0
       '@vitejs/plugin-vue': ^2.3.3
       typescript: ^4.5.4
       vite: ^2.9.9
@@ -219,6 +222,9 @@ importers:
       vue: ^3.2.25
       vue-tsc: ^0.34.7
     dependencies:
+      '@dz7/slider': link:../packages/slider
+      '@dz7/styles': link:../packages/styles
+      '@dz7/windicss': link:../packages/windicss
       vue: registry.npmmirror.com/vue/3.2.37
     devDependencies:
       '@vitejs/plugin-vue': registry.npmmirror.com/@vitejs/plugin-vue/2.3.3_vite@2.9.13+vue@3.2.37
