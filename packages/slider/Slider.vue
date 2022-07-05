@@ -6,11 +6,7 @@
     @mouseleave="autoplay && run()"
   >
     <div v-for="item in activeImages" class="slider-item will-change-transform">
-      <img
-        :src="item"
-        alt="slider-image"
-        class="object-contain full slider-image"
-      />
+      <slot :data="item" />
     </div>
   </div>
 </template>
@@ -21,13 +17,13 @@ import { useEventListener } from '@vueuse/core'
 
 const props = withDefaults(
   defineProps<{
-    images?: string[]
+    list?: string[]
     scale?: number
     duration?: number
     autoplay?: boolean
     toRight?: boolean
   }>(),
-  { images: () => [], scale: 0.8, duration: 1000, autoplay: false }
+  { list: () => [], scale: 0.8, duration: 1000, autoplay: false }
 )
 const DURATION = props.duration
 const sliderContainerEl = ref<HTMLDivElement>()
@@ -43,7 +39,7 @@ useEventListener(document, 'visibilitychange', () => {
 })
 
 onMounted(async () => {
-  if (!props.images.length) return
+  if (!props.list.length) return
 
   await init()
 
@@ -66,7 +62,7 @@ function pause() {
 }
 
 function fillActives() {
-  const images = props.images,
+  const images = props.list,
     length = images.length
 
   const tmp: string[] = []
@@ -97,19 +93,19 @@ function teleport() {
 
   const tmp: string[] = []
 
-  const _active = (props.images.length + active.value) % props.images.length
+  const _active = (props.list.length + active.value) % props.list.length
 
-  tmp[0] = props.images[_active]
+  tmp[0] = props.list[_active]
   tmp[1] =
-    props.images[(props.images.length + active.value + 1) % props.images.length]
+    props.list[(props.list.length + active.value + 1) % props.list.length]
   tmp[2] =
-    props.images[(props.images.length + active.value + 2) % props.images.length]
+    props.list[(props.list.length + active.value + 2) % props.list.length]
 
   tmp.unshift(
-    props.images[(props.images.length + active.value - 1) % props.images.length]
+    props.list[(props.list.length + active.value - 1) % props.list.length]
   )
   tmp.unshift(
-    props.images[(props.images.length + active.value - 2) % props.images.length]
+    props.list[(props.list.length + active.value - 2) % props.list.length]
   )
 
   activeImages.value = tmp.slice(0, 5)
@@ -141,7 +137,7 @@ function slide(direction: 'left' | 'right') {
   sliderContainerEl.value?.addEventListener('transitionend', teleport)
 
   active.value = active.value + (direction === 'left' ? 1 : -1)
-  if (active.value < 0) active.value = props.images.length - 1
+  if (active.value < 0) active.value = props.list.length - 1
 
   sliderItemEls.forEach((el, i) => {
     transition(el, `all 300ms ease-out`)
@@ -185,6 +181,6 @@ function transition(el: HTMLElement, transition: string) {
 
 <style scoped>
 .slider-container {
-  @apply children:(h-full flex-shrink-0 top-0 left-0 w-1/3 absolute center-flex) ;
+  @apply children:(h-full flex-shrink-0 top-0 left-0 w-1/3 absolute center-flex);
 }
 </style>

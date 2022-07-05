@@ -9,10 +9,18 @@
     <Slider
       ref="sliderIns"
       class="h-100 shadow text-shadow-xl w-300 select-none"
-      :images="images"
+      :list="images"
       :scale="0.8"
       autoplay
-    />
+    >
+      <template #default="{ data }">
+        <img
+          :src="data"
+          alt="slider-image"
+          class="object-contain full slider-image"
+        />
+      </template>
+    </Slider>
     <div
       @click="sliderIns?.slideLeft()"
       class="cursor-pointer rounded-1 ml-4 hover-shadow center-flex"
