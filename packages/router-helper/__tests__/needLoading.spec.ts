@@ -1,11 +1,12 @@
+import { describe, expect, it, vi } from 'vitest';
 import { needLoading } from '../utils';
 
-const startLocation = { matched: [{ path: '/' }] };
+var startLocation = { matched: [{ path: '/' }] };
 
-jest.mock(
+vi.mock(
 	'vue-router',
 	() => {
-		const original = jest.requireActual('vue-router');
+		const original = vi.importActual('vue-router');
 		return {
 			__esModule: true,
 			...original,

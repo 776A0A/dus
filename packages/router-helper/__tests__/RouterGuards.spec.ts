@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { createGuards } from '../RouterGuards';
 
 const paths = { login: '/login', home: '/home' };
@@ -28,9 +30,8 @@ describe(
 						it(
 							'should back to login page when a user is not login and also not in login page',
 							async () => {
-								// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-								// @ts-expect-error
 								const result = (
+									// @ts-expect-error
 									await routerGuards.beforeEach(
 										{ path: '/', matched: [], fullPath: '/' } as any,
 										{ matched: [] } as any,
@@ -45,7 +46,6 @@ describe(
 						it(
 							'should return undefined when a user is not login but in login page',
 							async () => {
-								// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 								// @ts-expect-error
 								const result = await routerGuards.beforeEach(
 									{ path: paths.login, matched: [] } as any,
@@ -75,15 +75,14 @@ describe(
 						},);
 
 						afterEach(() => {
-							jest.resetAllMocks();
+							vi.resetAllMocks();
 						},);
 
 						it(
 							'should return to home page when a user is login and is in login page',
 							async () => {
-								// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-								// @ts-expect-error
 								const result = (
+									// @ts-expect-error
 									await routerGuards.beforeEach(
 										{ path: paths.login, matched: [], query: {} } as any,
 										{ matched: [], query: {} } as any,
@@ -97,7 +96,7 @@ describe(
 						it(
 							'should invoke onNoAuthList when there is no auth list',
 							async () => {
-								const callback = jest.fn((to) => to.fullPath);
+								const callback = vi.fn((to) => to.fullPath);
 
 								const routerGuards = createGuards({
 									loginPath: paths.login,
@@ -107,9 +106,8 @@ describe(
 									onNoAuthList: callback,
 								},);
 
-								// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-								// @ts-expect-error
 								const result = (
+									// @ts-expect-error
 									await routerGuards.beforeEach(
 										{
 											path: '/xxx',
@@ -129,9 +127,8 @@ describe(
 						it(
 							'should return undefined when a user is login',
 							async () => {
-								// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-								// @ts-expect-error
 								const result = (
+									// @ts-expect-error
 									await routerGuards.beforeEach(
 										{
 											path: '/xxx',

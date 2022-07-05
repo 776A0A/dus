@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dz7/hooks": "workspace:^1.0.0",
-    "@dz7/storage": "workspace:^1.0.0",
-    "@dz7/utils": "workspace:^1.0.0"
+    "@dz7/hooks": "workspace:*",
+    "@dz7/storage": "workspace:*",
+    "@dz7/utils": "workspace:*"
   }
 }

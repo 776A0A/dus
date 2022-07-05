@@ -1,4 +1,3 @@
-import baseConfig from '@dz7/windicss';
-import { defineConfig } from 'windicss/helpers';
+import config from '../windi.config';
 
-export default defineConfig(baseConfig);
+export default config;

@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { createRouter, createWebHistory } from 'vue-router';
 import { OA, TA } from '../constants';
 import { filterRoutes } from '../filterRoutes';

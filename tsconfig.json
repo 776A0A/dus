@@ -18,7 +18,8 @@
     "noImplicitReturns": false,
     "types": [
       "node",
-      "unplugin-icons/types/vue"
+      "unplugin-icons/types/vue",
+      "@dz7/types"
     ],
     "skipLibCheck": true,
     "allowJs": true,
@@ -28,9 +29,7 @@
   },
   "include": [
     "packages",
-    "mskxx",
     "env.d.ts",
-    "types.d.ts"
   ],
   "exclude": [
     "node_modules",

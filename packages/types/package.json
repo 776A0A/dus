@@ -1,0 +1,12 @@
+{
+  "name": "@dz7/types",
+  "version": "1.0.0",
+  "description": "",
+  "types": "./types.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

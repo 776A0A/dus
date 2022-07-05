@@ -8,7 +8,7 @@
     </div>
     <Slider
       ref="sliderIns"
-      class="h-100 w-300 select-none"
+      class="h-100 shadow text-shadow-xl w-300 select-none"
       :images="images"
       :scale="0.8"
       autoplay

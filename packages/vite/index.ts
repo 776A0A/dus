@@ -2,6 +2,9 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import gzip from 'rollup-plugin-gzip';
 import { visualizer } from 'rollup-plugin-visualizer';
+import IconsResolver from 'unplugin-icons/resolver';
+import Icons from 'unplugin-icons/vite';
+import Components from 'unplugin-vue-components/vite';
 import { AliasOptions, BuildOptions, HtmlTagDescriptor, PluginOption } from 'vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import WindiCss from 'vite-plugin-windicss';
@@ -68,6 +71,8 @@ export function getBasePlugins(): PluginOption[] {
 		gzip({ filter: /\.(js|mjs|json|css|html|dat|png|svg)$/ }),
 		svgLoader(),
 		visualizer({ gzipSize: true }),
+		Components({ resolvers: [IconsResolver({ prefix: false })], dts: true }),
+		Icons({ compiler: 'vue3' }),
 	];
 }
 
