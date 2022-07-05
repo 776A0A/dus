@@ -11,14 +11,9 @@
       class="h-100 shadow text-shadow-xl w-300 select-none"
       :list="images"
       :scale="0.8"
-      autoplay
     >
       <template #default="{ data }">
-        <img
-          :src="data"
-          alt="slider-image"
-          class="object-contain full slider-image"
-        />
+        <img :src="data" alt="slider-image" class="object-contain full" />
       </template>
     </Slider>
     <div
@@ -49,4 +44,8 @@ const images = [
 const sliderIns = ref<{ slideLeft: VoidFunction; slideRight: VoidFunction }>()
 </script>
 
-<style scoped></style>
+<style scoped>
+:deep(.slider-item__active) {
+  @apply bg-black;
+}
+</style>

@@ -5,15 +5,20 @@
     @mouseover="pause"
     @mouseleave="autoplay && run()"
   >
-    <div v-for="item in activeImages" class="slider-item will-change-transform">
+    <div
+      v-for="(item, i) in activePool"
+      class="slider-item will-change-transform"
+      :class="{ 'slider-item__active': i === 2 }"
+    >
       <slot :data="item" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { nextTick, onMounted, reactive, ref } from 'vue'
 import { useEventListener } from '@vueuse/core'
+import { nextTick, onMounted, reactive, ref } from 'vue'
+import { getTranslateX, transform, transition } from './utils'
 
 const props = withDefaults(
   defineProps<{
@@ -29,7 +34,7 @@ const DURATION = props.duration
 const sliderContainerEl = ref<HTMLDivElement>()
 const active = ref(1)
 const sliderItemEls = reactive<HTMLDivElement[]>([])
-const activeImages = ref<string[]>([])
+const activePool = ref<string[]>([])
 let timer: NodeJS.Timer
 let sliding = false
 
@@ -46,7 +51,7 @@ onMounted(async () => {
   if (props.autoplay) run()
 })
 
-defineExpose({ slideLeft, slideRight })
+defineExpose({ slideLeft, slideRight, active })
 
 async function init() {
   fillActives()
@@ -54,6 +59,7 @@ async function init() {
   await nextTick()
 
   getSliderItemEls()
+
   reset()
 }
 
@@ -73,7 +79,7 @@ function fillActives() {
 
   tmp.splice(5)
 
-  activeImages.value = tmp.slice(0, 5)
+  activePool.value = tmp.slice(0, 5)
 
   if (length === 1) active.value = 0
 }
@@ -108,7 +114,7 @@ function teleport() {
     props.list[(props.list.length + active.value - 2) % props.list.length]
   )
 
-  activeImages.value = tmp.slice(0, 5)
+  activePool.value = tmp.slice(0, 5)
 
   reset()
 
@@ -144,7 +150,13 @@ function slide(direction: 'left' | 'right') {
     transform(
       el,
       +getTranslateX(el) + (direction === 'left' ? -100 : 100),
-      direction === 'left' ? (i === 3 ? 1 : 0.8) : i === 1 ? 1 : 0.8
+      direction === 'left'
+        ? i === 3
+          ? 1
+          : props.scale
+        : i === 1
+        ? 1
+        : props.scale
     )
   })
 }
@@ -157,25 +169,11 @@ function slideRight() {
   slide('right')
 }
 
-function getTranslateX(el: HTMLElement) {
-  return (
-    el.style.transform.match(/translate3d\((.+)%,\s*.+,\s*.+\)/)?.[1] ?? '0'
-  )
-}
-
-function transform(el: HTMLElement, x: number, scale: number) {
-  el.style.transform = `translate3d(${x}%, 0, 0) scale(${scale})`
-}
-
 function reset() {
   sliderItemEls.forEach((image) => transition(image, 'none'))
   sliderItemEls.forEach((image, i) =>
-    transform(image, 100 * (i - 1), i === 2 ? 1 : 0.8)
+    transform(image, 100 * (i - 1), i === 2 ? 1 : props.scale)
   )
-}
-
-function transition(el: HTMLElement, transition: string) {
-  el.style.transition = transition
 }
 </script>
 
