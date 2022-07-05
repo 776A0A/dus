@@ -18,9 +18,9 @@ export const useMutation = <T extends (...params: any[]) => Promise<any>>(
 		options.preventParallel = true;
 	}
 
-	const mutate: (...params: Parameters<T>) => Promise<Awaited<ReturnType<T>>> = async (
-		...params
-	) => {
+	const mutate: (...params: Parameters<T>) => Promise<
+		Awaited<ReturnType<T>>
+	> = async (...params) => {
 		if (options?.preventParallel && loading.value) {
 			return;
 		}

@@ -6,7 +6,9 @@ export const useLoading = <T extends (...args: any[]) => any>(
 ) => {
 	const loading = ref(options.initialLoading);
 
-	const wrappedFn = async (...args: Parameters<T>): Promise<ReturnType<T> | void> => {
+	const wrappedFn = async (...args: Parameters<T>): Promise<
+		ReturnType<T> | void
+	> => {
 		if (loading.value && !options.initialLoading) {
 			return;
 		}

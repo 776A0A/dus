@@ -9,7 +9,10 @@ export function imageFileToBase64(
 ) {
 	const reader = new FileReader();
 
-	reader.addEventListener('load', () => callback(null, reader.result as string));
+	reader.addEventListener(
+		'load',
+		() => callback(null, reader.result as string),
+	);
 	reader.addEventListener('error', (error) => callback(error));
 
 	reader.readAsDataURL(img);

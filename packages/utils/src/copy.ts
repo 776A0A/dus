@@ -67,7 +67,11 @@ async function copyImage(
 	}
 }
 
-async function copyText(data: string, resolve: VoidFunction, reject: (error: unknown) => void) {
+async function copyText(
+	data: string,
+	resolve: VoidFunction,
+	reject: (error: unknown) => void,
+) {
 	if (!isHttps) {
 		return tryCopyTextWithExec(data, resolve, reject);
 	}
@@ -103,7 +107,11 @@ function tryCopyTextWithExec(
 	);
 }
 
-function copyImageAsBase64(data: Blob, resolve: VoidFunction, reject: (error: unknown) => void) {
+function copyImageAsBase64(
+	data: Blob,
+	resolve: VoidFunction,
+	reject: (error: unknown) => void,
+) {
 	return imageFileToBase64(
 		data,
 		(error, url = '') => {

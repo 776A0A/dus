@@ -1,4 +1,8 @@
-import { NavigationGuard, NavigationHookAfter, RouteLocationNormalized } from 'vue-router';
+import {
+	NavigationGuard,
+	NavigationHookAfter,
+	RouteLocationNormalized,
+} from 'vue-router';
 import { needLoading } from './utils';
 
 interface Options {

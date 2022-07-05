@@ -5,7 +5,11 @@
  * @param time 循环间隔，最小值 16ms，默认 1000ms
  * @returns
  */
-export function repeatAction(condition: () => boolean, callback: () => unknown, time = 1000) {
+export function repeatAction(
+	condition: () => boolean,
+	callback: () => unknown,
+	time = 1000,
+) {
 	let timer: NodeJS.Timer;
 
 	return { run, stop };

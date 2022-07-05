@@ -22,5 +22,7 @@ export function urlToFile(url: string, callback?: ErrorHandler) {
 		return;
 	}
 
-	return fetch(url).then((res) => res.blob().then((blob) => createFile(blob, getMimeType(res))));
+	return fetch(url).then(
+		(res) => res.blob().then((blob) => createFile(blob, getMimeType(res))),
+	);
 }

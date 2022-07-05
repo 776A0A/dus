@@ -5,7 +5,12 @@ import { visualizer } from 'rollup-plugin-visualizer';
 import IconsResolver from 'unplugin-icons/resolver';
 import Icons from 'unplugin-icons/vite';
 import Components from 'unplugin-vue-components/vite';
-import { AliasOptions, BuildOptions, HtmlTagDescriptor, PluginOption } from 'vite';
+import {
+	AliasOptions,
+	BuildOptions,
+	HtmlTagDescriptor,
+	PluginOption,
+} from 'vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import WindiCss from 'vite-plugin-windicss';
 import svgLoader from 'vite-svg-loader';
@@ -17,7 +22,9 @@ export function getEnvVars(mode: string) {
 	const isTest = mode === 'onlineTest';
 	const isProd = mode === 'production';
 
-	console.log(`env: ${mode}, isDev: ${isDev}, isTest: ${isTest}, isProd: ${isProd}`);
+	console.log(
+		`env: ${mode}, isDev: ${isDev}, isTest: ${isTest}, isProd: ${isProd}`,
+	);
 
 	return { isDev, isTest, isProd };
 }
@@ -39,7 +46,10 @@ export function getEnvsAndDefinitions(mode: string) {
 	return { envVars, definitions };
 }
 
-export function getBuildOptions(isTest: boolean, build?: BuildOptions): BuildOptions {
+export function getBuildOptions(
+	isTest: boolean,
+	build?: BuildOptions,
+): BuildOptions {
 	return { sourcemap: isTest, ...build };
 }
 

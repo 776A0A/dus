@@ -8,7 +8,11 @@ class VueEmitter<EventsMap extends NormalObj> extends Emitter<EventsMap> {
    * @param immediate - 在创建组件时开始监听还是在 onMounted 后开始
    * @returns Emitter
    */
-	autoUnbind<E extends keyof EventsMap>(event: E, cb: EventsMap[E], { immediate = true } = {}) {
+	autoUnbind<E extends keyof EventsMap>(
+		event: E,
+		cb: EventsMap[E],
+		{ immediate = true } = {},
+	) {
 		let unbind: Unsubscribe;
 
 		if (immediate) {

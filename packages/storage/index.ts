@@ -2,7 +2,11 @@ import { forEach } from './forEach';
 import { ls, ss } from './shared';
 import { clear, clearAll, get, remove, set } from './store';
 
-type GetDataFn = <T>(key: string, fallbackValue?: T, cb?: (error: any) => void) => T | undefined;
+type GetDataFn = <T>(
+	key: string,
+	fallbackValue?: T,
+	cb?: (error: any) => void,
+) => T | undefined;
 
 const session = {
 	get: get.bind(null, ss) as GetDataFn,

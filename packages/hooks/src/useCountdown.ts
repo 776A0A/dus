@@ -12,7 +12,9 @@ interface Params {
  * @param params.step - 倒计时递减的值，默认为 1
  * @param params.endCb - 倒计时结束的回调函数，可选
  */
-export const useCountdown = ({ duration = 60, step = 1, endCb }: Params = {}) => {
+export const useCountdown = (
+	{ duration = 60, step = 1, endCb }: Params = {},
+) => {
 	let timer: NodeJS.Timeout;
 	const stepTime = step * 1000;
 	const countdown = shallowReactive({

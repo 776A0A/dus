@@ -8,17 +8,27 @@
 export function getDiff<T extends object, U = Partial<T>>(
 	originalObj: T,
 	copiedObj: U,
-	customDiffer?: <K extends keyof U>(key: K, originalValue: unknown, copiedValue: U[K]) =>
-		| boolean
-		| void,
+	customDiffer?: <K extends keyof U>(
+		key: K,
+		originalValue: unknown,
+		copiedValue: U[K],
+	) => boolean | void,
 ) {
 	const diff: Partial<T> = {};
 
 	Object.entries(copiedObj).forEach(
 		([key, value]) => {
-			const result = customDiffer?.(key as keyof U, originalObj[key as keyof T], value);
+			const result = customDiffer?.(
+				key as keyof U,
+				originalObj[key as keyof T],
+				value,
+			);
 
-			if ((result === undefined && value !== originalObj[key as keyof T]) || result === false) {
+			if (
+				(
+					result === undefined && value !== originalObj[key as keyof T]
+				) || result === false
+			) {
 				diff[key as keyof T] = value;
 			}
 		},

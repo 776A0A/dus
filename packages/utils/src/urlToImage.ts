@@ -1,4 +1,7 @@
-type ErrorHandler = (error: string | Event | null, image: HTMLImageElement) => void;
+type ErrorHandler = (
+	error: string | Event | null,
+	image: HTMLImageElement,
+) => void;
 
 export function urlToImage(url: string): Promise<HTMLImageElement>;
 export function urlToImage(url: string, callback: ErrorHandler): void;

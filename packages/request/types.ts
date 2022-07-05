@@ -5,7 +5,10 @@ export interface RequestConfig<T = unknown> extends AxiosRequestConfig<T> {
 	__cancelId?: unknown;
 }
 
-export interface ResponseConfig<R = any, C = any> extends Omit<AxiosResponse<R, C>, 'config'> {
+export interface ResponseConfig<R = any, C = any>
+	extends
+		Omit<AxiosResponse<R, C>, 'config'>
+{
 	config: RequestConfig;
 }
 
@@ -76,6 +79,7 @@ export interface Options {
 	beforeRequest?: (config: RequestConfig) => void;
 }
 
-export type RequestMethod<Urls> = <Data = unknown>(url: Urls, rest?: RequestConfig) => Promise<
-	ExpectedResult<Data>
->;
+export type RequestMethod<Urls> = <Data = unknown>(
+	url: Urls,
+	rest?: RequestConfig,
+) => Promise<ExpectedResult<Data>>;

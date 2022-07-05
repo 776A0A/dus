@@ -37,7 +37,9 @@ export const useQueryHelper = <ExtraState extends NormalObj>(
 		const { loading, error, data } = baseState;
 		const extraState = init?.();
 
-		const state = { loading, error, data, ...extraState } as typeof baseState & ExtraState;
+		const state = { loading, error, data, ...extraState } as
+			& typeof baseState
+			& ExtraState;
 
 		if (options.initialLoading) {
 			loading.value = true;
@@ -46,9 +48,9 @@ export const useQueryHelper = <ExtraState extends NormalObj>(
 			options.preventParallel = true;
 		}
 
-		const query: (...params: Parameters<T>) => Promise<Awaited<ReturnType<T>>> = async (
-			...params
-		) => {
+		const query: (...params: Parameters<T>) => Promise<
+			Awaited<ReturnType<T>>
+		> = async (...params) => {
 			if (options.preventParallel && loading.value && !options.initialLoading) {
 				return;
 			}

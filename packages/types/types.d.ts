@@ -19,7 +19,9 @@ declare global {
 
 	type NormalObj = Record<keyof any, any>;
 
-	type APIMethodReturnType<T extends (...args: any[]) => any> = Awaited<ReturnType<T>>;
+	type APIMethodReturnType<T extends (...args: any[]) => any> = Awaited<
+		ReturnType<T>
+	>;
 
 	type ResolveArrayType<T> = T extends (infer P)[] ? P : never;
 
@@ -58,12 +60,17 @@ declare global {
 	] : [ValidTemplateNumber<T>];
 
 	type ObjPathsToTuple<T> = T extends object ? {
-		[K in keyof T]: T[K] extends object ? [K] | [K, ...ObjPathsToTuple<T[K]>] : [K];
+		[K in keyof T]: T[K] extends object ?
+			| [K]
+			| [K, ...ObjPathsToTuple<T[K]>] : [K];
 	}[keyof T] : never;
 
 	type ObjPathsToUnion<T> = TupleToTemplateString<ObjPathsToTuple<T>>;
 
-	type ValueOf<T, K extends ObjPathsToUnion<T>> = K extends `${infer F}.${infer R}`
+	type ValueOf<
+		T,
+		K extends ObjPathsToUnion<T>,
+	> = K extends `${infer F}.${infer R}`
 		? F extends keyof T
 			? R extends ObjPathsToUnion<T[F]>
 				? ValueOf<T[F], R>
@@ -94,7 +101,10 @@ declare global {
 	type RecordWithSwappedKey<T, U extends Partial<Record<keyof T, any>>> =
 		& Omit<T, keyof U>
 		& {
-			-readonly [K in Extract<keyof U, keyof T> as U[K]]: K extends keyof T ? T[K] : K;
+			-readonly [K in Extract<
+				keyof U,
+				keyof T
+			> as U[K]]: K extends keyof T ? T[K] : K;
 		};
 
 	/**
@@ -135,16 +145,24 @@ declare global {
    */
 	type ObjKeys = keyof any;
 
-	type SingleSameKeyValue<T extends ObjKeys, Key extends T = T> = Key extends T ? {
+	type SingleSameKeyValue<
+		T extends ObjKeys,
+		Key extends T = T,
+	> = Key extends T ? {
 		[K in Key]: Key;
 	} : never;
 
-	type MergeSingleSameKeyValue<T, Obj extends Record<any, T>, Initial = Record<any, keyof Obj>> =
-		& Obj
-		& Initial;
+	type MergeSingleSameKeyValue<
+		T,
+		Obj extends Record<any, T>,
+		Initial = Record<any, keyof Obj>,
+	> = Obj & Initial;
 
 	/**
    * 获取 key 和 value 相同的类型对象
    */
-	type SameKeyValue<T extends ObjKeys> = MergeSingleSameKeyValue<T, SingleSameKeyValue<T>>;
+	type SameKeyValue<T extends ObjKeys> = MergeSingleSameKeyValue<
+		T,
+		SingleSameKeyValue<T>
+	>;
 }

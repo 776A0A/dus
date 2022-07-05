@@ -4,8 +4,12 @@ const defaultFilename = '文件';
 
 type Filename = string | (() => string);
 
-export async function downloadFile(file: Blob, filename: Filename): Promise<void>;
-export async function downloadFile(file: string, filename?: Filename): Promise<void>;
+export async function downloadFile(file: Blob, filename: Filename): Promise<
+	void
+>;
+export async function downloadFile(file: string, filename?: Filename): Promise<
+	void
+>;
 export async function downloadFile(file: Blob | string, filename?: Filename) {
 	let a = document.createElement('a');
 
@@ -25,9 +29,9 @@ export async function downloadFile(file: Blob | string, filename?: Filename) {
 
 	const url = window.URL.createObjectURL(blob);
 
-	void ([['href', url], ['download', finalFilename], ['target', '_blank']] as const).forEach(
-		([attr, val]) => a.setAttribute(attr, val),
-	);
+	void (
+		[['href', url], ['download', finalFilename], ['target', '_blank']] as const
+	).forEach(([attr, val]) => a.setAttribute(attr, val));
 
 	a.click();
 

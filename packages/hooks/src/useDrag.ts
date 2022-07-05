@@ -94,7 +94,9 @@ export const useDrag = (elem: Ref<HTMLElement | undefined>) => {
 		evt.stopPropagation();
 
 		dragging.value = false;
-		elemInfo.x = elemInfo.y = elemInfo.top = elemInfo.left = elemInfo.width = elemInfo.height = 0;
+		elemInfo.x =
+			elemInfo.y =
+				elemInfo.top = elemInfo.left = elemInfo.width = elemInfo.height = 0;
 
 		detachListeners();
 		removeMaskFromBody();

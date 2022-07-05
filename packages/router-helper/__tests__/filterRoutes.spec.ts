@@ -41,7 +41,10 @@ describe(
 		it(
 			'正确删除二级的无权限路由',
 			() => {
-				const { getLength } = factory([{ ...a, children: [{ ...b, meta }] }], [a.path]);
+				const { getLength } = factory(
+					[{ ...a, children: [{ ...b, meta }] }],
+					[a.path],
+				);
 
 				expect(getLength()).toBe(1);
 			},
@@ -50,7 +53,10 @@ describe(
 		it(
 			'当父级没有权限，子路由就算有权限也会被删除',
 			() => {
-				const { getLength } = factory([{ ...root, meta, children: [a, b] }], [a.path, b.path]);
+				const { getLength } = factory(
+					[{ ...root, meta, children: [a, b] }],
+					[a.path, b.path],
+				);
 
 				expect(getLength()).toBe(0);
 			},
@@ -59,7 +65,10 @@ describe(
 		it(
 			'当父级有权限，子路由不会被删除',
 			() => {
-				const { getLength } = factory([{ ...root, meta, children: [a, b] }], [root.path]);
+				const { getLength } = factory(
+					[{ ...root, meta, children: [a, b] }],
+					[root.path],
+				);
 
 				expect(getLength()).toBe(3);
 			},
@@ -80,7 +89,10 @@ describe(
 		it(
 			'如果 temporary allow 为 true，那么就算没有权限也不会被删除',
 			() => {
-				const { getLength } = factory([{ ...a, meta: { ...meta, [TA]: true } }], [b.path]);
+				const { getLength } = factory(
+					[{ ...a, meta: { ...meta, [TA]: true } }],
+					[b.path],
+				);
 
 				expect(getLength()).toBe(1);
 			},
@@ -107,7 +119,11 @@ describe(
 		it(
 			'customFilter 返回 undefined，交给默认逻辑处理',
 			() => {
-				const { getLength } = factory([{ ...a, meta }, b], [a.path], () => undefined);
+				const { getLength } = factory(
+					[{ ...a, meta }, b],
+					[a.path],
+					() => undefined,
+				);
 
 				expect(getLength()).toBe(2);
 			},
@@ -115,7 +131,11 @@ describe(
 	},
 );
 
-function factory(routes: any[], reachables = [] as string[], filter?: () => boolean | undefined) {
+function factory(
+	routes: any[],
+	reachables = [] as string[],
+	filter?: () => boolean | undefined,
+) {
 	const router = createRouter({
 		routes,
 		history: createWebHistory(),

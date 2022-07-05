@@ -5,7 +5,9 @@
  * @returns
  */
 export function base64ToArrayBuffer(sBase64: string, decode = false) {
-	const str = window.atob(decode ? window.decodeURIComponent(sBase64) : sBase64);
+	const str = window.atob(
+		decode ? window.decodeURIComponent(sBase64) : sBase64,
+	);
 	const length = str.length;
 	const bytes = new Uint8Array(length);
 

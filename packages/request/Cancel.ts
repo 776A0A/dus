@@ -16,7 +16,9 @@ export class Canceler {
 
 		if (id == null) {
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
-			Array.from(cancelQueue).forEach(([_, canceler]) => canceler(this._cancelMessage));
+			Array.from(cancelQueue).forEach(
+				([_, canceler]) => canceler(this._cancelMessage),
+			);
 			cancelQueue.clear();
 		} else {
 			cancelQueue.get(id)?.(this._cancelMessage);

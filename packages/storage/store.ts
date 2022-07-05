@@ -25,7 +25,12 @@ export function get<T>(storage: Storage, key: string, fallbackValue?: T) {
 	return value;
 }
 
-export function set(storage: Storage, key: string, value: any, cb?: (error: any) => void) {
+export function set(
+	storage: Storage,
+	key: string,
+	value: any,
+	cb?: (error: any) => void,
+) {
 	callWithErrorCatch(
 		() => {
 			storage.setItem(key, JSON.stringify(value));
