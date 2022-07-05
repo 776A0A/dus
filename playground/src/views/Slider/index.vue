@@ -1,9 +1,10 @@
 <template>
   <main class="flex h-screen items-center justify-center">
-    <div>
-      <IcRoundChevronLeft
-        class="cursor-pointer rounded-1 h-10 mr-4 w-10 hover-shadow"
-      />
+    <div
+      @click="sliderIns?.slideRight()"
+      class="cursor-pointer rounded-1 mr-4 hover-shadow center-flex"
+    >
+      <IcRoundChevronLeft class="h-10 w-10" />
     </div>
     <Slider
       ref="sliderIns"
@@ -11,10 +12,11 @@
       :images="images"
       :scale="0.8"
     />
-    <div @click="sliderIns?.slideLeft()">
-      <IcRoundChevronRight
-        class="cursor-pointer rounded-1 h-10 ml-4 w-10 hover-shadow"
-      />
+    <div
+      @click="sliderIns?.slideLeft()"
+      class="cursor-pointer rounded-1 ml-4 hover-shadow center-flex"
+    >
+      <IcRoundChevronRight class="h-10 w-10" />
     </div>
   </main>
 </template>
@@ -28,7 +30,7 @@ import slider4 from './assets/slider-4.png'
 import { ref } from 'vue'
 
 const images = [slider1, slider2, slider3, slider4]
-const sliderIns = ref<{ slideLeft: VoidFunction }>()
+const sliderIns = ref<{ slideLeft: VoidFunction; slideRight: VoidFunction }>()
 </script>
 
 <style scoped></style>

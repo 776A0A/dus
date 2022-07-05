@@ -3,7 +3,7 @@
     ref="sliderContainerEl"
     class="flex relative overflow-hidden slider-container"
     @mouseover="pause"
-    @mouseleave="run"
+    @mouseleave="autoplay && run"
   >
     <div v-for="item in activeImages" class="slider-item will-change-transform">
       <img
@@ -23,8 +23,9 @@ const props = withDefaults(
     images?: string[]
     scale?: number
     duration?: number
+    autoplay?: boolean
   }>(),
-  { images: () => [], scale: 0.8, duration: 1000 }
+  { images: () => [], scale: 0.8, duration: 1000, autoplay: false }
 )
 const DURATION = props.duration
 const SCALE_REDUCE = `scale(${props.scale})`
@@ -40,10 +41,10 @@ onMounted(async () => {
 
   await init()
 
-  run()
+  if (props.autoplay) run()
 })
 
-defineExpose({ slideLeft })
+defineExpose({ slideLeft, slideRight })
 
 async function init() {
   fillActives()
@@ -95,7 +96,7 @@ function teleport() {
 
   setTimeout(() => {
     sliding = false
-    run()
+    if (props.autoplay) run()
   })
 }
 
@@ -122,6 +123,23 @@ function slide() {
 
 function slideLeft() {
   slide()
+}
+
+function slideRight() {
+  if (sliding) return
+
+  sliding = true
+
+  clearTimeout(timer)
+
+  sliderContainerEl.value?.addEventListener('transitionend', teleport)
+
+  active.value--
+
+  sliderItemEls.forEach((el, i) => {
+    transition(el, `all 300ms ease-out`)
+    transform(el, +getTranslateX(el) + 100, i)
+  })
 }
 
 function getTranslateX(el: HTMLElement) {
