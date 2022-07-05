@@ -3,7 +3,7 @@
     ref="sliderContainerEl"
     class="flex relative overflow-hidden slider-container"
     @mouseover="pause"
-    @mouseleave="slide"
+    @mouseleave="run"
   >
     <div v-for="item in activeImages" class="slider-item will-change-transform">
       <img
@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, reactive, nextTick } from 'vue'
+import { nextTick, onMounted, reactive, ref } from 'vue'
 
 const props = withDefaults(
   defineProps<{
@@ -33,22 +33,32 @@ const active = ref(1)
 const sliderItemEls = reactive<HTMLDivElement[]>([])
 const activeImages = reactive<string[]>([])
 let timer: NodeJS.Timer
+let sliding = false
 
 onMounted(async () => {
   if (!props.images.length) return
 
-  fill()
-  await nextTick()
-  getEls()
-  reset()
-  slide()
+  await init()
+
+  run()
 })
+
+defineExpose({ slideLeft })
+
+async function init() {
+  fillActives()
+
+  await nextTick()
+
+  getSliderItemEls()
+  reset()
+}
 
 function pause() {
   clearTimeout(timer)
 }
 
-function fill() {
+function fillActives() {
   activeImages.push(...props.images.slice(0, 4))
 
   if (activeImages.length < 4) {
@@ -62,7 +72,7 @@ function fill() {
   activeImages.splice(4)
 }
 
-function getEls() {
+function getSliderItemEls() {
   if (!sliderContainerEl.value) return
 
   sliderItemEls.push(
@@ -73,7 +83,7 @@ function getEls() {
 }
 
 function teleport() {
-  window.removeEventListener('transitionend', teleport)
+  sliderContainerEl.value?.removeEventListener('transitionend', teleport)
 
   activeImages.shift()
 
@@ -83,19 +93,35 @@ function teleport() {
 
   reset()
 
-  setTimeout(slide)
+  setTimeout(() => {
+    sliding = false
+    run()
+  })
+}
+
+function run() {
+  timer = setTimeout(slide, DURATION)
 }
 
 function slide() {
-  timer = setTimeout(() => {
-    window.addEventListener('transitionend', teleport)
-    active.value++
+  if (sliding) return
 
-    sliderItemEls.forEach((el, i) => {
-      transition(el, `all 300ms ease-out`)
-      transform(el, +getTranslateX(el) - 100, i)
-    })
-  }, DURATION)
+  sliding = true
+
+  clearTimeout(timer)
+
+  sliderContainerEl.value?.addEventListener('transitionend', teleport)
+
+  active.value++
+
+  sliderItemEls.forEach((el, i) => {
+    transition(el, `all 300ms ease-out`)
+    transform(el, +getTranslateX(el) - 100, i)
+  })
+}
+
+function slideLeft() {
+  slide()
 }
 
 function getTranslateX(el: HTMLElement) {
