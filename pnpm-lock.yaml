@@ -172,7 +172,10 @@ importers:
       '@dz7/utils': link:../utils
 
   packages/slider:
-    specifiers: {}
+    specifiers:
+      '@dz7/utils': workspace:^0.0.0
+    dependencies:
+      '@dz7/utils': link:../utils
 
   packages/storage:
     specifiers:

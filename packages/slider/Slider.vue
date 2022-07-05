@@ -3,7 +3,7 @@
     ref="sliderContainerEl"
     class="flex relative overflow-hidden slider-container"
     @mouseover="pause"
-    @mouseleave="autoplay && run"
+    @mouseleave="autoplay && run()"
   >
     <div v-for="item in activeImages" class="slider-item will-change-transform">
       <img
@@ -17,6 +17,7 @@
 
 <script lang="ts" setup>
 import { nextTick, onMounted, reactive, ref } from 'vue'
+import { useEventListener } from '@vueuse/core'
 
 const props = withDefaults(
   defineProps<{
@@ -24,17 +25,22 @@ const props = withDefaults(
     scale?: number
     duration?: number
     autoplay?: boolean
+    toRight?: boolean
   }>(),
   { images: () => [], scale: 0.8, duration: 1000, autoplay: false }
 )
 const DURATION = props.duration
-const SCALE_REDUCE = `scale(${props.scale})`
 const sliderContainerEl = ref<HTMLDivElement>()
 const active = ref(1)
 const sliderItemEls = reactive<HTMLDivElement[]>([])
-const activeImages = reactive<string[]>([])
+const activeImages = ref<string[]>([])
 let timer: NodeJS.Timer
 let sliding = false
+
+useEventListener(document, 'visibilitychange', () => {
+  if (document.visibilityState === 'hidden') clearTimeout(timer)
+  else if (props.autoplay) run()
+})
 
 onMounted(async () => {
   if (!props.images.length) return
@@ -60,17 +66,20 @@ function pause() {
 }
 
 function fillActives() {
-  activeImages.push(...props.images.slice(0, 4))
+  const images = props.images,
+    length = images.length
 
-  if (activeImages.length < 4) {
-    const images = [...activeImages]
+  const tmp: string[] = []
 
-    Array.from({ length: 3 }, () => 0).forEach(() =>
-      activeImages.push(...images)
-    )
-  }
+  while (tmp.length < 5) tmp.push(...images)
 
-  activeImages.splice(4)
+  tmp.unshift(images[length - 1])
+
+  tmp.splice(5)
+
+  activeImages.value = tmp.slice(0, 5)
+
+  if (length === 1) active.value = 0
 }
 
 function getSliderItemEls() {
@@ -86,11 +95,24 @@ function getSliderItemEls() {
 function teleport() {
   sliderContainerEl.value?.removeEventListener('transitionend', teleport)
 
-  activeImages.shift()
+  const tmp: string[] = []
 
-  const last = props.images[(active.value + 2) % props.images.length]
+  const _active = (props.images.length + active.value) % props.images.length
 
-  activeImages.push(last)
+  tmp[0] = props.images[_active]
+  tmp[1] =
+    props.images[(props.images.length + active.value + 1) % props.images.length]
+  tmp[2] =
+    props.images[(props.images.length + active.value + 2) % props.images.length]
+
+  tmp.unshift(
+    props.images[(props.images.length + active.value - 1) % props.images.length]
+  )
+  tmp.unshift(
+    props.images[(props.images.length + active.value - 2) % props.images.length]
+  )
+
+  activeImages.value = tmp.slice(0, 5)
 
   reset()
 
@@ -101,10 +123,15 @@ function teleport() {
 }
 
 function run() {
-  timer = setTimeout(slide, DURATION)
+  clearTimeout(timer)
+
+  timer = setTimeout(
+    () => (props.toRight ? slide('right') : slide('left')),
+    DURATION
+  )
 }
 
-function slide() {
+function slide(direction: 'left' | 'right') {
   if (sliding) return
 
   sliding = true
@@ -113,33 +140,25 @@ function slide() {
 
   sliderContainerEl.value?.addEventListener('transitionend', teleport)
 
-  active.value++
+  active.value = active.value + (direction === 'left' ? 1 : -1)
+  if (active.value < 0) active.value = props.images.length - 1
 
   sliderItemEls.forEach((el, i) => {
     transition(el, `all 300ms ease-out`)
-    transform(el, +getTranslateX(el) - 100, i)
+    transform(
+      el,
+      +getTranslateX(el) + (direction === 'left' ? -100 : 100),
+      direction === 'left' ? (i === 3 ? 1 : 0.8) : i === 1 ? 1 : 0.8
+    )
   })
 }
 
 function slideLeft() {
-  slide()
+  slide('left')
 }
 
 function slideRight() {
-  if (sliding) return
-
-  sliding = true
-
-  clearTimeout(timer)
-
-  sliderContainerEl.value?.addEventListener('transitionend', teleport)
-
-  active.value--
-
-  sliderItemEls.forEach((el, i) => {
-    transition(el, `all 300ms ease-out`)
-    transform(el, +getTranslateX(el) + 100, i)
-  })
+  slide('right')
 }
 
 function getTranslateX(el: HTMLElement) {
@@ -148,15 +167,15 @@ function getTranslateX(el: HTMLElement) {
   )
 }
 
-function transform(el: HTMLElement, x: number, index: number, reset = false) {
-  el.style.transform = `translate3d(${x}%, 0, 0) ${
-    reset ? (index !== 1 ? SCALE_REDUCE : '') : index === 2 ? '' : SCALE_REDUCE
-  }`
+function transform(el: HTMLElement, x: number, scale: number) {
+  el.style.transform = `translate3d(${x}%, 0, 0) scale(${scale})`
 }
 
 function reset() {
   sliderItemEls.forEach((image) => transition(image, 'none'))
-  sliderItemEls.forEach((image, i) => transform(image, 100 * i, i, true))
+  sliderItemEls.forEach((image, i) =>
+    transform(image, 100 * (i - 1), i === 2 ? 1 : 0.8)
+  )
 }
 
 function transition(el: HTMLElement, transition: string) {

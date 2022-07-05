@@ -11,6 +11,7 @@
       class="h-100 w-300 select-none"
       :images="images"
       :scale="0.8"
+      autoplay
     />
     <div
       @click="sliderIns?.slideLeft()"
@@ -29,7 +30,14 @@ import slider3 from './assets/slider-3.png'
 import slider4 from './assets/slider-4.png'
 import { ref } from 'vue'
 
-const images = [slider1, slider2, slider3, slider4]
+const images = [
+  slider1,
+  slider2,
+  slider3,
+  slider4,
+  'https://tse2-mm.cn.bing.net/th/id/OIP-C.x2hDmrrJo9MzktqX2csZkQHaLh?w=200&h=311&c=7&r=0&o=5&pid=1.7',
+  'https://tse3-mm.cn.bing.net/th/id/OIP-C.LPuuOraDuRoHCA-RStAmggHaHa?w=204&h=204&c=7&r=0&o=5&pid=1.7',
+]
 const sliderIns = ref<{ slideLeft: VoidFunction; slideRight: VoidFunction }>()
 </script>
 
