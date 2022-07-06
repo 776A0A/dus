@@ -16,9 +16,10 @@
 </template>
 
 <script lang="ts" setup>
+import { array } from '@dz7/utils'
 import { useEventListener } from '@vueuse/core'
 import { nextTick, onMounted, reactive, ref } from 'vue'
-import { getTranslateX, transform, transition } from './utils'
+import { getIndex, getTranslateX, transform, transition } from './utils'
 
 const props = withDefaults(
   defineProps<{
@@ -33,6 +34,7 @@ const props = withDefaults(
 
 const emit = defineEmits<{
   (e: 'pause'): void
+  (e: 'activeChange', active: number): void
 }>()
 
 const DURATION = props.duration
@@ -44,7 +46,7 @@ let timer: NodeJS.Timer
 let sliding = false
 
 useEventListener(document, 'visibilitychange', () => {
-  if (document.visibilityState === 'hidden') clearTimeout(timer)
+  if (document.visibilityState === 'hidden') cancel()
   else if (props.autoplay) run()
 })
 
@@ -59,7 +61,7 @@ onMounted(async () => {
 defineExpose({ slideLeft, slideRight, active, pause })
 
 async function init() {
-  fillActives()
+  fillActivePool()
 
   await nextTick()
 
@@ -69,12 +71,12 @@ async function init() {
 }
 
 function pause() {
-  clearTimeout(timer)
+  cancel()
 
   emit('pause')
 }
 
-function fillActives() {
+function fillActivePool() {
   const images = props.list,
     length = images.length
 
@@ -84,11 +86,11 @@ function fillActives() {
 
   tmp.unshift(images[length - 1])
 
-  tmp.splice(5)
-
   activePool.value = tmp.slice(0, 5)
 
   if (length === 1) active.value = 0
+
+  emit('activeChange', active.value)
 }
 
 function getSliderItemEls() {
@@ -104,24 +106,11 @@ function getSliderItemEls() {
 function teleport() {
   sliderContainerEl.value?.removeEventListener('transitionend', teleport)
 
-  const tmp: string[] = []
+  const list = props.list,
+    length = list.length,
+    _active = active.value
 
-  const _active = (props.list.length + active.value) % props.list.length
-
-  tmp[0] = props.list[_active]
-  tmp[1] =
-    props.list[(props.list.length + active.value + 1) % props.list.length]
-  tmp[2] =
-    props.list[(props.list.length + active.value + 2) % props.list.length]
-
-  tmp.unshift(
-    props.list[(props.list.length + active.value - 1) % props.list.length]
-  )
-  tmp.unshift(
-    props.list[(props.list.length + active.value - 2) % props.list.length]
-  )
-
-  activePool.value = tmp.slice(0, 5)
+  activePool.value = array(5, (i) => list[getIndex(_active + i - 2, length)])
 
   reset()
 
@@ -132,7 +121,7 @@ function teleport() {
 }
 
 function run() {
-  clearTimeout(timer)
+  cancel()
 
   timer = setTimeout(
     () => (props.toRight ? slide('right') : slide('left')),
@@ -145,25 +134,22 @@ function slide(direction: 'left' | 'right') {
 
   sliding = true
 
-  clearTimeout(timer)
+  cancel()
 
   sliderContainerEl.value?.addEventListener('transitionend', teleport)
 
-  active.value = active.value + (direction === 'left' ? 1 : -1)
-  if (active.value < 0) active.value = props.list.length - 1
+  const isLeft = direction === 'left'
+
+  active.value = getIndex(active.value + (isLeft ? 1 : -1), props.list.length)
+
+  emit('activeChange', active.value)
 
   sliderItemEls.forEach((el, i) => {
     transition(el, `all 300ms ease-out`)
     transform(
       el,
-      +getTranslateX(el) + (direction === 'left' ? -100 : 100),
-      direction === 'left'
-        ? i === 3
-          ? 1
-          : props.scale
-        : i === 1
-        ? 1
-        : props.scale
+      +getTranslateX(el) + (isLeft ? -100 : 100),
+      isLeft ? (i === 3 ? 1 : props.scale) : i === 1 ? 1 : props.scale
     )
   })
 }
@@ -182,10 +168,14 @@ function reset() {
     transform(image, 100 * (i - 1), i === 2 ? 1 : props.scale)
   )
 }
+
+function cancel() {
+  clearTimeout(timer)
+}
 </script>
 
 <style scoped>
 .slider-container {
-  @apply children:(h-full flex-shrink-0 top-0 left-0 w-1/3 absolute center-flex);
+  @apply children:(h-full flex-shrink-0 top-0 left-0 w-1/3 absolute center-flex) ;
 }
 </style>

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getTranslateX, transform, transition } from '../utils';
+import { getIndex, getTranslateX, transform, transition } from '../utils';
 
 const getEl = (transform: string) => (
 	{
@@ -60,6 +60,26 @@ describe(
 						transition(el, value);
 
 						expect(el.style.transition).toBe(value);
+					},
+				);
+			},
+		);
+
+		describe(
+			'getIndex',
+			() => {
+				it(
+					'正确获取index',
+					() => {
+						const length = 5;
+
+						expect(getIndex(0, length)).toBe(0);
+						expect(getIndex(1, length)).toBe(1);
+						expect(getIndex(5, length)).toBe(0);
+						expect(getIndex(6, length)).toBe(1);
+
+						expect(getIndex(-1, length)).toBe(4);
+						expect(getIndex(1, 0)).toBe(0);
 					},
 				);
 			},

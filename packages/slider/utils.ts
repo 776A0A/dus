@@ -13,3 +13,11 @@ export function transform(el: HTMLElement, x: number, scale: number) {
 export function transition(el: HTMLElement, transition: string) {
 	el.style.transition = transition;
 }
+
+export function getIndex(active: number, length: number) {
+	if (!length) {
+		return 0;
+	}
+
+	return (length + active) % length;
+}
