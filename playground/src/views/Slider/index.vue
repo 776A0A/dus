@@ -6,16 +6,30 @@
     >
       <IcRoundChevronLeft class="h-10 w-10" />
     </div>
-    <Slider
-      ref="sliderIns"
-      class="h-100 shadow text-shadow-xl w-300 select-none"
-      :list="images"
-      :scale="0.8"
-    >
-      <template #default="{ data }">
-        <img :src="data" alt="slider-image" class="object-contain full" />
-      </template>
-    </Slider>
+    <div>
+      <Slider
+        ref="sliderIns"
+        class="h-100 shadow text-shadow-xl w-300 select-none"
+        :list="images"
+        :scale="0.8"
+        autoplay
+        @activeChange="active = $event"
+      >
+        <template #default="{ data }">
+          <img :src="data" alt="slider-image" class="object-contain full" />
+        </template>
+      </Slider>
+      <div>
+        <ul
+          class="space-x-4 mt-4 center-flex children:(w-1.5 h-1.5 bg-black rounded-1 transform scale-100 transition-all duration-300 ease-out) "
+        >
+          <li
+            v-for="(_, i) in images"
+            :class="[i === active ? '!scale-125 !w-5 !rounded-xl' : '']"
+          ></li>
+        </ul>
+      </div>
+    </div>
     <div
       @click="sliderIns?.slideLeft()"
       class="cursor-pointer rounded-1 ml-4 hover-shadow center-flex"
@@ -42,10 +56,7 @@ const images = [
   'https://tse3-mm.cn.bing.net/th/id/OIP-C.LPuuOraDuRoHCA-RStAmggHaHa?w=204&h=204&c=7&r=0&o=5&pid=1.7',
 ]
 const sliderIns = ref<{ slideLeft: VoidFunction; slideRight: VoidFunction }>()
+const active = ref(0)
 </script>
 
-<style scoped>
-:deep(.slider-item__active) {
-  @apply bg-black;
-}
-</style>
+<style scoped></style>
