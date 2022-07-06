@@ -1,4 +1,5 @@
 /// <reference types="vitest" />
+
 import { defineConfig } from 'vite';
 import Pages from 'vite-plugin-pages';
 import { getBaseViteConfig, getEnvsAndDefinitions } from '../packages/vite';

@@ -1,6 +1,6 @@
 import { asyncMount, fast } from '@dz7/test-utils';
 import { array } from '@dz7/utils';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { ref } from 'vue';
 import Slider from '../Slider.vue';
 import { getTranslateX } from '../utils';
@@ -68,7 +68,7 @@ describe(
 		);
 
 		it(
-			'轮播后，元素便宜正确且带有过渡动画',
+			'轮播后，元素偏移正确且带有过渡动画',
 			async () => {
 				const { wrapper, getItems } = await fast(
 					() =>
@@ -126,6 +126,8 @@ describe(
 				await wrapper.trigger('transitionend');
 
 				const items = getItems();
+
+				expect(wrapper.vm.active).toBe(0);
 				expect(items[0].text()).toBe('a4');
 				expect(items[1].text()).toBe('a5');
 				expect(items[2].text()).toBe('a1');
@@ -133,6 +135,96 @@ describe(
 				expect(items[4].text()).toBe('a3');
 
 				expect(wrapper.html()).toMatchSnapshot();
+			},
+		);
+
+		it(
+			'可通过按钮向左向右滑动',
+			async () => {
+				const { wrapper, leftButton, getItems, rightButton } = await factory({
+					list: generate(5),
+				},);
+
+				await fast(async () => {
+					await leftButton.trigger('click');
+					await wrapper.trigger('transitionend');
+				},);
+
+				const items = getItems();
+
+				expect(wrapper.vm.active).toBe(2);
+				expect(items[0].text()).toBe('a1');
+				expect(wrapper.html()).toMatchSnapshot();
+
+				await fast(async () => {
+					await rightButton.trigger('click');
+					await wrapper.trigger('transitionend');
+				},);
+
+				expect(wrapper.vm.active).toBe(1);
+				expect(items[0].text()).toBe('a5');
+				expect(wrapper.html()).toMatchSnapshot();
+			},
+		);
+
+		it(
+			'多次向右滑动后，active正确',
+			async () => {
+				const { wrapper, getItems, rightButton } = await factory({
+					list: generate(5),
+				},);
+
+				await fast(async () => {
+					await rightButton.trigger('click');
+					await wrapper.trigger('transitionend');
+					vi.runAllTimers();
+					await rightButton.trigger('click');
+					await wrapper.trigger('transitionend');
+				},);
+
+				const items = getItems();
+
+				expect(wrapper.vm.active).toBe(4);
+				expect(items[0].text()).toBe('a3');
+				expect(wrapper.html()).toMatchSnapshot();
+			},
+		);
+
+		it(
+			'连续多次点击同一按钮，不会触发多次滑动',
+			async () => {
+				const { wrapper, leftButton, getItems } = await factory({
+					list: generate(5),
+				},);
+
+				await fast(async () => {
+					await leftButton.trigger('click');
+					await leftButton.trigger('click');
+					await wrapper.trigger('transitionend');
+				},);
+
+				const items = getItems();
+
+				expect(wrapper.vm.active).toBe(2);
+				expect(items[0].text()).toBe('a1');
+			},
+		);
+
+		it(
+			'hover到轮播时会暂停轮播',
+			async () => {
+				const { wrapper } = await fast(
+					() =>
+						factory({
+							list: generate(5),
+							autoplay: true,
+						},),
+				);
+
+				await wrapper.trigger('transitionend');
+				await wrapper.trigger('mouseover');
+
+				expect(wrapper.emitted('pause')).toBeTruthy();
 			},
 		);
 	},
@@ -148,24 +240,40 @@ async function factory(
 	const outer = await asyncMount({
 		setup: () => {
 			const dataList = ref(list);
+			const sliderIns = ref();
 
 			return () => (
-				<Slider list={dataList.value} autoplay={autoplay} toRight={toRight}>
-          {{
-            default: ({ data }: { data: string }) => <div>{data}</div>,
-          }}
-        </Slider>
+				<div>
+          <button id='left' onClick={() => sliderIns.value?.slideLeft()}>
+            left
+          </button>
+          <Slider
+            list={dataList.value}
+            autoplay={autoplay}
+            toRight={toRight}
+            ref={sliderIns}
+          >
+            {{
+              default: ({ data }: { data: string }) => <div>{data}</div>,
+            }}
+          </Slider>
+          <button id='right' onClick={() => sliderIns.value?.slideRight()}>
+            right
+          </button>
+        </div>
 			);
 		},
 	},);
 
 	const wrapper = outer.findComponent(Slider);
+	const leftButton = outer.find('#left');
+	const rightButton = outer.find('#right');
 
 	const getItems = () => wrapper.findAll('.slider-item');
 
 	const items = getItems();
 
-	return { wrapper, getItems, items };
+	return { wrapper, getItems, items, leftButton, rightButton };
 }
 
 function generate(length: number) {

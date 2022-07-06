@@ -30,6 +30,11 @@ const props = withDefaults(
   }>(),
   { list: () => [], scale: 0.8, duration: 1000, autoplay: false }
 )
+
+const emit = defineEmits<{
+  (e: 'pause'): void
+}>()
+
 const DURATION = props.duration
 const sliderContainerEl = ref<HTMLDivElement>()
 const active = ref(1)
@@ -51,7 +56,7 @@ onMounted(async () => {
   if (props.autoplay) run()
 })
 
-defineExpose({ slideLeft, slideRight, active })
+defineExpose({ slideLeft, slideRight, active, pause })
 
 async function init() {
   fillActives()
@@ -65,6 +70,8 @@ async function init() {
 
 function pause() {
   clearTimeout(timer)
+
+  emit('pause')
 }
 
 function fillActives() {
