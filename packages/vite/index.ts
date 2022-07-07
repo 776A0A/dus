@@ -1,112 +1,129 @@
-import vue from '@vitejs/plugin-vue';
-import vueJsx from '@vitejs/plugin-vue-jsx';
-import gzip from 'rollup-plugin-gzip';
-import { visualizer } from 'rollup-plugin-visualizer';
-import { AliasOptions, BuildOptions, HtmlTagDescriptor, PluginOption } from 'vite';
-import { createHtmlPlugin } from 'vite-plugin-html';
-import WindiCss from 'vite-plugin-windicss';
-import svgLoader from 'vite-svg-loader';
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import gzip from 'rollup-plugin-gzip'
+import { visualizer } from 'rollup-plugin-visualizer'
+import IconsResolver from 'unplugin-icons/resolver'
+import Icons from 'unplugin-icons/vite'
+import Components from 'unplugin-vue-components/vite'
+import {
+  AliasOptions,
+  BuildOptions,
+  HtmlTagDescriptor,
+  PluginOption,
+} from 'vite'
+import { createHtmlPlugin } from 'vite-plugin-html'
+import WindiCss from 'vite-plugin-windicss'
+import svgLoader from 'vite-svg-loader'
 
-type EnvVars = Record<'isDev' | 'isTest' | 'isProd', boolean>;
+type EnvVars = Record<'isDev' | 'isTest' | 'isProd', boolean>
 
 export function getEnvVars(mode: string) {
-	const isDev = mode === 'development';
-	const isTest = mode === 'onlineTest';
-	const isProd = mode === 'production';
+  const isDev = mode === 'development'
+  const isTest = mode === 'onlineTest'
+  const isProd = mode === 'production'
 
-	console.log(`env: ${mode}, isDev: ${isDev}, isTest: ${isTest}, isProd: ${isProd}`);
+  console.log(
+    `env: ${mode}, isDev: ${isDev}, isTest: ${isTest}, isProd: ${isProd}`
+  )
 
-	return { isDev, isTest, isProd };
+  return { isDev, isTest, isProd }
 }
 
 export function getBaseDefinition({ isDev, isTest, isProd }: EnvVars) {
-	return {
-		__DEV__: isDev,
-		__TEST__: isTest,
-		__PROD__: isProd,
-		__CDN__: JSON.stringify(getCdnBase()),
-	};
+  return {
+    __DEV__: isDev,
+    __TEST__: isTest,
+    __PROD__: isProd,
+    __CDN__: JSON.stringify(getCdnBase()),
+  }
 }
 
 export function getEnvsAndDefinitions(mode: string) {
-	const envVars = getEnvVars(mode);
+  const envVars = getEnvVars(mode)
 
-	const definitions = getBaseDefinition(envVars);
+  const definitions = getBaseDefinition(envVars)
 
-	return { envVars, definitions };
+  return { envVars, definitions }
 }
 
-export function getBuildOptions(isTest: boolean, build?: BuildOptions): BuildOptions {
-	return { sourcemap: isTest, ...build };
+export function getBuildOptions(
+  isTest: boolean,
+  build?: BuildOptions
+): BuildOptions {
+  return { sourcemap: isTest, ...build }
 }
 
 export function getBaseAlias(): AliasOptions {
-	return {
-		assets: resolve('assets'),
-		components: resolve('components'),
-		router: resolve('router'),
-		store: resolve('store'),
-		styles: resolve('styles'),
-		utils: resolve('utils'),
-		venders: resolve('venders'),
-		views: resolve('views'),
-		service: resolve('service'),
-		layout: resolve('layout'),
-		config: resolve('config'),
-	};
+  return {
+    assets: resolve('assets'),
+    components: resolve('components'),
+    router: resolve('router'),
+    store: resolve('store'),
+    styles: resolve('styles'),
+    utils: resolve('utils'),
+    venders: resolve('venders'),
+    views: resolve('views'),
+    service: resolve('service'),
+    layout: resolve('layout'),
+    config: resolve('config'),
+  }
 }
 
 function resolve(name: string) {
-	return `/src/${name}`;
+  return `/src/${name}`
 }
 
 export function getBasePlugins(): PluginOption[] {
-	return [
-		vue(),
-		vueJsx(),
-		WindiCss(),
-		gzip({ filter: /\.(js|mjs|json|css|html|dat|png|svg)$/ }),
-		svgLoader(),
-		visualizer({ gzipSize: true }),
-	];
+  return [
+    vue(),
+    vueJsx(),
+    WindiCss(),
+    gzip({ filter: /\.(js|mjs|json|css|html|dat|png|svg)$/ }),
+    svgLoader(),
+    visualizer({ gzipSize: true }),
+    Components({ resolvers: [IconsResolver({ prefix: false })], dts: true }),
+    Icons({ compiler: 'vue3' }),
+  ]
 }
 
 export function getBaseViteConfig({ isDev, isTest }: EnvVars) {
-	return {
-		base: isDev ? '/' : './',
-		plugins: getBasePlugins(),
-		resolve: { alias: getBaseAlias() },
-		build: getBuildOptions(isTest),
-	};
+  return {
+    base: isDev ? '/' : './',
+    plugins: getBasePlugins(),
+    resolve: { alias: getBaseAlias() },
+    build: getBuildOptions(isTest),
+  }
 }
 
 export function injectCdn(uri: string, type: 'link' | 'script') {
-	const url = getCdnBase() + uri;
+  const url = getCdnBase() + uri
 
-	const isLink = type === 'link';
+  const isLink = type === 'link'
 
-	return {
-		tag: type,
-		attrs: isLink ? {
-			rel: 'preload',
-			href: url,
-			as: 'script',
-		} : { src: url },
-		injectTo: isLink ? 'head-prepend' : 'body',
-	} as HtmlTagDescriptor;
+  return {
+    tag: type,
+    attrs: isLink
+      ? {
+          rel: 'preload',
+          href: url,
+          as: 'script',
+        }
+      : { src: url },
+    injectTo: isLink ? 'head-prepend' : 'body',
+  } as HtmlTagDescriptor
 }
 
 export function getCdnBase() {
-	return 'https://static.ibimglobal.com' as const;
+  return 'https://static.ibimglobal.com' as const
 }
 
 export function injectTags(...tags: ReturnType<typeof injectCdn>[]) {
-	return createHtmlPlugin({ minify: true, inject: { tags } });
+  return createHtmlPlugin({ minify: true, inject: { tags } })
 }
 
 /**
  * 替换 three，使用 0.125.2 的 esm 版 cdn
  */
 export const aliasThree = {
-	three: `${getCdnBase()}/deps/three.0.125.2.module.js` as const,
-};
+  three: `${getCdnBase()}/deps/three.0.125.2.module.js` as const,
+}

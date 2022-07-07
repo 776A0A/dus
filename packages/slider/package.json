@@ -1,6 +1,6 @@
 {
-  "name": "@dz7/slider",
-  "version": "1.0.0",
+  "name": "@dus/slider",
+  "version": "0.0.0",
   "description": "",
   "main": "index.ts",
   "scripts": {
@@ -8,5 +8,11 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@dus/tools": "workspace:^0.0.0"
+  },
+  "devDependencies": {
+    "@dus/test-utils": "workspace:^1.0.0"
+  }
 }

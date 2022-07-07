@@ -1,6 +1,6 @@
 {
-  "name": "@dz7/stores",
-  "version": "1.0.0",
+  "name": "@dus/stores",
+  "version": "0.0.0",
   "description": "",
   "main": "index.ts",
   "scripts": {
@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dz7/hooks": "workspace:^1.0.0",
-    "@dz7/storage": "workspace:^1.0.0",
-    "@dz7/utils": "workspace:^1.0.0"
+    "@dus/hooks": "workspace:*",
+    "@dus/storage": "workspace:*",
+    "@dus/tools": "workspace:*"
   }
 }

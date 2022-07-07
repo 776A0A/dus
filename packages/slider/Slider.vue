@@ -1,61 +1,99 @@
 <template>
   <div
     ref="sliderContainerEl"
-    class="flex relative overflow-hidden slider-container children:(w-1/3 h-full flex-shrink-0 absolute top-0 left-0 center-flex )"
+    class="flex relative overflow-hidden slider-container"
+    @mouseover="pause"
+    @mouseleave="autoplay && run()"
   >
-    <div v-for="item in activeImages" class="slider-item will-change-transform">
-      <img
-        :src="item"
-        alt="slider-image"
-        class="object-contain full slider-image"
-      />
+    <div
+      v-for="(item, i) in activePool"
+      class="slider-item will-change-transform"
+      :class="{ 'slider-item__active': i === 2 }"
+    >
+      <slot :data="item" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, reactive, nextTick } from 'vue'
+import { array } from '@dus/tools'
+import { useEventListener } from '@vueuse/core'
+import { nextTick, onMounted, reactive, ref } from 'vue'
+import { getIndex, getTranslateX, transform, transition } from './utils'
 
 const props = withDefaults(
   defineProps<{
-    images?: string[]
+    list?: string[]
     scale?: number
     duration?: number
+    autoplay?: boolean
+    toRight?: boolean
   }>(),
-  { images: () => [], scale: 0.8, duration: 1000 }
+  { list: () => [], scale: 0.8, duration: 1000, autoplay: false }
 )
+
+const emit = defineEmits<{
+  (e: 'pause'): void
+  (e: 'activeChange', active: number): void
+}>()
+
 const DURATION = props.duration
-const SCALE_REDUCE = `scale(${props.scale})`
 const sliderContainerEl = ref<HTMLDivElement>()
 const active = ref(1)
 const sliderItemEls = reactive<HTMLDivElement[]>([])
-const activeImages = reactive<string[]>([])
+const activePool = ref<string[]>([])
+let timer: NodeJS.Timer
+let sliding = false
 
-onMounted(async () => {
-  if (!props.images.length) return
-
-  fill()
-  await nextTick()
-  getEls()
-  reset()
-  slide()
+useEventListener(document, 'visibilitychange', () => {
+  if (document.visibilityState === 'hidden') cancel()
+  else if (props.autoplay) run()
 })
 
-function fill() {
-  activeImages.push(...props.images.slice(0, 4))
+onMounted(async () => {
+  if (!props.list.length) return
 
-  if (activeImages.length < 4) {
-    const images = [...activeImages]
+  await init()
 
-    Array.from({ length: 3 }, () => 0).forEach(() =>
-      activeImages.push(...images)
-    )
-  }
+  if (props.autoplay) run()
+})
 
-  activeImages.splice(4)
+defineExpose({ slideLeft, slideRight, active, pause })
+
+async function init() {
+  fillActivePool()
+
+  await nextTick()
+
+  getSliderItemEls()
+
+  reset()
 }
 
-function getEls() {
+function pause() {
+  cancel()
+
+  emit('pause')
+}
+
+function fillActivePool() {
+  const images = props.list,
+    length = images.length
+
+  const tmp: string[] = []
+
+  while (tmp.length < 5) tmp.push(...images)
+
+  tmp.unshift(images[length - 1])
+
+  activePool.value = tmp.slice(0, 5)
+
+  if (length === 1) active.value = 0
+
+  emit('activeChange', active.value)
+}
+
+function getSliderItemEls() {
   if (!sliderContainerEl.value) return
 
   sliderItemEls.push(
@@ -66,51 +104,78 @@ function getEls() {
 }
 
 function teleport() {
-  window.removeEventListener('transitionend', teleport)
+  sliderContainerEl.value?.removeEventListener('transitionend', teleport)
 
-  activeImages.shift()
+  const list = props.list,
+    length = list.length,
+    _active = active.value
 
-  const last = props.images[(active.value + 2) % props.images.length]
-
-  activeImages.push(last)
+  activePool.value = array(5, (i) => list[getIndex(_active + i - 2, length)])
 
   reset()
 
-  setTimeout(slide)
-}
-
-function slide() {
   setTimeout(() => {
-    window.addEventListener('transitionend', teleport)
-    active.value++
-
-    sliderItemEls.forEach((el, i) => {
-      transition(el, `all 300ms ease-out`)
-      transform(el, +getTranslateX(el) - 100, i)
-    })
-  }, DURATION)
+    sliding = false
+    if (props.autoplay) run()
+  })
 }
 
-function getTranslateX(el: HTMLElement) {
-  return (
-    el.style.transform.match(/translate3d\((.+)%,\s*.+,\s*.+\)/)?.[1] ?? '0'
+function run() {
+  cancel()
+
+  timer = setTimeout(
+    () => (props.toRight ? slide('right') : slide('left')),
+    DURATION
   )
 }
 
-function transform(el: HTMLElement, x: number, index: number, reset = false) {
-  el.style.transform = `translate3d(${x}%, 0, 0) ${
-    reset ? (index !== 1 ? SCALE_REDUCE : '') : index === 2 ? '' : SCALE_REDUCE
-  }`
+function slide(direction: 'left' | 'right') {
+  if (sliding) return
+
+  sliding = true
+
+  cancel()
+
+  sliderContainerEl.value?.addEventListener('transitionend', teleport)
+
+  const isLeft = direction === 'left'
+
+  active.value = getIndex(active.value + (isLeft ? 1 : -1), props.list.length)
+
+  emit('activeChange', active.value)
+
+  sliderItemEls.forEach((el, i) => {
+    transition(el, `all 300ms ease-out`)
+    transform(
+      el,
+      +getTranslateX(el) + (isLeft ? -100 : 100),
+      isLeft ? (i === 3 ? 1 : props.scale) : i === 1 ? 1 : props.scale
+    )
+  })
+}
+
+function slideLeft() {
+  slide('left')
+}
+
+function slideRight() {
+  slide('right')
 }
 
 function reset() {
   sliderItemEls.forEach((image) => transition(image, 'none'))
-  sliderItemEls.forEach((image, i) => transform(image, 100 * i, i, true))
+  sliderItemEls.forEach((image, i) =>
+    transform(image, 100 * (i - 1), i === 2 ? 1 : props.scale)
+  )
 }
 
-function transition(el: HTMLElement, transition: string) {
-  el.style.transition = transition
+function cancel() {
+  clearTimeout(timer)
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.slider-container {
+  @apply children:(h-full flex-shrink-0 top-0 left-0 w-1/3 absolute center-flex);
+}
+</style>

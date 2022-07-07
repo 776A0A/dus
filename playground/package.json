@@ -1,5 +1,5 @@
 {
-  "name": "@dz7/playground",
+  "name": "@dus/playground",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -8,13 +8,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.2.25"
+    "@dus/slider": "workspace:*",
+    "@dus/styles": "workspace:*",
+    "@dus/windicss": "workspace:*",
+    "vue": "^3.2.37"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",
-    "typescript": "^4.5.4",
-    "vite": "^2.9.9",
+    "typescript": "^4.7.4",
+    "vite": "^2.9.13",
     "vite-plugin-pages": "^0.25.0",
-    "vue-tsc": "^0.34.7"
+    "vue-tsc": "^0.38.3"
   }
 }

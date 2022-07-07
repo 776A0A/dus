@@ -1,23 +1,19 @@
-import IconsResolver from 'unplugin-icons/resolver';
-import Icons from 'unplugin-icons/vite';
-import Components from 'unplugin-vue-components/vite';
-import { defineConfig } from 'vite';
-import { getBaseViteConfig, getEnvsAndDefinitions } from '../packages/vite';
+/// <reference types="vitest" />
 
-export default defineConfig(
-  ({ mode }) => {
-    const { envVars, definitions } = getEnvsAndDefinitions(mode);
+import { defineConfig } from 'vite'
+import Pages from 'vite-plugin-pages'
+import { getBaseViteConfig, getEnvsAndDefinitions } from '../packages/vite'
 
-    const baseConfig = getBaseViteConfig(envVars);
+export default defineConfig(({ mode }) => {
+  const { envVars, definitions } = getEnvsAndDefinitions(mode)
 
-    return {
-      ...baseConfig,
-      plugins: [
-        ...baseConfig.plugins,
-        Components({ resolvers: [IconsResolver({ prefix: false })], dts: true }),
-        Icons({ compiler: 'vue3' }),
-      ],
-      define: { ...definitions },
-    };
-  },
-);
+  const baseConfig = getBaseViteConfig(envVars)
+
+  baseConfig.plugins.push(Pages({ dirs: 'src/views' }))
+
+  return {
+    ...baseConfig,
+    define: { ...definitions },
+    test: { environment: 'jsdom' },
+  }
+})

@@ -1,6 +1,6 @@
 {
-  "name": "@dz7/hooks",
-  "version": "1.0.0",
+  "name": "@dus/hooks",
+  "version": "0.0.0",
   "description": "",
   "main": "index.ts",
   "scripts": {
@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dz7/utils": "workspace:*"
+    "@dus/tools": "workspace:*"
   }
 }

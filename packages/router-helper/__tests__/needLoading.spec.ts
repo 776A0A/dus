@@ -1,45 +1,29 @@
-import { needLoading } from '../utils';
+import { describe, expect, it } from 'vitest'
+import { START_LOCATION } from 'vue-router'
+import { needLoading } from '../utils'
 
-const startLocation = { matched: [{ path: '/' }] };
+describe('needLoading', () => {
+  it('should return true when a router just started', () => {
+    expect(
+      needLoading({ matched: [{ path: '/' }] } as any, START_LOCATION)
+    ).toBe(true)
+  })
 
-jest.mock(
-	'vue-router',
-	() => {
-		const original = jest.requireActual('vue-router');
-		return {
-			__esModule: true,
-			...original,
-			START_LOCATION: startLocation,
-		};
-	},
-);
+  it('should return true when the path changed', () => {
+    expect(
+      needLoading(
+        { matched: [{ path: '/' }] } as any,
+        { matched: [{ path: '/a' }] } as any
+      )
+    ).toBe(true)
+  })
 
-describe(
-	'needLoading',
-	() => {
-		it(
-			'should return true when a router just started',
-			() => {
-				expect(needLoading({ matched: [{ path: '/' }] } as any, startLocation as any)).toBe(true);
-			},
-		);
-
-		it(
-			'should return true when the path changed',
-			() => {
-				expect(
-					needLoading({ matched: [{ path: '/' }] } as any, { matched: [{ path: '/a' }] } as any),
-				).toBe(true);
-			},
-		);
-
-		it(
-			'should return false when only query changes',
-			() => {
-				expect(
-					needLoading({ matched: [{ path: '/' }] } as any, { matched: [{ path: '/' }] } as any),
-				).toBe(false);
-			},
-		);
-	},
-);
+  it('should return false when only query changes', () => {
+    expect(
+      needLoading(
+        { matched: [{ path: '/' }] } as any,
+        { matched: [{ path: '/' }] } as any
+      )
+    ).toBe(false)
+  })
+})

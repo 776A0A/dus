@@ -1,12 +1,12 @@
 {
-  "name": "@dz7/storage",
-  "version": "1.0.0",
+  "name": "@dus/storage",
+  "version": "0.0.0",
   "description": "",
   "main": "index.ts",
   "scripts": {},
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dz7/utils": "workspace:^1.0.0"
+    "@dus/tools": "workspace:*"
   }
 }

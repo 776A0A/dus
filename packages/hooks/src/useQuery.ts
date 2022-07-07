@@ -1,3 +1,3 @@
-import { useQueryHelper } from './useQueryHelper';
+import { useQueryHelper } from './useQueryHelper'
 
-export const useQuery = useQueryHelper();
+export const useQuery = useQueryHelper()

@@ -1,6 +1,6 @@
 {
-  "name": "@dz7/router-helper",
-  "version": "1.0.0",
+  "name": "@dus/router-helper",
+  "version": "0.0.0",
   "description": "",
   "main": "index.ts",
   "scripts": {
@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dz7/utils": "workspace:^1.0.0"
+    "@dus/tools": "workspace:*"
   }
 }
