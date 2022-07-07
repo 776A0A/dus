@@ -1,6 +1,6 @@
 import { useQuery } from '@dz7/hooks';
 import storage from '@dz7/storage';
-import { simpleDecrypt, simpleEncrypt } from '@dz7/utils';
+import { simpleDecrypt, simpleEncrypt } from '@dz7/tools';
 import { defineStore } from 'pinia';
 import { watch } from 'vue';
 

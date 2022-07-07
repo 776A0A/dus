@@ -1,5 +1,5 @@
 import { asyncMount, fast } from '@dz7/test-utils';
-import { array } from '@dz7/utils';
+import { array } from '@dz7/tools';
 import { describe, expect, it, vi } from 'vitest';
 import { ref } from 'vue';
 import Slider from '../Slider.vue';
@@ -244,23 +244,23 @@ async function factory(
 
 			return () => (
 				<div>
-          <button id='left' onClick={() => sliderIns.value?.slideLeft()}>
-            left
-          </button>
-          <Slider
-            list={dataList.value}
-            autoplay={autoplay}
-            toRight={toRight}
-            ref={sliderIns}
-          >
-            {{
-              default: ({ data }: { data: string }) => <div>{data}</div>,
-            }}
-          </Slider>
-          <button id='right' onClick={() => sliderIns.value?.slideRight()}>
-            right
-          </button>
-        </div>
+					<button id='left' onClick={() => sliderIns.value?.slideLeft()}>
+						left
+					</button>
+					<Slider
+						list={dataList.value}
+						autoplay={autoplay}
+						toRight={toRight}
+						ref={sliderIns}
+					>
+						{{
+							default: ({ data }: { data: string }) => <div>{data}</div>,
+						}}
+					</Slider>
+					<button id='right' onClick={() => sliderIns.value?.slideRight()}>
+						right
+					</button>
+				</div>
 			);
 		},
 	},);

@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dz7/utils": "workspace:^0.0.0"
+    "@dz7/tools": "workspace:^0.0.0"
   },
   "devDependencies": {
     "@dz7/test-utils": "workspace:^1.0.0"

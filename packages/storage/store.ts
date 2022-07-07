@@ -1,4 +1,4 @@
-import { callWithErrorCatch } from '@dz7/utils';
+import { callWithErrorCatch } from '@dz7/tools';
 import { forEach } from './forEach';
 import { addKey, clearKey, removeKey } from './key';
 import { ls, ss } from './shared';

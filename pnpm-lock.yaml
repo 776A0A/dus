@@ -165,51 +165,54 @@ importers:
 
   packages/hooks:
     specifiers:
-      '@dz7/utils': workspace:*
+      '@dz7/tools': workspace:*
     dependencies:
-      '@dz7/utils': link:../utils
+      '@dz7/tools': link:../tools
 
   packages/request:
     specifiers:
-      '@dz7/utils': workspace:*
+      '@dz7/tools': workspace:*
     dependencies:
-      '@dz7/utils': link:../utils
+      '@dz7/tools': link:../tools
 
   packages/router-helper:
     specifiers:
-      '@dz7/utils': workspace:*
+      '@dz7/tools': workspace:*
     dependencies:
-      '@dz7/utils': link:../utils
+      '@dz7/tools': link:../tools
 
   packages/slider:
     specifiers:
       '@dz7/test-utils': workspace:^1.0.0
-      '@dz7/utils': workspace:^0.0.0
+      '@dz7/tools': workspace:^0.0.0
     dependencies:
-      '@dz7/utils': link:../utils
+      '@dz7/tools': link:../tools
     devDependencies:
       '@dz7/test-utils': link:../test-utils
 
   packages/storage:
     specifiers:
-      '@dz7/utils': workspace:*
+      '@dz7/tools': workspace:*
     dependencies:
-      '@dz7/utils': link:../utils
+      '@dz7/tools': link:../tools
 
   packages/stores:
     specifiers:
       '@dz7/hooks': workspace:*
       '@dz7/storage': workspace:*
-      '@dz7/utils': workspace:*
+      '@dz7/tools': workspace:*
     dependencies:
       '@dz7/hooks': link:../hooks
       '@dz7/storage': link:../storage
-      '@dz7/utils': link:../utils
+      '@dz7/tools': link:../tools
 
   packages/styles:
     specifiers: {}
 
-  packages/utils:
+  packages/test-utils:
+    specifiers: {}
+
+  packages/tools:
     specifiers:
       '@types/spark-md5': ^3.0.2
       spark-md5: ^3.0.2
@@ -219,6 +222,9 @@ importers:
       split.js: registry.npmmirror.com/split.js/1.6.5
     devDependencies:
       '@types/spark-md5': registry.npmmirror.com/@types/spark-md5/3.0.2
+
+  packages/types:
+    specifiers: {}
 
   packages/vite:
     specifiers: {}

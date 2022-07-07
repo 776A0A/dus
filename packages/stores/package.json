@@ -12,6 +12,6 @@
   "dependencies": {
     "@dz7/hooks": "workspace:*",
     "@dz7/storage": "workspace:*",
-    "@dz7/utils": "workspace:*"
+    "@dz7/tools": "workspace:*"
   }
 }

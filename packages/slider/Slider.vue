@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import { array } from '@dz7/utils'
+import { array } from '@dz7/tools'
 import { useEventListener } from '@vueuse/core'
 import { nextTick, onMounted, reactive, ref } from 'vue'
 import { getIndex, getTranslateX, transform, transition } from './utils'
@@ -176,6 +176,6 @@ function cancel() {
 
 <style scoped>
 .slider-container {
-  @apply children:(h-full flex-shrink-0 top-0 left-0 w-1/3 absolute center-flex) ;
+  @apply children:(h-full flex-shrink-0 top-0 left-0 w-1/3 absolute center-flex);
 }
 </style>

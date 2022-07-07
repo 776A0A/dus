@@ -7,6 +7,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dz7/utils": "workspace:*"
+    "@dz7/tools": "workspace:*"
   }
 }

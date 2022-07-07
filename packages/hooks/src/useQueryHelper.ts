@@ -1,4 +1,4 @@
-import { isNullable } from '@dz7/utils';
+import { isNullable } from '@dz7/tools';
 import { useHttp } from './useHttp';
 
 type BaseState = ReturnType<typeof useHttp>;
