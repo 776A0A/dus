@@ -11,13 +11,13 @@
     "@dz7/slider": "workspace:*",
     "@dz7/styles": "workspace:*",
     "@dz7/windicss": "workspace:*",
-    "vue": "^3.2.25"
+    "vue": "^3.2.37"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",
-    "typescript": "^4.5.4",
-    "vite": "^2.9.9",
+    "typescript": "^4.7.4",
+    "vite": "^2.9.13",
     "vite-plugin-pages": "^0.25.0",
-    "vue-tsc": "^0.34.7"
+    "vue-tsc": "^0.38.3"
   }
 }
