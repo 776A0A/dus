@@ -8,9 +8,9 @@ importers:
       '@chenfengyuan/vue-qrcode': ^2.0.0
       '@commitlint/cli': ^16.3.0
       '@commitlint/config-conventional': ^16.2.4
-      '@dz7/gzip-public': workspace:0.0.0
-      '@dz7/types': workspace:^1.0.0
-      '@dz7/windicss': workspace:0.0.0
+      '@dus/gzip-public': workspace:0.0.0
+      '@dus/types': workspace:^1.0.0
+      '@dus/windicss': workspace:0.0.0
       '@iconify/json': ^2.1.73
       '@pinia/testing': ^0.0.12
       '@types/color': ^3.0.3
@@ -104,9 +104,9 @@ importers:
       '@babel/core': registry.npmmirror.com/@babel/core/7.18.6
       '@commitlint/cli': registry.npmmirror.com/@commitlint/cli/16.3.0
       '@commitlint/config-conventional': registry.npmmirror.com/@commitlint/config-conventional/16.2.4
-      '@dz7/gzip-public': link:packages/gzip-public
-      '@dz7/types': link:packages/types
-      '@dz7/windicss': link:packages/windicss
+      '@dus/gzip-public': link:packages/gzip-public
+      '@dus/types': link:packages/types
+      '@dus/windicss': link:packages/windicss
       '@pinia/testing': registry.npmmirror.com/@pinia/testing/0.0.12_pinia@2.0.14+vue@3.2.37
       '@types/color': registry.npmmirror.com/@types/color/3.0.3
       '@types/lodash.clonedeep': registry.npmmirror.com/@types/lodash.clonedeep/4.5.7
@@ -165,46 +165,46 @@ importers:
 
   packages/hooks:
     specifiers:
-      '@dz7/tools': workspace:*
+      '@dus/tools': workspace:*
     dependencies:
-      '@dz7/tools': link:../tools
+      '@dus/tools': link:../tools
 
   packages/request:
     specifiers:
-      '@dz7/tools': workspace:*
+      '@dus/tools': workspace:*
     dependencies:
-      '@dz7/tools': link:../tools
+      '@dus/tools': link:../tools
 
   packages/router-helper:
     specifiers:
-      '@dz7/tools': workspace:*
+      '@dus/tools': workspace:*
     dependencies:
-      '@dz7/tools': link:../tools
+      '@dus/tools': link:../tools
 
   packages/slider:
     specifiers:
-      '@dz7/test-utils': workspace:^1.0.0
-      '@dz7/tools': workspace:^0.0.0
+      '@dus/test-utils': workspace:^1.0.0
+      '@dus/tools': workspace:^0.0.0
     dependencies:
-      '@dz7/tools': link:../tools
+      '@dus/tools': link:../tools
     devDependencies:
-      '@dz7/test-utils': link:../test-utils
+      '@dus/test-utils': link:../test-utils
 
   packages/storage:
     specifiers:
-      '@dz7/tools': workspace:*
+      '@dus/tools': workspace:*
     dependencies:
-      '@dz7/tools': link:../tools
+      '@dus/tools': link:../tools
 
   packages/stores:
     specifiers:
-      '@dz7/hooks': workspace:*
-      '@dz7/storage': workspace:*
-      '@dz7/tools': workspace:*
+      '@dus/hooks': workspace:*
+      '@dus/storage': workspace:*
+      '@dus/tools': workspace:*
     dependencies:
-      '@dz7/hooks': link:../hooks
-      '@dz7/storage': link:../storage
-      '@dz7/tools': link:../tools
+      '@dus/hooks': link:../hooks
+      '@dus/storage': link:../storage
+      '@dus/tools': link:../tools
 
   packages/styles:
     specifiers: {}
@@ -234,9 +234,9 @@ importers:
 
   playground:
     specifiers:
-      '@dz7/slider': workspace:*
-      '@dz7/styles': workspace:*
-      '@dz7/windicss': workspace:*
+      '@dus/slider': workspace:*
+      '@dus/styles': workspace:*
+      '@dus/windicss': workspace:*
       '@vitejs/plugin-vue': ^2.3.3
       typescript: ^4.7.4
       vite: ^2.9.13
@@ -244,9 +244,9 @@ importers:
       vue: ^3.2.37
       vue-tsc: ^0.38.3
     dependencies:
-      '@dz7/slider': link:../packages/slider
-      '@dz7/styles': link:../packages/styles
-      '@dz7/windicss': link:../packages/windicss
+      '@dus/slider': link:../packages/slider
+      '@dus/styles': link:../packages/styles
+      '@dus/windicss': link:../packages/windicss
       vue: registry.npmmirror.com/vue/3.2.37
     devDependencies:
       '@vitejs/plugin-vue': registry.npmmirror.com/@vitejs/plugin-vue/2.3.3_vite@2.9.13+vue@3.2.37

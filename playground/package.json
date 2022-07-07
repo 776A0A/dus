@@ -1,5 +1,5 @@
 {
-  "name": "@dz7/playground",
+  "name": "@dus/playground",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -8,9 +8,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@dz7/slider": "workspace:*",
-    "@dz7/styles": "workspace:*",
-    "@dz7/windicss": "workspace:*",
+    "@dus/slider": "workspace:*",
+    "@dus/styles": "workspace:*",
+    "@dus/windicss": "workspace:*",
     "vue": "^3.2.37"
   },
   "devDependencies": {

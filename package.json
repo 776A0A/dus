@@ -1,7 +1,11 @@
 {
   "name": "mskxx-root",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
+  "engines": {
+    "node": ">= 16.14.0"
+  },
+  "packageManager": "pnpm@7.5.0",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -18,9 +22,9 @@
     "@babel/core": "^7.18.6",
     "@commitlint/cli": "^16.3.0",
     "@commitlint/config-conventional": "^16.2.4",
-    "@dz7/gzip-public": "workspace:0.0.0",
-    "@dz7/types": "workspace:^1.0.0",
-    "@dz7/windicss": "workspace:0.0.0",
+    "@dus/gzip-public": "workspace:0.0.0",
+    "@dus/types": "workspace:^1.0.0",
+    "@dus/windicss": "workspace:0.0.0",
     "@pinia/testing": "^0.0.12",
     "@types/color": "^3.0.3",
     "@types/lodash.clonedeep": "^4.5.7",

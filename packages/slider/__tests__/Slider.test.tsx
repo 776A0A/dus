@@ -1,5 +1,5 @@
-import { asyncMount, fast } from '@dz7/test-utils'
-import { array } from '@dz7/tools'
+import { asyncMount, fast } from '@dus/test-utils'
+import { array } from '@dus/tools'
 import { describe, expect, it, vi } from 'vitest'
 import { ref } from 'vue'
 import Slider from '../Slider.vue'

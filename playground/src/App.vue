@@ -7,5 +7,5 @@ import { RouterView } from 'vue-router'
 </script>
 
 <style>
-@import url('@dz7/styles/media-query.css');
+@import url('@dus/styles/media-query.css');
 </style>

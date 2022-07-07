@@ -9,7 +9,7 @@ const baseConfig: WindiConfig = {
     include: [
       'index.html',
       'src/**/*.{vue,jsx,tsx,js,ts}',
-      'node_modules/@dz7/**/*.{vue,ts,tsx,js,jsx,html}',
+      'node_modules/@dus/**/*.{vue,ts,tsx,js,jsx,html}',
     ],
   },
   plugins: [

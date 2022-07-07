@@ -1,6 +1,6 @@
-import { useQuery } from '@dz7/hooks'
-import storage from '@dz7/storage'
-import { tinyCrypto } from '@dz7/tools'
+import { useQuery } from '@dus/hooks'
+import storage from '@dus/storage'
+import { tinyCrypto } from '@dus/tools'
 import { defineStore } from 'pinia'
 import { watch } from 'vue'
 

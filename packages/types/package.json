@@ -1,5 +1,5 @@
 {
-  "name": "@dz7/types",
+  "name": "@dus/types",
   "version": "1.0.0",
   "description": "",
   "types": "./types.d.ts",

@@ -1,5 +1,5 @@
 {
-  "name": "@dz7/hooks",
+  "name": "@dus/hooks",
   "version": "0.0.0",
   "description": "",
   "main": "index.ts",
@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dz7/tools": "workspace:*"
+    "@dus/tools": "workspace:*"
   }
 }

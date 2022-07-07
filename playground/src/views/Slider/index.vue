@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts" setup>
-import { Slider } from '@dz7/slider'
+import { Slider } from '@dus/slider'
 import slider1 from './assets/slider-1.png'
 import slider2 from './assets/slider-2.png'
 import slider3 from './assets/slider-3.png'

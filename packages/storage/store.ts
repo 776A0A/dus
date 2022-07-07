@@ -1,4 +1,4 @@
-import { callInSafe } from '@dz7/tools'
+import { callInSafe } from '@dus/tools'
 import { forEach } from './forEach'
 import { addKey, clearKey, removeKey } from './key'
 import { ls, ss } from './shared'

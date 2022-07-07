@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import { array } from '@dz7/tools'
+import { array } from '@dus/tools'
 import { useEventListener } from '@vueuse/core'
 import { nextTick, onMounted, reactive, ref } from 'vue'
 import { getIndex, getTranslateX, transform, transition } from './utils'

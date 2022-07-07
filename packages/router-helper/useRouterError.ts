@@ -1,4 +1,4 @@
-import { callWithErrorCatch, logError } from '@dz7/tools'
+import { callWithErrorCatch, logError } from '@dus/tools'
 import { ref } from 'vue'
 
 export function useRouterError(validator?: () => boolean) {

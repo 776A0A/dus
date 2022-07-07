@@ -1,5 +1,5 @@
 {
-  "name": "@dz7/stores",
+  "name": "@dus/stores",
   "version": "0.0.0",
   "description": "",
   "main": "index.ts",
@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dz7/hooks": "workspace:*",
-    "@dz7/storage": "workspace:*",
-    "@dz7/tools": "workspace:*"
+    "@dus/hooks": "workspace:*",
+    "@dus/storage": "workspace:*",
+    "@dus/tools": "workspace:*"
   }
 }
