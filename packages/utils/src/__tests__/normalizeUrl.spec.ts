@@ -1,3 +1,4 @@
+import { describe, expect, it, vi } from 'vitest';
 import { normalizeUrl } from '../normalizeUrl';
 
 describe(
@@ -27,7 +28,8 @@ describe(
 		it(
 			'当协议是https时，传入a，返回https://a',
 			() => {
-				jsdom.reconfigure({ url: 'https://xx' });
+				vi.stubGlobal('location', { protocol: 'https:' });
+
 				expect(normalizeUrl('a')).toBe('https://a');
 			},
 		);

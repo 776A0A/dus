@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { resolveFileExt, resolveLowerFileExt } from '../resolveFileExt';
 
 describe(

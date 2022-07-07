@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { convertObjName } from '../convertObjName';
 
 describe(

@@ -1,9 +1,10 @@
+import { describe, expect, it } from 'vitest';
 import { removeExtraSpaces } from '../removeExtraSpaces';
 
 describe(
 	'removeExtraSpaces',
 	() => {
-		test(
+		it(
 			"传入' abc   de f  gh  '",
 			() => {
 				expect(removeExtraSpaces(' abc   de f  gh  ')).toBe('abc de f gh');

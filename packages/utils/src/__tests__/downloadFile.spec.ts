@@ -1,15 +1,16 @@
-import { mockEnv } from '@dz7/jest/utils';
+import { beforeEach, describe, expect, it, Mock, vi } from 'vitest';
+import { injectBrowserEnv } from '../../../test-utils';
 import { downloadFile } from '../downloadFile';
 
 describe(
 	'downloadFile',
 	() => {
-		let creator: jest.Mock;
+		let creator: Mock;
 
 		beforeEach(() => {
-			mockEnv();
+			injectBrowserEnv();
 
-			creator = jest.fn();
+			creator = vi.fn();
 			Object.defineProperty(window, 'Blob', { value: creator });
 		},);
 

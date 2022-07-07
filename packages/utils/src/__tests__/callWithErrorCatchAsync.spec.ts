@@ -1,3 +1,4 @@
+import { describe, expect, it, vi } from 'vitest';
 import { callWithErrorCatchAsync } from '../callWithErrorCatchAsync';
 
 describe(
@@ -19,7 +20,7 @@ describe(
 		it(
 			'没有错误时，fallback不会调用',
 			async () => {
-				const fallback = jest.fn();
+				const fallback = vi.fn();
 
 				await callWithErrorCatchAsync(() => {}, fallback);
 
@@ -30,9 +31,9 @@ describe(
 		it(
 			'抛出错误将会被fallback捕获到',
 			async () => {
-				const log = jest.fn();
-				jest.spyOn(console, 'log').mockImplementationOnce(log);
-				const fallback = jest.fn();
+				const log = vi.fn();
+				vi.spyOn(console, 'log').mockImplementationOnce(log);
+				const fallback = vi.fn();
 
 				await callWithErrorCatchAsync(
 					() => {
@@ -50,9 +51,9 @@ describe(
 		it(
 			'rejected的将会被fallback捕获到',
 			async () => {
-				const log = jest.fn();
-				jest.spyOn(console, 'log').mockImplementationOnce(log);
-				const fallback = jest.fn();
+				const log = vi.fn();
+				vi.spyOn(console, 'log').mockImplementationOnce(log);
+				const fallback = vi.fn();
 
 				await callWithErrorCatchAsync(() => Promise.reject('no'), fallback);
 

@@ -1,12 +1,21 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
+import {
+	afterEach,
+	beforeEach,
+	describe,
+	expect,
+	it,
+	SpyInstance,
+	vi,
+} from 'vitest';
 import { callWithErrorCatch } from '../callWithErrorCatch';
 
 describe(
 	'callWithErrorCatch',
 	() => {
-		let consoleSpy: jest.SpyInstance;
+		let consoleSpy: SpyInstance;
 		beforeEach(() => {
-			consoleSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+			consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
 		},);
 		afterEach(() => {
 			consoleSpy.mockRestore();
@@ -15,8 +24,8 @@ describe(
 		it(
 			'cb 函数被调用，没有错误fallback不会被调用，拿到返回结果',
 			() => {
-				const cb = jest.fn(() => 1);
-				const fallback = jest.fn();
+				const cb = vi.fn(() => 1);
+				const fallback = vi.fn();
 
 				const result = callWithErrorCatch(cb, fallback);
 
@@ -29,7 +38,7 @@ describe(
 		it(
 			'cb 被调用且抛出错误，fallback被调用',
 			() => {
-				const fallback = jest.fn();
+				const fallback = vi.fn();
 
 				callWithErrorCatch(
 					() => {

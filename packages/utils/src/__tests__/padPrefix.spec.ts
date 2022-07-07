@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { padPrefix } from '../padPrefix';
 
 describe(
@@ -12,7 +13,7 @@ describe(
 			},
 		);
 
-		test(
+		it(
 			"传入前缀'xx'",
 			() => {
 				expect(padPrefix('1', 2, 'xx')).toBe('x1');

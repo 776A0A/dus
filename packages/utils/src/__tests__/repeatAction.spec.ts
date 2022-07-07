@@ -1,11 +1,12 @@
-import { sleep } from '../sleep';
+import { beforeEach, expect, it, Mock, vi } from 'vitest';
 import { repeatAction } from '../repeatAction';
+import { sleep } from '../sleep';
 
-let cb: jest.Mock<any, any>, repeat: ReturnType<typeof repeatAction>;
+let cb: Mock<any, any>, repeat: ReturnType<typeof repeatAction>;
 
 beforeEach(() => {
 	let count = 0;
-	cb = jest.fn();
+	cb = vi.fn();
 
 	repeat =
 		repeatAction(
