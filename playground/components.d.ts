@@ -7,6 +7,8 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    IcRoundChevronLeft: typeof import('~icons/ic/round-chevron-left')['default']
+    IcRoundChevronRight: typeof import('~icons/ic/round-chevron-right')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
