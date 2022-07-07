@@ -1,13 +1,13 @@
 import { describe, expect, it, vi } from 'vitest';
-import { callWithErrorCatchAsync } from '../callWithErrorCatchAsync';
+import { callAsyncInSafe } from '../callAsyncInSafe';
 
 describe(
-	'callWithErrorCatchAsync',
+	'callAsyncInSafe',
 	() => {
 		it(
 			'异步的调用cb，并拿到结果',
 			async () => {
-				const result = callWithErrorCatchAsync(() => Promise.resolve(1));
+				const result = callAsyncInSafe(() => Promise.resolve(1));
 
 				expect(result).not.toBe(1);
 
@@ -22,7 +22,7 @@ describe(
 			async () => {
 				const fallback = vi.fn();
 
-				await callWithErrorCatchAsync(() => {}, fallback);
+				await callAsyncInSafe(() => {}, fallback);
 
 				expect(fallback).not.toHaveBeenCalled();
 			},
@@ -35,7 +35,7 @@ describe(
 				vi.spyOn(console, 'log').mockImplementationOnce(log);
 				const fallback = vi.fn();
 
-				await callWithErrorCatchAsync(
+				await callAsyncInSafe(
 					() => {
 						throw Error('cb调用出错');
 					},
@@ -55,7 +55,7 @@ describe(
 				vi.spyOn(console, 'log').mockImplementationOnce(log);
 				const fallback = vi.fn();
 
-				await callWithErrorCatchAsync(() => Promise.reject('no'), fallback);
+				await callAsyncInSafe(() => Promise.reject('no'), fallback);
 
 				expect(fallback).toHaveBeenCalledTimes(1);
 				expect(fallback).toHaveBeenCalledWith('no');

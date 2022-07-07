@@ -1,60 +1,55 @@
 import { describe, expect, it } from 'vitest';
-import { resolveFileExt, resolveLowerFileExt } from '../resolveFileExt';
+import { ext } from '../ext';
 
 describe(
-	'resolveFileExt',
+	'ext',
 	() => {
 		it(
 			'传入123.mov，得到mov',
 			() => {
-				expect(resolveFileExt('123.mov')).toBe('mov');
+				expect(ext('123.mov')).toBe('mov');
 			},
 		);
 
 		it(
 			'传入123.pdf，得到pdf',
 			() => {
-				expect(resolveFileExt('123.pdf')).toBe('pdf');
+				expect(ext('123.pdf')).toBe('pdf');
 			},
 		);
 
 		it(
 			'传入123.x.pdf，得到pdf',
 			() => {
-				expect(resolveFileExt('123.x.pdf')).toBe('pdf');
+				expect(ext('123.x.pdf')).toBe('pdf');
 			},
 		);
 
 		it(
 			'传入123，得到undefined',
 			() => {
-				expect(resolveFileExt('123')).toBe('');
+				expect(ext('123')).toBe('');
 			},
 		);
 
 		it(
 			'传入123.pdf  ，得到pdf',
 			() => {
-				expect(resolveFileExt('123.pdf  ')).toBe('pdf');
+				expect(ext('123.pdf  ')).toBe('pdf');
 			},
 		);
 
 		it(
 			'传入123..pdf, 得到pdf',
 			() => {
-				expect(resolveFileExt('123..pdf')).toBe('pdf');
+				expect(ext('123..pdf')).toBe('pdf');
 			},
 		);
-	},
-);
 
-describe(
-	'resolveLowerFileExt',
-	() => {
 		it(
 			'将大写后缀转换为小写',
 			() => {
-				expect(resolveLowerFileExt('xx.RVT')).toBe('rvt');
+				expect(ext('xxx.ABC')).toBe('abc');
 			},
 		);
 	},

@@ -1,4 +1,4 @@
-import { callWithErrorCatch } from '@dz7/tools';
+import { callInSafe } from '@dz7/tools';
 import { forEach } from './forEach';
 import { addKey, clearKey, removeKey } from './key';
 import { ls, ss } from './shared';
@@ -8,7 +8,7 @@ export function get<T>(storage: Storage, key: string, fallbackValue: T): T;
 export function get<T>(storage: Storage, key: string, fallbackValue?: T) {
 	let value: T | undefined;
 
-	callWithErrorCatch(() => {
+	callInSafe(() => {
 		const v = storage.getItem(key);
 
 		if (v == null) {
@@ -31,7 +31,7 @@ export function set(
 	value: any,
 	cb?: (error: any) => void,
 ) {
-	callWithErrorCatch(
+	callInSafe(
 		() => {
 			storage.setItem(key, JSON.stringify(value));
 			addKey(storage, key);

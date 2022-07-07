@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { convertObjName } from '../convertObjName';
+import { convertNames } from '../convertNames';
 
 describe(
-	'convertObjName',
+	'convertNames',
 	() => {
 		const obj = {
 			name: 'xx',
@@ -11,7 +11,7 @@ describe(
 		it(
 			'转换后的对象会包含期望的key',
 			() => {
-				const newObj = convertObjName(obj, { name: 'newName', age: 'newAge' });
+				const newObj = convertNames(obj, { name: 'newName', age: 'newAge' });
 
 				expect(newObj).toEqual({ newName: 'xx', newAge: 11 });
 			},
@@ -20,7 +20,7 @@ describe(
 		it(
 			'未转换的key将会保留',
 			() => {
-				const newObj = convertObjName(obj, { name: 'newName' });
+				const newObj = convertNames(obj, { name: 'newName' });
 
 				expect(newObj).toEqual({ newName: 'xx', age: 11 });
 			},
@@ -29,7 +29,7 @@ describe(
 		it(
 			'转换后的对象不会包含源对象没有的key',
 			() => {
-				const newObj = convertObjName(obj, { name: 'newName', sex: 'male' });
+				const newObj = convertNames(obj, { name: 'newName', sex: 'male' });
 
 				expect('sex' in newObj).toBe(false);
 				expect(newObj).toEqual({ newName: 'xx', age: 11 });
@@ -39,7 +39,7 @@ describe(
 		it(
 			'原始的key将会被替换',
 			() => {
-				const newObj = convertObjName(obj, { name: 'newName' });
+				const newObj = convertNames(obj, { name: 'newName' });
 
 				expect('name' in newObj).toBe(false);
 				expect(newObj).not.toEqual({ newName: 'xx', age: 11, name: 'xx' });
@@ -50,7 +50,7 @@ describe(
 		it(
 			'传入的key-map为空对象时，会返回源对象的复制',
 			() => {
-				const newObj = convertObjName(obj, {});
+				const newObj = convertNames(obj, {});
 
 				expect(newObj).toEqual(obj);
 				expect(newObj === obj).toBe(false);
@@ -60,7 +60,7 @@ describe(
 		it(
 			'传入非对象值将直接返回该值',
 			() => {
-				const newValue = convertObjName(1 as any, {});
+				const newValue = convertNames(1 as any, {});
 
 				expect(newValue).toBe(1);
 			},
@@ -69,7 +69,7 @@ describe(
 		it(
 			'传入的key-map中有空值，该空值会被忽略',
 			() => {
-				const newObj = convertObjName(obj, { name: '', age: 'newAge' });
+				const newObj = convertNames(obj, { name: '', age: 'newAge' });
 
 				expect(newObj).toEqual({ name: 'xx', newAge: 11 });
 			},

@@ -5,9 +5,10 @@ import { logError } from './logError';
  * @param cb - 需要包裹的函数
  * @param [fallback] - 可选的错误处理函数
  */
-export async function callWithErrorCatchAsync<
-	T extends (...args: any[]) => any,
->(cb: T, fallback?: (error: any) => void): Promise<ReturnType<T> | void> {
+export async function callAsyncInSafe<T extends (...args: any[]) => any,>(
+	cb: T,
+	fallback?: (error: any) => void,
+): Promise<ReturnType<T> | void> {
 	try {
 		return await Promise.resolve(cb());
 	} catch (error: any) {

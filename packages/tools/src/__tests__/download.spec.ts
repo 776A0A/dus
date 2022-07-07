@@ -1,9 +1,9 @@
 import { beforeEach, describe, expect, it, Mock, vi } from 'vitest';
 import { injectBrowserEnv } from '../../../test-utils';
-import { downloadFile } from '../downloadFile';
+import { download } from '../download';
 
 describe(
-	'downloadFile',
+	'download',
 	() => {
 		let creator: Mock;
 
@@ -17,7 +17,7 @@ describe(
 		it(
 			'当传入blob时，原样传给createObjectURL',
 			async () => {
-				await downloadFile(new Blob(['123'], { type: 'text' }), () => '123.t');
+				await download(new Blob(['123'], { type: 'text' }), () => '123.t');
 
 				expect(creator.mock.calls[0][1]).toEqual({ type: 'text' });
 			},
@@ -36,7 +36,7 @@ describe(
 							} as any,
 						);
 
-				await downloadFile('https://xx', () => 'test.html');
+				await download('https://xx', () => 'test.html');
 
 				expect(creator.mock.calls[0][1]).toEqual({ type: 'text/html' });
 			},
@@ -55,7 +55,7 @@ describe(
 							} as any,
 						);
 
-				await downloadFile('qqq', () => 'qq');
+				await download('qqq', () => 'qq');
 
 				expect(creator.mock.calls[0][1]).toEqual({
 					type: 'text/plain;charset=utf-8',

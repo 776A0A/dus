@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { isElement, isNullable } from '../is';
+import { isElement, isNullable } from '../type';
 
 describe(
 	'isElement',

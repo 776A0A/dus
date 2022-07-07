@@ -3,8 +3,8 @@
  * @param images 图片的 url 数组
  * @returns
  */
-export function preloadImage(images: string[]) {
-	if (!checkDecodable()) {
+export function preloadImages(images: string[]) {
+	if (!('decode' in Image.prototype)) {
 		return;
 	}
 
@@ -14,12 +14,5 @@ export function preloadImage(images: string[]) {
 		const img = new Image();
 		img.src = url;
 		return img.decode();
-	}
-
-	function checkDecodable() {
-		if ('decode' in Image.prototype) {
-			return true;
-		}
-		return false;
 	}
 }

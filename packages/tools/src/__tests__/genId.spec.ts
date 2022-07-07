@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { generateId } from '../generateId';
+import { genId } from '../genId';
 
 describe(
-	'generateId',
+	'genId',
 	() => {
 		it(
 			'生成一个随机的8位字符串',
 			() => {
-				const randomId = generateId();
+				const randomId = genId();
 
 				expect(randomId.length).toBe(8);
 			},

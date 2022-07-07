@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { cleanObject } from '../cleanObject';
+import { cleanNullable } from '../cleanNullable';
 
 describe(
-	'cleanObject',
+	'cleanNullable',
 	() => {
 		it(
 			'清除空值、null和undefined',
@@ -15,7 +15,7 @@ describe(
 					e: '',
 				};
 
-				expect(cleanObject(obj)).toEqual({ b: 1, d: 2 });
+				expect(cleanNullable(obj)).toEqual({ b: 1, d: 2 });
 			},
 		);
 
@@ -31,7 +31,7 @@ describe(
 					e: undefined,
 				};
 
-				expect(cleanObject(obj)).toEqual({
+				expect(cleanNullable(obj)).toEqual({
 					a: 1,
 					b: NaN,
 					c: 2,
@@ -49,7 +49,7 @@ describe(
 					b: 1,
 				};
 
-				expect(cleanObject(obj)).toEqual({
+				expect(cleanNullable(obj)).toEqual({
 					a: ' ',
 					b: 1,
 				},);

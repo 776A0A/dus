@@ -1,6 +1,6 @@
 import { useQuery } from '@dz7/hooks';
 import storage from '@dz7/storage';
-import { simpleDecrypt, simpleEncrypt } from '@dz7/tools';
+import { tinyCrypto } from '@dz7/tools';
 import { defineStore } from 'pinia';
 import { watch } from 'vue';
 
@@ -20,7 +20,7 @@ function createUserStore<Data, P>(
 	watch(
 		user,
 		(d) => {
-			storage.set(userKey, d ? simpleEncrypt(d) : d);
+			storage.set(userKey, d ? tinyCrypto.en(d) : d);
 
 			if (!d) {
 				return;
@@ -69,7 +69,7 @@ function createUserStore<Data, P>(
 			return null;
 		}
 
-		return simpleDecrypt<Awaited<Data>>(user);
+		return tinyCrypto.de<Awaited<Data>>(user);
 	}
 
 	function clearUser() {

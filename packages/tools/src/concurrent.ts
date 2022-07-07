@@ -1,14 +1,14 @@
-export async function requestParallel(
+export async function concurrent(
 	params: {
-		parallel: number;
+		count: number;
 		total: number;
 		request: (idx: number) => Promise<void>;
 	},
 ) {
-	const { parallel, total, request } = params;
+	const { count, total, request } = params;
 
 	return new Promise<void>((resolve) => {
-		let frees = parallel ?? 0;
+		let frees = count ?? 0;
 		let idx = 0;
 		let counter = 0;
 		const len = total;

@@ -1,6 +1,6 @@
 import { ArrayBuffer as AB } from 'spark-md5';
 
-export function calcFileMd5(blob: Blob) {
+export function md5(blob: Blob) {
 	return new Promise<string>((resolve, reject) => {
 		const spark = new AB();
 		const reader = new FileReader();
@@ -14,10 +14,10 @@ export function calcFileMd5(blob: Blob) {
 
 		reader.onerror =
 			(err) => {
-				if (!blob.type) {
-					reject('无法解析该类型文件');
-				} else {
+				if (blob.type) {
 					reject(err);
+				} else {
+					reject('无法解析该类型文件');
 				}
 			};
 

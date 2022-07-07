@@ -3,9 +3,9 @@ type ErrorHandler = (
 	image: HTMLImageElement,
 ) => void;
 
-export function urlToImage(url: string): Promise<HTMLImageElement>;
-export function urlToImage(url: string, callback: ErrorHandler): void;
-export function urlToImage(url: string, callback?: ErrorHandler) {
+export function urlToImageEl(url: string): Promise<HTMLImageElement>;
+export function urlToImageEl(url: string, callback: ErrorHandler): void;
+export function urlToImageEl(url: string, callback?: ErrorHandler) {
 	const image = new Image();
 	image.src = url;
 

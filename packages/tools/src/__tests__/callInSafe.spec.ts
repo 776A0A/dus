@@ -8,10 +8,10 @@ import {
 	SpyInstance,
 	vi,
 } from 'vitest';
-import { callWithErrorCatch } from '../callWithErrorCatch';
+import { callInSafe } from '../callInSafe';
 
 describe(
-	'callWithErrorCatch',
+	'callInSafe',
 	() => {
 		let consoleSpy: SpyInstance;
 		beforeEach(() => {
@@ -27,7 +27,7 @@ describe(
 				const cb = vi.fn(() => 1);
 				const fallback = vi.fn();
 
-				const result = callWithErrorCatch(cb, fallback);
+				const result = callInSafe(cb, fallback);
 
 				expect(cb).toHaveBeenCalledTimes(1);
 				expect(result).toBe(1);
@@ -40,7 +40,7 @@ describe(
 			() => {
 				const fallback = vi.fn();
 
-				callWithErrorCatch(
+				callInSafe(
 					() => {
 						throw Error('cb调用出错');
 					},

@@ -4,13 +4,11 @@ const defaultFilename = '文件';
 
 type Filename = string | (() => string);
 
-export async function downloadFile(file: Blob, filename: Filename): Promise<
+export async function download(file: Blob, filename: Filename): Promise<void>;
+export async function download(file: string, filename?: Filename): Promise<
 	void
 >;
-export async function downloadFile(file: string, filename?: Filename): Promise<
-	void
->;
-export async function downloadFile(file: Blob | string, filename?: Filename) {
+export async function download(file: Blob | string, filename?: Filename) {
 	let a = document.createElement('a');
 
 	let blob: Blob, finalFilename = getFilename(filename);

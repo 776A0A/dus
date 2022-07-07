@@ -1,5 +1,5 @@
-import { reload } from './reload';
 import debounce from 'lodash.debounce';
+import { reload } from './reload';
 
 /**
  * 替换路由并刷新页面

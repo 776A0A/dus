@@ -28,9 +28,11 @@ declare global {
 	/**
    * 对指定的 key 进行可选化
    */
-  type PartialPart<T, K extends keyof T> = Omit<T, K> & {
-    [key in K]?: T[key]
-  }
+  type PartialPart<T, K extends keyof T> =
+    & Omit<T, K>
+    & {
+      [key in K]?: T[key];
+    };
 
 	/**
    * 对指定的 key 进行必填化
@@ -96,7 +98,7 @@ declare global {
 	type ObjValues<T> = T extends object ? T[keyof T] : never;
 
 	/**
-   * 用于 convertObjName 这个工具函数中，提取对应的 key 的值为新的对象的 key，并保留类型
+   * 用于 convertNames 这个工具函数中，提取对应的 key 的值为新的对象的 key，并保留类型
    */
 	type RecordWithSwappedKey<T, U extends Partial<Record<keyof T, any>>> =
 		& Omit<T, keyof U>
@@ -131,12 +133,12 @@ declare global {
 
 	type DeepReadonly<T> = {
     readonly [P in keyof T]: T[P] extends object
-      ? // eslint-disable-next-line @typescript-eslint/ban-types
-        T[P] extends Function
+      // eslint-disable-next-line @typescript-eslint/ban-types
+      ? T[P] extends Function
         ? T[P]
         : DeepReadonly<T[P]>
-      : T[P]
-  }
+      : T[P];
+  };
 
 	type AnyFunction = (...args: any[]) => any;
 

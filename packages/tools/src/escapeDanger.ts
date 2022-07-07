@@ -3,7 +3,7 @@
  * @param html - 需要转义的字符
  * @returns
  */
-export function escapeHtml(html: string) {
+export function escapeDanger(html: string) {
 	return html.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
 		/>/g,
 		'&gt;',

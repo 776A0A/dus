@@ -1,10 +1,9 @@
 type ConvertObjName = <
   T extends NormalObj,
-  R extends { readonly [K in keyof T]?: string }
->(
-  originalObj: T,
-  namesMap: Readonly<R>
-) => RecordWithSwappedKey<T, R>
+  R extends {
+    readonly [K in keyof T]?: string;
+  },
+>(originalObj: T, namesMap: Readonly<R>) => RecordWithSwappedKey<T, R>;
 
 /**
  * 转换对象的名称
@@ -14,7 +13,7 @@ type ConvertObjName = <
  */
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-export const convertObjName: ConvertObjName = (obj, namesMap) => {
+export const convertNames: ConvertObjName = (obj, namesMap) => {
 	if (!obj || typeof obj !== 'object') {
 		return obj;
 	}

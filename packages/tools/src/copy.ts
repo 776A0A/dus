@@ -1,7 +1,7 @@
 import qs from 'qs';
 import { isFirefox } from './browsers';
-import { callWithErrorCatch } from './callWithErrorCatch';
-import { callWithErrorCatchAsync } from './callWithErrorCatchAsync';
+import { callInSafe } from './callInSafe';
+import { callAsyncInSafe } from './callAsyncInSafe';
 import { imageFileToBase64 } from './imageFileToBase64';
 import { isHttps } from './isHttps';
 
@@ -19,13 +19,15 @@ export function copy(data: string): Promise<void>;
  */
 export function copy(data: Blob, extraData?: ExtraData): Promise<void>;
 export function copy(data: Blob | string, extraData?: ExtraData) {
-	return new Promise<void>(async (resolve, reject) => {
-		if (data instanceof Blob) {
-			await copyImage(data, resolve, reject, extraData);
-		} else {
-			await copyText(data, resolve, reject);
-		}
-	},);
+	return new Promise<void>(
+		(resolve, reject) =>
+			data instanceof Blob ? copyImage(
+				data,
+				resolve,
+				reject,
+				extraData,
+			) : copyText(data, resolve, reject),
+	);
 }
 
 async function copyImage(
@@ -51,7 +53,7 @@ async function copyImage(
 
 		return copyImageAsBase64(data, resolve, reject);
 	} else {
-		return callWithErrorCatchAsync(
+		return callAsyncInSafe(
 			() => {
 				const clipboardData = { [type]: data } as Record<string, any>;
 
@@ -76,7 +78,7 @@ async function copyText(
 		return tryCopyTextWithExec(data, resolve, reject);
 	}
 
-	return callWithErrorCatchAsync(
+	return callAsyncInSafe(
 		() => navigator.clipboard.writeText(data),
 		() => tryCopyTextWithExec(data, resolve, reject),
 	).then(resolve);
@@ -87,7 +89,7 @@ function tryCopyTextWithExec(
 	resolve: VoidFunction,
 	reject: (error: unknown) => void,
 ) {
-	return callWithErrorCatch(
+	return callInSafe(
 		() => {
 			const input = createInput(data);
 
