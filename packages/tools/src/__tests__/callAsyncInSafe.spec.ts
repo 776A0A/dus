@@ -22,6 +22,7 @@ describe(
 			async () => {
 				const fallback = vi.fn();
 
+				// eslint-disable-next-line @typescript-eslint/no-empty-function
 				await callAsyncInSafe(() => {}, fallback);
 
 				expect(fallback).not.toHaveBeenCalled();

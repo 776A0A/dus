@@ -1,56 +1,50 @@
 import { beforeEach, expect, it, Mock, vi } from 'vitest';
+import { fast } from '../../../test-utils';
 import { repeatable } from '../repeatable';
 import { sleep } from '../sleep';
 
-let cb: Mock<any, any>, repeat: ReturnType<typeof repeatable>;
+let callback: Mock<any, any>;
+let re: ReturnType<typeof repeatable>;
 
 beforeEach(() => {
 	let count = 0;
-	cb = vi.fn();
+	callback = vi.fn();
 
-	repeat =
-		repeatable(
-			() => {
-				if (count >= 3) {
-					return false;
-				}
-				count++;
-				return true;
-			},
-			cb,
-			16,
-		);
+	re = repeatable(() => (count++) <= 2, callback, 16);
 },);
 
 it(
 	'重复 3 次后停止',
 	async () => {
-		repeat.run();
+		await fast(async () => {
+			re.run();
+		},);
 
-		await sleep(200);
-
-		expect(cb).toHaveBeenCalledTimes(3);
+		await sleep(16);
+		expect(callback).toHaveBeenCalledTimes(3);
 	},
 );
 
 it(
 	'调用 stop 后停止循环',
 	async () => {
-		repeat.run();
+		re.run();
 
 		await sleep(20);
 
-		repeat.stop();
+		re.stop();
 
-		expect(cb).toHaveBeenCalledTimes(2);
+		expect(callback).toHaveBeenCalledTimes(2);
 	},
 );
 
 it(
 	'不调用 run 将不会开始',
 	async () => {
-		await sleep(100);
+		vi.useFakeTimers();
+		sleep(100);
+		vi.runAllTimers();
 
-		expect(cb).not.toHaveBeenCalled();
+		expect(callback).not.toHaveBeenCalled();
 	},
 );
