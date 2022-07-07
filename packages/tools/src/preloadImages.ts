@@ -4,15 +4,15 @@
  * @returns
  */
 export function preloadImages(images: string[]) {
-	if (!('decode' in Image.prototype)) {
-		return;
-	}
+  if (!('decode' in Image.prototype)) {
+    return
+  }
 
-	return Promise.allSettled(images.map(decodeImage));
+  return Promise.allSettled(images.map(decodeImage))
 
-	function decodeImage(url: string) {
-		const img = new Image();
-		img.src = url;
-		return img.decode();
-	}
+  function decodeImage(url: string) {
+    const img = new Image()
+    img.src = url
+    return img.decode()
+  }
 }

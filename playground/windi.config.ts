@@ -1,3 +1,3 @@
-import config from '../windi.config';
+import config from '../windi.config'
 
-export default config;
+export default config

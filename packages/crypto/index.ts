@@ -1,9 +1,9 @@
-import JSEncrypt from 'jsencrypt';
+import JSEncrypt from 'jsencrypt'
 
 export function createCrypto(key: string) {
-	const crypto = new JSEncrypt({});
+  const crypto = new JSEncrypt({})
 
-	crypto.setPublicKey(key);
+  crypto.setPublicKey(key)
 
-	return crypto;
+  return crypto
 }

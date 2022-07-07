@@ -5,9 +5,9 @@
  * @returns
  */
 export function getFilenameFromHeader(headers: NormalObj, defaultName = '') {
-	const fileNameHeader = headers?.['content-disposition'];
+  const fileNameHeader = headers?.['content-disposition']
 
-	return fileNameHeader ? decodeURIComponent(
-		fileNameHeader.replace('attachment;filename=', ''),
-	) : defaultName;
+  return fileNameHeader
+    ? decodeURIComponent(fileNameHeader.replace('attachment;filename=', ''))
+    : defaultName
 }

@@ -3,6 +3,6 @@
  * @param filename 文件名
  */
 export function ext(filename: string) {
-	const ext = filename.includes('.') ? filename.split('.').pop() ?? '' : '';
-	return ext.trim().toLowerCase();
+  const ext = filename.includes('.') ? filename.split('.').pop() ?? '' : ''
+  return ext.trim().toLowerCase()
 }

@@ -4,7 +4,7 @@
  * @param trim 是否要清楚前后空格，默认 true
  */
 export function getString(value?: unknown, trim = true) {
-	const _value = String(value ?? '');
+  const _value = String(value ?? '')
 
-	return trim ? _value.trim() : _value;
+  return trim ? _value.trim() : _value
 }

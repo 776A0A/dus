@@ -1,4 +1,4 @@
-import baseConfig from '@dz7/windicss';
-import { defineConfig } from 'windicss/helpers';
+import baseConfig from '@dz7/windicss'
+import { defineConfig } from 'windicss/helpers'
 
-export default defineConfig(baseConfig);
+export default defineConfig(baseConfig)

@@ -5,14 +5,14 @@
  * @returns
  */
 export function arrayBufferToBase64(ab: ArrayBuffer, encode = false) {
-	const bytes = new Uint8Array(ab);
-	const length = bytes.byteLength;
+  const bytes = new Uint8Array(ab)
+  const length = bytes.byteLength
 
-	let binary = '';
+  let binary = ''
 
-	for (let i = 0; i < length; i++) {
-		binary += String.fromCharCode(bytes[i]);
-	}
+  for (let i = 0; i < length; i++) {
+    binary += String.fromCharCode(bytes[i])
+  }
 
-	return window.btoa(encode ? window.encodeURIComponent(binary) : binary);
+  return window.btoa(encode ? window.encodeURIComponent(binary) : binary)
 }

@@ -1,2 +1,2 @@
-export * from './Emitter';
-export * from './VueEmitter';
+export * from './Emitter'
+export * from './VueEmitter'

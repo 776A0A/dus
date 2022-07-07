@@ -1,1 +1,2 @@
-export const isHttps = location.protocol === 'https:' || location.hostname === 'localhost';
+export const isHttps =
+  location.protocol === 'https:' || location.hostname === 'localhost'

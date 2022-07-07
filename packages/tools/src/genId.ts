@@ -3,6 +3,6 @@
  * @param prefix - 自定义 id 前缀，默认空串
  */
 export function genId(prefix = '') {
-	const id = `${prefix}${Number(Math.random().toString().slice(2, 10))}`;
-	return id.padStart(8, '0');
+  const id = `${prefix}${Number(Math.random().toString().slice(2, 10))}`
+  return id.padStart(8, '0')
 }

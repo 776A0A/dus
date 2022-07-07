@@ -21,7 +21,7 @@
       </Slider>
       <div>
         <ul
-          class="space-x-4 mt-4 center-flex children:(w-1.5 h-1.5 bg-black rounded-1 transform scale-100 transition-all duration-300 ease-out) "
+          class="space-x-4 mt-4 center-flex children:(w-1.5 h-1.5 bg-black rounded-1 transform scale-100 transition-all duration-300 ease-out)"
         >
           <li
             v-for="(_, i) in images"

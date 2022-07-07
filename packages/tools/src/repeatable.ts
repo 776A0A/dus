@@ -6,25 +6,25 @@
  * @returns
  */
 export function repeatable(
-	condition: () => boolean,
-	callback: () => unknown,
-	time = 1000,
+  condition: () => boolean,
+  callback: () => unknown,
+  time = 1000
 ) {
-	let timer: NodeJS.Timer;
+  let timer: NodeJS.Timer
 
-	return { run, stop };
+  return { run, stop }
 
-	async function run() {
-		if (!condition()) {
-			return;
-		}
+  async function run() {
+    if (!condition()) {
+      return
+    }
 
-		await callback();
+    await callback()
 
-		timer = setTimeout(run, Math.max(16, time));
-	}
+    timer = setTimeout(run, Math.max(16, time))
+  }
 
-	function stop() {
-		clearTimeout(timer);
-	}
+  function stop() {
+    clearTimeout(timer)
+  }
 }

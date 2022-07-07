@@ -3,7 +3,7 @@
     <div class="bg-white border rounded">
       <h1 class="border-b text-lg py-2 px-4">目录</h1>
       <ul
-        class="list-circle text-base children:(transition-all list-none m-0 py-2 px-4 hover-shadow cursor-pointer) "
+        class="list-circle text-base children:(transition-all list-none m-0 py-2 px-4 hover-shadow cursor-pointer)"
       >
         <li>
           <span class="mr-2">🤨</span>

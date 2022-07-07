@@ -1,5 +1,5 @@
-import { Router, RouteRecordRaw } from 'vue-router';
-import { NA, TA } from './constants';
+import { Router, RouteRecordRaw } from 'vue-router'
+import { NA, TA } from './constants'
 
 /**
  *
@@ -9,34 +9,34 @@ import { NA, TA } from './constants';
  * @param customFilter - 可自定过滤逻辑，返回非布尔类型将把处理权交还给默认逻辑
  */
 export function filterRoutes(
-	router: Router,
-	routes: RouteRecordRaw[],
-	reachables: string[],
-	customFilter?: (authPath: string, routePath: string) => boolean | undefined,
+  router: Router,
+  routes: RouteRecordRaw[],
+  reachables: string[],
+  customFilter?: (authPath: string, routePath: string) => boolean | undefined
 ) {
-	routes.forEach((route) => {
-		let deleted = false;
+  routes.forEach((route) => {
+    let deleted = false
 
-		if (
-			route.meta?.[NA] &&
-			route.meta?.[TA] !== true &&
-			!reachables.some((authPath) => {
-				const auth = customFilter?.(authPath, route.path);
+    if (
+      route.meta?.[NA] &&
+      route.meta?.[TA] !== true &&
+      !reachables.some((authPath) => {
+        const auth = customFilter?.(authPath, route.path)
 
-				if (typeof auth === 'boolean') {
-					return auth;
-				}
+        if (typeof auth === 'boolean') {
+          return auth
+        }
 
-				return route.path.startsWith(authPath);
-			},)
-		) {
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			router.removeRoute(route.name!);
-			deleted = true;
-		}
+        return route.path.startsWith(authPath)
+      })
+    ) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      router.removeRoute(route.name!)
+      deleted = true
+    }
 
-		if (!deleted && route.children) {
-			filterRoutes(router, route.children, reachables, customFilter);
-		}
-	},);
+    if (!deleted && route.children) {
+      filterRoutes(router, route.children, reachables, customFilter)
+    }
+  })
 }

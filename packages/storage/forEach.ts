@@ -1,19 +1,19 @@
-import { getKeys } from './key';
-import { get } from './store';
+import { getKeys } from './key'
+import { get } from './store'
 
 export function forEach(
-	storage: Storage,
-	cb: (value: any, key: string, idx: number) => void,
+  storage: Storage,
+  cb: (value: any, key: string, idx: number) => void
 ) {
-	const keys = getKeys(storage);
+  const keys = getKeys(storage)
 
-	if (!keys.length) {
-		return;
-	}
+  if (!keys.length) {
+    return
+  }
 
-	keys.forEach((key, idx) => {
-		const value = get(storage, key);
+  keys.forEach((key, idx) => {
+    const value = get(storage, key)
 
-		cb(value, key, idx);
-	},);
+    cb(value, key, idx)
+  })
 }

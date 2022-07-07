@@ -5,9 +5,9 @@
  * @param prefix 填充的前缀，默认为 '0'
  */
 export function padPrefix(
-	str: StringOrNumber,
-	targetLength: number,
-	prefix = '0',
+  str: StringOrNumber,
+  targetLength: number,
+  prefix = '0'
 ) {
-	return String(str).padStart(targetLength, prefix);
+  return String(str).padStart(targetLength, prefix)
 }

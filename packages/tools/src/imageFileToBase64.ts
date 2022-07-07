@@ -4,16 +4,13 @@
  * @param callback - 转换完后的回调函数
  */
 export function imageFileToBase64(
-	img: Blob,
-	callback: (error: ProgressEvent<FileReader> | null, url?: string) => void,
+  img: Blob,
+  callback: (error: ProgressEvent<FileReader> | null, url?: string) => void
 ) {
-	const reader = new FileReader();
+  const reader = new FileReader()
 
-	reader.addEventListener(
-		'load',
-		() => callback(null, reader.result as string),
-	);
-	reader.addEventListener('error', (error) => callback(error));
+  reader.addEventListener('load', () => callback(null, reader.result as string))
+  reader.addEventListener('error', (error) => callback(error))
 
-	reader.readAsDataURL(img);
+  reader.readAsDataURL(img)
 }

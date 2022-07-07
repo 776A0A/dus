@@ -1,2 +1,2 @@
-export * from './noti';
-export * from './user';
+export * from './noti'
+export * from './user'

@@ -1,21 +1,12 @@
-import { describe, expect, it } from 'vitest';
-import { removeSequentialSpace } from '../removeSequentialSpace';
+import { describe, expect, it } from 'vitest'
+import { removeSequentialSpace } from '../removeSequentialSpace'
 
-describe(
-	'removeSequentialSpace',
-	() => {
-		it(
-			"传入' abc   de f  gh  '",
-			() => {
-				expect(removeSequentialSpace(' abc   de f  gh  ')).toBe('abc de f gh');
-			},
-		);
+describe('removeSequentialSpace', () => {
+  it("传入' abc   de f  gh  '", () => {
+    expect(removeSequentialSpace(' abc   de f  gh  ')).toBe('abc de f gh')
+  })
 
-		it(
-			'传入undefined，返回空串',
-			() => {
-				expect(removeSequentialSpace()).toBe('');
-			},
-		);
-	},
-);
+  it('传入undefined，返回空串', () => {
+    expect(removeSequentialSpace()).toBe('')
+  })
+})
