@@ -1,15 +1,15 @@
 import { beforeEach, expect, it, Mock, vi } from 'vitest';
-import { repeatAction } from '../repeatAction';
+import { repeatable } from '../repeatable';
 import { sleep } from '../sleep';
 
-let cb: Mock<any, any>, repeat: ReturnType<typeof repeatAction>;
+let cb: Mock<any, any>, repeat: ReturnType<typeof repeatable>;
 
 beforeEach(() => {
 	let count = 0;
 	cb = vi.fn();
 
 	repeat =
-		repeatAction(
+		repeatable(
 			() => {
 				if (count >= 3) {
 					return false;

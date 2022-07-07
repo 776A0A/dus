@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { getDiff } from '../getDiff';
+import { diff } from '../diff';
 
 describe(
-	'getDiff',
+	'diff',
 	() => {
 		it(
 			'正确拿到不同的值',
 			() => {
-				expect(getDiff({ a: 1, b: 2 }, { a: 3, c: 4 })).toEqual({
+				expect(diff({ a: 1, b: 2 }, { a: 3, c: 4 })).toEqual({
 					a: 3,
 					c: 4,
 				},);
@@ -17,7 +17,7 @@ describe(
 		it(
 			'值都相同时，返回空对象',
 			() => {
-				expect(getDiff({ a: 1, b: 2 }, { a: 1, b: 2 })).toEqual({});
+				expect(diff({ a: 1, b: 2 }, { a: 1, b: 2 })).toEqual({});
 			},
 		);
 
@@ -28,7 +28,7 @@ describe(
 					'未处理的将交给内部处理',
 					() => {
 						// eslint-disable-next-line @typescript-eslint/no-empty-function
-						expect(getDiff({ a: 1, b: 2 }, { a: 3 }, () => {})).toEqual({
+						expect(diff({ a: 1, b: 2 }, { a: 3 }, () => {})).toEqual({
 							a: 3,
 						},);
 					},
@@ -37,14 +37,14 @@ describe(
 				it(
 					'返回false的将被视为不同',
 					() => {
-						expect(getDiff({ a: 1 }, { a: 1 }, () => false)).toEqual({ a: 1 });
+						expect(diff({ a: 1 }, { a: 1 }, () => false)).toEqual({ a: 1 });
 					},
 				);
 
 				it(
 					'返回true的将是为相同',
 					() => {
-						expect(getDiff({ a: 1 }, { a: 2 }, () => true)).toEqual({});
+						expect(diff({ a: 1 }, { a: 2 }, () => true)).toEqual({});
 					},
 				);
 			},

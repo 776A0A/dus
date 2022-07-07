@@ -1,69 +1,69 @@
 import { describe, expect, it } from 'vitest';
-import { escapeHTML } from '../escapeHTML';
+import { escapeHtml } from '../escapeHtml';
 
 describe(
-	'escapeHTML',
+	'escapeHtml',
 	() => {
 		it(
 			'转义 ',
 			() => {
-				expect(escapeHTML(' ')).toBe(' ');
+				expect(escapeHtml(' ')).toBe(' ');
 			},
 		);
 
 		it(
 			'转义xx',
 			() => {
-				expect(escapeHTML('xx')).toBe('xx');
+				expect(escapeHtml('xx')).toBe('xx');
 			},
 		);
 
 		it(
 			'转义&',
 			() => {
-				expect(escapeHTML('&')).toBe('&amp;');
+				expect(escapeHtml('&')).toBe('&amp;');
 			},
 		);
 
 		it(
 			'转义<',
 			() => {
-				expect(escapeHTML('<')).toBe('&lt;');
+				expect(escapeHtml('<')).toBe('&lt;');
 			},
 		);
 
 		it(
 			'转义>',
 			() => {
-				expect(escapeHTML('>')).toBe('&gt;');
+				expect(escapeHtml('>')).toBe('&gt;');
 			},
 		);
 
 		it(
 			"转义'",
 			() => {
-				expect(escapeHTML("'")).toBe('&#x27;');
+				expect(escapeHtml("'")).toBe('&#x27;');
 			},
 		);
 
 		it(
 			'转义"',
 			() => {
-				expect(escapeHTML('"')).toBe('&quot;');
+				expect(escapeHtml('"')).toBe('&quot;');
 			},
 		);
 
 		it(
 			'转义/',
 			() => {
-				expect(escapeHTML('/')).toBe('&#x2F;');
+				expect(escapeHtml('/')).toBe('&#x2F;');
 			},
 		);
 
 		it(
 			'转义xx&&<  <>>" "\'\'//   ',
 			() => {
-				expect(escapeHTML('xx&&<  <>>" "\'\'//   ')).toBe(
+				expect(escapeHtml('xx&&<  <>>" "\'\'//   ')).toBe(
 					'xx&amp;&amp;&lt;  &lt;&gt;&gt;&quot; &quot;&#x27;&#x27;&#x2F;&#x2F;   ',
 				);
 			},

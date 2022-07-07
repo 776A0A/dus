@@ -5,7 +5,7 @@
  * @param customDiffer - 自定义筛选器，返回 true 表示相同，返回 false 表示不同，返回 undefined 表示交给内部筛选器处理
  * @returns 返回不一样值的对象
  */
-export function getDiff<T extends object, U = Partial<T>>(
+export function diff<T extends object, U = Partial<T>>(
 	originalObj: T,
 	copiedObj: U,
 	customDiffer?: <K extends keyof U>(

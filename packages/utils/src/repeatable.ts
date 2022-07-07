@@ -5,7 +5,7 @@
  * @param time 循环间隔，最小值 16ms，默认 1000ms
  * @returns
  */
-export function repeatAction(
+export function repeatable(
 	condition: () => boolean,
 	callback: () => unknown,
 	time = 1000,
