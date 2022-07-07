@@ -1,10 +1,19 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
+import {
+	afterEach,
+	beforeEach,
+	describe,
+	expect,
+	it,
+	SpyInstance,
+	vi,
+} from 'vitest';
 import storage from '..';
 import { sessionStorageKey, storageKey } from '../shared';
 
-let consoleSpy: jest.SpyInstance;
+let consoleSpy: SpyInstance;
 beforeEach(() => {
-	consoleSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+	consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
 },);
 afterEach(() => {
 	consoleSpy.mockRestore();
@@ -69,7 +78,7 @@ describe(
 				it(
 					'存入非法值，回调函数调用',
 					() => {
-						const cb = jest.fn(() => {});
+						const cb = vi.fn(() => {});
 
 						// bigInt转换时会报错
 						storage.set('a', 12n, cb);
@@ -163,7 +172,7 @@ describe(
 						storage.set('c', 'c');
 
 						// eslint-disable-next-line @typescript-eslint/no-unused-vars
-						const cb = jest.fn((_v) => {});
+						const cb = vi.fn((_v) => {});
 
 						storage.forEach(cb);
 
@@ -176,7 +185,7 @@ describe(
 				it(
 					'在本地为空时，不会执行任何遍历',
 					() => {
-						const cb = jest.fn(() => {});
+						const cb = vi.fn(() => {});
 
 						storage.forEach(cb);
 
