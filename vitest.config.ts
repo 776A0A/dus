@@ -1,18 +1,16 @@
-import { defineConfig } from 'vitest/config';
-import { getBaseViteConfig, getEnvsAndDefinitions } from './packages/vite';
+import { defineConfig } from 'vitest/config'
+import { getBaseViteConfig, getEnvsAndDefinitions } from './packages/vite'
 
-export default defineConfig(
-	({ mode }) => {
-		const { envVars, definitions } = getEnvsAndDefinitions(mode);
+export default defineConfig(({ mode }) => {
+  const { envVars, definitions } = getEnvsAndDefinitions(mode)
 
-		const baseConfig = getBaseViteConfig(envVars);
+  const baseConfig = getBaseViteConfig(envVars)
 
-		return {
-			...baseConfig,
-			define: { ...definitions },
-			test: {
-				environment: 'jsdom',
-			},
-		};
-	},
-);
+  return {
+    ...baseConfig,
+    define: { ...definitions },
+    test: {
+      environment: 'jsdom',
+    },
+  }
+})
