@@ -1,9 +1,8 @@
 {
-  "name": "mskxx-root",
-  "private": false,
   "version": "0.0.0",
+  "private": true,
   "engines": {
-    "node": ">= 16.14.0"
+    "node": ">=16.14.0"
   },
   "packageManager": "pnpm@7.5.0",
   "scripts": {
