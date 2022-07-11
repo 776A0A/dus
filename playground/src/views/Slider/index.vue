@@ -2,7 +2,7 @@
   <main class="flex h-screen items-center justify-center">
     <div
       @click="sliderIns?.slideRight()"
-      class="cursor-pointer rounded-1 mr-4 hover-shadow center-flex"
+      class="cursor-pointer rounded-full mr-4 hover-shadow center-flex"
     >
       <IcRoundChevronLeft class="h-10 w-10" />
     </div>
@@ -21,7 +21,7 @@
       </Slider>
       <div>
         <ul
-          class="space-x-4 mt-4 center-flex children:(w-1.5 h-1.5 bg-black rounded-1 transform scale-100 transition-all duration-300 ease-out)"
+          class="space-x-4 mt-4 center-flex children:(w-1.5 h-1.5 bg-black rounded-full transform scale-100 transition-all duration-300 ease-out)"
         >
           <li
             v-for="(_, i) in images"
@@ -32,7 +32,7 @@
     </div>
     <div
       @click="sliderIns?.slideLeft()"
-      class="cursor-pointer rounded-1 ml-4 hover-shadow center-flex"
+      class="cursor-pointer rounded-full ml-4 hover-shadow center-flex"
     >
       <IcRoundChevronRight class="h-10 w-10" />
     </div>

@@ -10,7 +10,6 @@
   "dependencies": {
     "@dus/slider": "workspace:*",
     "@dus/styles": "workspace:*",
-    "@dus/windicss": "workspace:*",
     "vue": "^3.2.37"
   },
   "devDependencies": {
