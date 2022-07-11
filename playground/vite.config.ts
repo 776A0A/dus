@@ -1,8 +1,8 @@
 /// <reference types="vitest" />
 
+import { getBaseViteConfig, getEnvsAndDefinitions } from '@dus/vite'
 import { defineConfig } from 'vite'
 import Pages from 'vite-plugin-pages'
-import { getBaseViteConfig, getEnvsAndDefinitions } from '../packages/vite'
 
 export default defineConfig(({ mode }) => {
   const { envVars, definitions } = getEnvsAndDefinitions(mode)
