@@ -5,5 +5,19 @@
   "main": "index.ts",
   "scripts": {},
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "nanoevents": "^7.0.1"
+  },
+  "devDependencies": {
+    "vue": "^3.2.37"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.37"
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    }
+  }
 }
