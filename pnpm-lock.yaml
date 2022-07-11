@@ -9,6 +9,7 @@ importers:
       '@chenfengyuan/vue-qrcode': ^2.0.0
       '@commitlint/cli': ^16.3.0
       '@commitlint/config-conventional': ^16.2.4
+      '@dus/eslint': workspace:*
       '@dus/gzip-public': workspace:*
       '@dus/types': workspace:*
       '@iconify/json': ^2.1.73
@@ -109,6 +110,7 @@ importers:
       '@changesets/cli': registry.npmmirror.com/@changesets/cli/2.23.1
       '@commitlint/cli': registry.npmmirror.com/@commitlint/cli/16.3.0
       '@commitlint/config-conventional': registry.npmmirror.com/@commitlint/config-conventional/16.2.4
+      '@dus/eslint': link:packages/eslint
       '@dus/gzip-public': link:packages/gzip-public
       '@dus/types': link:packages/types
       '@pinia/testing': registry.npmmirror.com/@pinia/testing/0.0.12_pinia@2.0.14+vue@3.2.37
