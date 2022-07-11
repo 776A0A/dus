@@ -5,6 +5,9 @@
     "node": ">=16.14.0"
   },
   "packageManager": "pnpm@7.5.0",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
