@@ -1,11 +1,23 @@
-import { defineConfig, toEscapedSelector as e } from 'unocss'
+import presetIcons from '@unocss/preset-icons'
 import presetUno from '@unocss/preset-uno'
 import transformerDirective from '@unocss/transformer-directives'
 import transformerVariantGroup from '@unocss/transformer-variant-group'
+import { defineConfig, toEscapedSelector as e } from 'unocss'
 
 export default defineConfig({
   transformers: [transformerDirective(), transformerVariantGroup()],
-  presets: [presetUno()],
+  presets: [
+    presetIcons({
+      autoInstall: true,
+      extraProperties: {
+        display: 'inline-block',
+        height: '1.2em',
+        width: '1.2em',
+        'vertical-align': 'text-bottom',
+      },
+    }),
+    presetUno(),
+  ],
   shortcuts: {
     'center-flex': 'flex justify-center items-center',
     'center-abs':

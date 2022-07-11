@@ -4,7 +4,7 @@
       @click="sliderIns?.slideRight()"
       class="cursor-pointer rounded-full mr-4 hover-shadow center-flex"
     >
-      <IcRoundChevronLeft class="h-10 w-10" />
+      <i class="i-ic:round-chevron-left w-10 h-10"></i>
     </div>
     <div>
       <Slider
@@ -34,7 +34,7 @@
       @click="sliderIns?.slideLeft()"
       class="cursor-pointer rounded-full ml-4 hover-shadow center-flex"
     >
-      <IcRoundChevronRight class="h-10 w-10" />
+      <i class="i-ic:round-chevron-right w-10 h-10"></i>
     </div>
   </main>
 </template>

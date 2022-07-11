@@ -3,7 +3,6 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import gzip from 'rollup-plugin-gzip'
 import { visualizer } from 'rollup-plugin-visualizer'
 import Unocss from 'unocss/vite'
-import IconsResolver from 'unplugin-icons/resolver'
 import Icons from 'unplugin-icons/vite'
 import Components from 'unplugin-vue-components/vite'
 import {
@@ -77,11 +76,11 @@ export function getBasePlugins(): PluginOption[] {
   return [
     vue(),
     vueJsx(),
-    Unocss('uno.config.ts'),
+    Unocss(),
     gzip({ filter: /\.(js|mjs|json|css|html|dat|png|svg)$/ }),
     svgLoader(),
     visualizer({ gzipSize: true }),
-    Components({ resolvers: [IconsResolver({ prefix: false })], dts: true }),
+    Components({ dts: true }),
     Icons({ compiler: 'vue3' }),
   ]
 }
