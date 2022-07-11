@@ -1,5 +1,11 @@
 # @dus/vite
 
+## 1.0.3
+
+### Patch Changes
+
+- a590f22: fix: 修复无法使用 vite 配置
+
 ## 1.0.2
 
 ### Patch Changes
