@@ -1,5 +1,15 @@
 # @dus/stores
 
+## 1.0.1
+
+### Patch Changes
+
+- 修复发布了私有包
+- Updated dependencies
+  - @dus/hooks@1.0.1
+  - @dus/storage@1.0.1
+  - @dus/tools@1.0.1
+
 ## 1.0.0
 
 ### Major Changes
