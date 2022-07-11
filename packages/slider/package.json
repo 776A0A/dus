@@ -15,7 +15,6 @@
   },
   "devDependencies": {
     "@dus/test-utils": "workspace:*",
-    "vitest": "^0.18.0",
     "vue": "^3.2.37"
   },
   "peerDependencies": {
