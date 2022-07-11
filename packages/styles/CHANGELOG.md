@@ -1,5 +1,11 @@
 # @dus/styles
 
+## 1.1.1
+
+### Patch Changes
+
+- 8e11906: update package.json
+
 ## 1.1.0
 
 ### Minor Changes

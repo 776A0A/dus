@@ -1,5 +1,11 @@
 # @dus/eslint
 
+## 1.0.1
+
+### Patch Changes
+
+- 8e11906: update package.json
+
 ## 1.0.0
 
 ### Major Changes

@@ -1,5 +1,11 @@
 # @dus/test-utils
 
+## 1.0.2
+
+### Patch Changes
+
+- 8e11906: update package.json
+
 ## 1.0.1
 
 ### Patch Changes
