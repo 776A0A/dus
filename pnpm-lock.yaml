@@ -184,6 +184,7 @@ importers:
     specifiers:
       '@unocss/preset-icons': ^0.44.0
       '@unocss/preset-uno': ^0.44.0
+      '@unocss/reset': ^0.44.0
       '@unocss/transformer-directives': ^0.44.0
       '@unocss/transformer-variant-group': ^0.44.0
       unocss: ^0.44.0
@@ -191,6 +192,7 @@ importers:
     devDependencies:
       '@unocss/preset-icons': 0.44.0
       '@unocss/preset-uno': 0.44.0
+      '@unocss/reset': 0.44.0
       '@unocss/transformer-directives': 0.44.0
       '@unocss/transformer-variant-group': 0.44.0
       unocss: 0.44.0_vite@2.9.13
