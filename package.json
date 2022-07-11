@@ -5,6 +5,9 @@
     "node": ">=16.14.0"
   },
   "packageManager": "pnpm@7.5.0",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -19,10 +22,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",
+    "@changesets/cli": "^2.23.1",
     "@commitlint/cli": "^16.3.0",
     "@commitlint/config-conventional": "^16.2.4",
-    "@dus/gzip-public": "workspace:0.0.0",
-    "@dus/types": "workspace:^1.0.0",
+    "@dus/gzip-public": "workspace:*",
+    "@dus/types": "workspace:*",
     "@pinia/testing": "^0.0.12",
     "@types/color": "^3.0.3",
     "@types/lodash.clonedeep": "^4.5.7",

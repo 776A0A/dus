@@ -10,9 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dus/tools": "workspace:^0.0.0"
+    "@dus/tools": "workspace:*"
   },
   "devDependencies": {
-    "@dus/test-utils": "workspace:^1.0.0"
+    "@dus/test-utils": "workspace:*"
   }
 }
