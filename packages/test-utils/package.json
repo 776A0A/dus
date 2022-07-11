@@ -8,5 +8,31 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@vue/test-utils": "^2.0.2",
+    "lodash.merge": "^4.6.2",
+    "vitest": "^0.18.0",
+    "vue": "^3.2.37"
+  },
+  "peerDependencies": {
+    "@vue/test-utils": "^2.0.2",
+    "lodash.merge": "^4.6.2",
+    "vitest": "^0.18.0",
+    "vue": "^3.2.37"
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    },
+    "vitest": {
+      "optional": true
+    },
+    "lodash.merge": {
+      "optional": true
+    },
+    "@vue/test-utils": {
+      "optional": true
+    }
+  }
 }

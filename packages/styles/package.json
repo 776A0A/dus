@@ -22,5 +22,25 @@
     "@unocss/transformer-variant-group": "^0.44.0",
     "unocss": "^0.44.0",
     "vite": "^2.9.13"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    },
+    "unocss": {
+      "optional": true
+    },
+    "@unocss/transformer-variant-group": {
+      "optional": true
+    },
+    "@unocss/transformer-directives": {
+      "optional": true
+    },
+    "@unocss/preset-uno": {
+      "optional": true
+    },
+    "@unocss/preset-icons": {
+      "optional": true
+    }
   }
 }

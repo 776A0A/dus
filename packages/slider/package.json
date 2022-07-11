@@ -10,9 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dus/tools": "workspace:*"
+    "@dus/tools": "workspace:*",
+    "@vueuse/core": "^8.9.1"
   },
   "devDependencies": {
-    "@dus/test-utils": "workspace:*"
+    "@dus/test-utils": "workspace:*",
+    "vitest": "^0.18.0",
+    "vue": "^3.2.37"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.37"
   }
 }

@@ -1,4 +1,4 @@
-import { callWithErrorCatch, logError } from '@dus/tools'
+import { callInSafe, logError } from '@dus/tools'
 import { ref } from 'vue'
 
 export function useRouterError(validator?: () => boolean) {
@@ -10,7 +10,7 @@ export function useRouterError(validator?: () => boolean) {
     const errorPrefix = 'Error from router: \n'
     const message = error?.message ? (error.message as string) : error
 
-    callWithErrorCatch(() => {
+    callInSafe(() => {
       logError(`${errorPrefix}`)
       logError(message)
     })

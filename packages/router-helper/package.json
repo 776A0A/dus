@@ -11,5 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "@dus/tools": "workspace:*"
+  },
+  "devDependencies": {
+    "vue": "^3.2.37",
+    "vue-router": "^4.1.2"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.37",
+    "vue-router": "^4.1.2"
   }
 }
