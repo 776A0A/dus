@@ -1,3 +1,4 @@
-import config from '../uno.config'
+import baseConfig from '@dus/styles/config'
+import { defineConfig } from 'unocss'
 
-export default config
+export default defineConfig(baseConfig)
