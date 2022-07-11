@@ -1,5 +1,15 @@
 # @dus/stores
 
+## 1.0.2
+
+### Patch Changes
+
+- 8e11906: update package.json
+- Updated dependencies [8e11906]
+  - @dus/hooks@1.0.2
+  - @dus/storage@1.0.2
+  - @dus/tools@1.0.2
+
 ## 1.0.1
 
 ### Patch Changes

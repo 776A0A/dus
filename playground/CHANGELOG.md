@@ -1,5 +1,14 @@
 # @dus/playground
 
+## 1.0.3
+
+### Patch Changes
+
+- 8e11906: update package.json
+- Updated dependencies [8e11906]
+  - @dus/slider@1.0.2
+  - @dus/styles@1.1.1
+
 ## 1.0.2
 
 ### Patch Changes
