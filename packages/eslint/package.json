@@ -1,6 +1,6 @@
 {
   "name": "@dus/eslint",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "",
   "main": ".eslintrc.js",
   "scripts": {
@@ -8,5 +8,19 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
+    "eslint": "^8.19.0",
+    "eslint-plugin-vue": "^9.2.0",
+    "typescript": "^4.7.4"
+  },
+  "peerDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
+    "eslint": "^8.19.0",
+    "eslint-plugin-vue": "^9.2.0",
+    "typescript": "^4.7.4"
+  }
 }

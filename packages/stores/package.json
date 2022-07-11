@@ -10,8 +10,24 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dus/hooks": "workspace:*",
-    "@dus/storage": "workspace:*",
-    "@dus/tools": "workspace:*"
+    "@dus/hooks": "workspace:^1.0.1",
+    "@dus/storage": "workspace:^1.0.1",
+    "@dus/tools": "workspace:^1.0.1"
+  },
+  "devDependencies": {
+    "pinia": "^2.0.15",
+    "vue": "^3.2.37"
+  },
+  "peerDependencies": {
+    "pinia": "^2.0.15",
+    "vue": "^3.2.37"
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    },
+    "pinia": {
+      "optional": true
+    }
   }
 }

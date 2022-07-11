@@ -9,6 +9,21 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dus/tools": "workspace:*"
+    "@dus/tools": "workspace:*",
+    "@vueuse/core": "^8.9.1",
+    "lodash.debounce": "^4.0.8"
+  },
+  "devDependencies": {
+    "vue": "^3.2.37",
+    "vue-router": "^4.1.2"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.37",
+    "vue-router": "^4.1.2"
+  },
+  "peerDependenciesMeta": {
+    "vue-router": {
+      "optional": true
+    }
   }
 }
