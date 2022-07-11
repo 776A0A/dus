@@ -1,13 +1,12 @@
 {
-  "name": "@dus/gzip-public",
-  "version": "1.0.1",
+  "name": "@dus/eslint",
+  "version": "0.0.0",
   "description": "",
-  "bin": {
-    "gp": "./index.js"
-  },
+  "main": ".eslintrc.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC"
 }

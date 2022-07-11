@@ -24,6 +24,7 @@
     "@changesets/cli": "^2.23.1",
     "@commitlint/cli": "^16.3.0",
     "@commitlint/config-conventional": "^16.2.4",
+    "@dus/eslint": "workspace:*",
     "@dus/gzip-public": "workspace:*",
     "@dus/types": "workspace:*",
     "@pinia/testing": "^0.0.12",
