@@ -14,6 +14,7 @@ export default defineConfig({
     'center-y-abs': 'absolute top-1/2 transform -translate-y-1/2',
     full: 'w-full h-full',
     fullscreen: 'w-screen h-screen',
+    'border-main': 'border-gray-400 border-opacity-30',
   },
   theme: {
     width: {
