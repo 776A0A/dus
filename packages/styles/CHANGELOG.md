@@ -1,5 +1,11 @@
 # @dus/styles
 
+## 1.1.2
+
+### Patch Changes
+
+- 173d6a5: fix using uno.css in styles
+
 ## 1.1.1
 
 ### Patch Changes

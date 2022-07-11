@@ -1,5 +1,13 @@
 # @dus/playground
 
+## 1.0.4
+
+### Patch Changes
+
+- 173d6a5: fix using uno.css in styles
+- Updated dependencies [173d6a5]
+  - @dus/styles@1.1.2
+
 ## 1.0.3
 
 ### Patch Changes
