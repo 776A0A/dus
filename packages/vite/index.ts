@@ -113,16 +113,9 @@ export function injectCdn(uri: string, type: 'link' | 'script') {
 }
 
 export function getCdnBase() {
-  return 'https://static.ibimglobal.com' as const
+  return '' as const
 }
 
 export function injectTags(...tags: ReturnType<typeof injectCdn>[]) {
   return createHtmlPlugin({ minify: true, inject: { tags } })
-}
-
-/**
- * 替换 three，使用 0.125.2 的 esm 版 cdn
- */
-export const aliasThree = {
-  three: `${getCdnBase()}/deps/three.0.125.2.module.js` as const,
 }
