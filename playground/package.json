@@ -21,7 +21,7 @@
   "dependencies": {
     "@dus/slider": "workspace:*",
     "@dus/styles": "workspace:*",
-    "@dus/tools": "workspace:2.0.1",
+    "@dus/tools": "workspace:*",
     "@vue/runtime-core": "^3.2.37",
     "axios": "^0.27.2",
     "pinia": "^2.0.15",

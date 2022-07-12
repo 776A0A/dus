@@ -167,7 +167,7 @@ importers:
       '@dus/styles': workspace:*
       '@dus/test-utils': workspace:*
       '@dus/tools': workspace:*
-      '@dus/vite': workspace:*1.0.6
+      '@dus/vite': workspace:1.0.7
       '@vueuse/core': ^8.9.1
       vue: ^3.2.37
     dependencies:
@@ -187,9 +187,9 @@ importers:
 
   packages/stores:
     specifiers:
-      '@dus/hooks': workspace:*1.0.6
-      '@dus/storage': workspace:*1.0.6
-      '@dus/tools': workspace:*2.0.0
+      '@dus/hooks': workspace:1.0.7
+      '@dus/storage': workspace:1.0.7
+      '@dus/tools': workspace:2.0.1
       pinia: ^2.0.15
       vue: ^3.2.37
     dependencies:
@@ -279,7 +279,7 @@ importers:
     specifiers:
       '@dus/slider': workspace:*
       '@dus/styles': workspace:*
-      '@dus/tools': workspace:*2.0.0
+      '@dus/tools': workspace:*
       '@dus/vite': workspace:*
       '@vitejs/plugin-vue': ^2.3.3
       '@vue/compiler-sfc': ^3.2.37
