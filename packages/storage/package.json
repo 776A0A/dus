@@ -7,6 +7,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dus/tools": "workspace:*"
+    "@dus/tools": "workspace:^"
   }
 }

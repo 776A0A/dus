@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dus/tools": "workspace:*"
+    "@dus/tools": "workspace:^"
   },
   "devDependencies": {
     "vue": "^3.2.37",

@@ -9,9 +9,9 @@ importers:
       '@changesets/types': ^5.0.0
       '@commitlint/cli': ^16.3.0
       '@commitlint/config-conventional': ^16.2.4
-      '@dus/eslint': workspace:*
-      '@dus/gzip-public': workspace:*
-      '@dus/types': workspace:*
+      '@dus/eslint': workspace:^
+      '@dus/gzip-public': workspace:^
+      '@dus/types': workspace:^
       '@iconify/json': ^2.1.73
       '@types/lodash': ^4.14.182
       '@types/lodash.clonedeep': ^4.5.7
@@ -21,6 +21,7 @@ importers:
       '@types/lodash.throttle': ^4.1.7
       '@types/node': ^17.0.45
       '@types/qs': ^6.9.7
+      '@vitejs/plugin-vue': ^2.3.3
       '@vue/test-utils': ^2.0.2
       '@vueuse/core': ^8.9.0
       c8: ^7.11.3
@@ -35,11 +36,13 @@ importers:
       postcss: ^8.4.14
       postcss-nested: ^5.0.6
       prettier: ^2.7.1
+      rimraf: ^3.0.2
       tsup: ^6.1.3
       typescript: ^4.7.4
       unocss: ^0.44.0
       unplugin-icons: ^0.14.7
       vite: ^2.9.13
+      vite-plugin-dts: ^1.2.1
       vitest: ^0.17.1
       vue: ^3.2.37
     dependencies:
@@ -66,6 +69,7 @@ importers:
       '@types/lodash.throttle': registry.npmmirror.com/@types/lodash.throttle/4.1.7
       '@types/node': registry.npmmirror.com/@types/node/17.0.45
       '@types/qs': registry.npmmirror.com/@types/qs/6.9.7
+      '@vitejs/plugin-vue': 2.3.3_vite@2.9.13+vue@3.2.37
       c8: registry.npmmirror.com/c8/7.11.3
       cross-env: registry.npmmirror.com/cross-env/7.0.3
       eslint: registry.npmmirror.com/eslint/8.19.0
@@ -77,10 +81,12 @@ importers:
       postcss: registry.npmmirror.com/postcss/8.4.14
       postcss-nested: registry.npmmirror.com/postcss-nested/5.0.6_postcss@8.4.14
       prettier: registry.npmmirror.com/prettier/2.7.1
+      rimraf: 3.0.2
       tsup: 6.1.3_m3gf5jmpd2aiwepqhoxxcqgnwi
       typescript: registry.npmmirror.com/typescript/4.7.4
       unocss: 0.44.0_vite@2.9.13
       vite: 2.9.13
+      vite-plugin-dts: 1.2.1_vite@2.9.13
       vitest: registry.npmmirror.com/vitest/0.17.1_c8@7.11.3+jsdom@20.0.0
 
   packages/crypto:
@@ -122,7 +128,7 @@ importers:
 
   packages/hooks:
     specifiers:
-      '@dus/tools': workspace:*
+      '@dus/tools': workspace:^
       '@vueuse/core': ^8.9.1
       lodash.debounce: ^4.0.8
       vue: ^3.2.37
@@ -137,7 +143,7 @@ importers:
 
   packages/request:
     specifiers:
-      '@dus/tools': workspace:*
+      '@dus/tools': workspace:^
       axios: ^0.27.2
       lodash.merge: ^4.6.2
     dependencies:
@@ -147,7 +153,7 @@ importers:
 
   packages/router-helper:
     specifiers:
-      '@dus/tools': workspace:*
+      '@dus/tools': workspace:^
       vue: ^3.2.37
       vue-router: ^4.1.2
     dependencies:
@@ -158,20 +164,24 @@ importers:
 
   packages/slider:
     specifiers:
-      '@dus/test-utils': workspace:*
-      '@dus/tools': workspace:*
+      '@dus/styles': workspace:^1.1.2
+      '@dus/test-utils': workspace:^
+      '@dus/tools': workspace:^
+      '@dus/vite': workspace:^1.0.5
       '@vueuse/core': ^8.9.1
       vue: ^3.2.37
     dependencies:
+      '@dus/styles': link:../styles
       '@dus/tools': link:../tools
       '@vueuse/core': 8.9.1_vue@3.2.37
     devDependencies:
       '@dus/test-utils': link:../test-utils
+      '@dus/vite': link:../vite
       vue: 3.2.37
 
   packages/storage:
     specifiers:
-      '@dus/tools': workspace:*
+      '@dus/tools': workspace:^
     dependencies:
       '@dus/tools': link:../tools
 
@@ -271,9 +281,10 @@ importers:
 
   playground:
     specifiers:
-      '@dus/slider': workspace:*
-      '@dus/styles': workspace:*
-      '@dus/vite': workspace:*
+      '@dus/slider': workspace:^
+      '@dus/styles': workspace:^
+      '@dus/tools': workspace:^1.0.3
+      '@dus/vite': workspace:^
       '@vitejs/plugin-vue': ^2.3.3
       '@vue/compiler-sfc': ^3.2.37
       '@vue/runtime-core': ^3.2.37
@@ -291,6 +302,7 @@ importers:
     dependencies:
       '@dus/slider': link:../packages/slider
       '@dus/styles': link:../packages/styles
+      '@dus/tools': link:../packages/tools
       '@vue/runtime-core': 3.2.37
       axios: 0.27.2
       pinia: 2.0.15_j6bzmzd4ujpabbp5objtwxyjp4
@@ -715,6 +727,45 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
+  /@microsoft/api-extractor-model/7.21.0:
+    resolution: {integrity: sha512-NN4mXzoQWTuzznIcnLWeV6tGyn6Os9frDK6M/mmTXZ73vUYOvSWoKQ5SYzyzP7HF3YtvTmr1Rs+DsBb0HRx7WQ==}
+    dependencies:
+      '@microsoft/tsdoc': 0.14.1
+      '@microsoft/tsdoc-config': 0.16.1
+      '@rushstack/node-core-library': 3.49.0
+    dev: true
+
+  /@microsoft/api-extractor/7.28.4:
+    resolution: {integrity: sha512-7JeROBGYTUt4/4HPnpMscsQgLzX0OfGTQR2qOQzzh3kdkMyxmiv2mzpuhoMnwbubb1GvPcyFm+NguoqOqkCVaw==}
+    hasBin: true
+    dependencies:
+      '@microsoft/api-extractor-model': 7.21.0
+      '@microsoft/tsdoc': 0.14.1
+      '@microsoft/tsdoc-config': 0.16.1
+      '@rushstack/node-core-library': 3.49.0
+      '@rushstack/rig-package': 0.3.13
+      '@rushstack/ts-command-line': 4.12.1
+      colors: 1.2.5
+      lodash: 4.17.21
+      resolve: 1.17.0
+      semver: 7.3.7
+      source-map: 0.6.1
+      typescript: 4.6.4
+    dev: true
+
+  /@microsoft/tsdoc-config/0.16.1:
+    resolution: {integrity: sha512-2RqkwiD4uN6MLnHFljqBlZIXlt/SaUT6cuogU1w2ARw4nKuuppSmR0+s+NC+7kXBQykd9zzu0P4HtBpZT5zBpQ==}
+    dependencies:
+      '@microsoft/tsdoc': 0.14.1
+      ajv: 6.12.6
+      jju: 1.4.0
+      resolve: 1.19.0
+    dev: true
+
+  /@microsoft/tsdoc/0.14.1:
+    resolution: {integrity: sha512-6Wci+Tp3CgPt/B9B0a3J4s3yMgLNSku6w5TV6mN+61C71UqsRBv2FUibBf3tPGlNxebgPHMEUzKpb1ggE8KCKw==}
+    dev: true
+
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -748,9 +799,52 @@ packages:
       picomatch: 2.3.1
     dev: true
 
+  /@rushstack/node-core-library/3.49.0:
+    resolution: {integrity: sha512-yBJRzGgUNFwulVrwwBARhbGaHsxVMjsZ9JwU1uSBbqPYCdac+t2HYdzi4f4q/Zpgb0eNbwYj2yxgHYpJORNEaw==}
+    dependencies:
+      '@types/node': 12.20.24
+      colors: 1.2.5
+      fs-extra: 7.0.1
+      import-lazy: 4.0.0
+      jju: 1.4.0
+      resolve: 1.17.0
+      semver: 7.3.7
+      timsort: 0.3.0
+      z-schema: 5.0.3
+    dev: true
+
+  /@rushstack/rig-package/0.3.13:
+    resolution: {integrity: sha512-4/2+yyA/uDl7LQvtYtFs1AkhSWuaIGEKhP9/KK2nNARqOVc5eCXmu1vyOqr5mPvNq7sHoIR+sG84vFbaKYGaDA==}
+    dependencies:
+      resolve: 1.17.0
+      strip-json-comments: 3.1.1
+    dev: true
+
+  /@rushstack/ts-command-line/4.12.1:
+    resolution: {integrity: sha512-S1Nev6h/kNnamhHeGdp30WgxZTA+B76SJ/P721ctP7DrnC+rrjAc6h/R80I4V0cA2QuEEcMdVOQCtK2BTjsOiQ==}
+    dependencies:
+      '@types/argparse': 1.0.38
+      argparse: 1.0.10
+      colors: 1.2.5
+      string-argv: 0.3.1
+    dev: true
+
   /@trysound/sax/0.2.0:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
     engines: {node: '>=10.13.0'}
+    dev: true
+
+  /@ts-morph/common/0.13.0:
+    resolution: {integrity: sha512-fEJ6j7Cu8yiWjA4UmybOBH9Efgb/64ZTWuvCF4KysGu4xz8ettfyaqFt8WZ1btCxXsGZJjZ2/3svOF6rL+UFdQ==}
+    dependencies:
+      fast-glob: 3.2.11
+      minimatch: 5.1.0
+      mkdirp: 1.0.4
+      path-browserify: 1.0.1
+    dev: true
+
+  /@types/argparse/1.0.38:
+    resolution: {integrity: sha512-ebDJ9b0e702Yr7pWgB0jzm+CX4Srzz8RcXtLJDJB+BSccqMa36uyH/zUsSYao5+BD1ytv3k3rPYCq4mAE1hsXA==}
     dev: true
 
   /@types/json-schema/7.0.11:
@@ -765,6 +859,10 @@ packages:
 
   /@types/lodash/4.14.182:
     resolution: {integrity: sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==}
+    dev: true
+
+  /@types/node/12.20.24:
+    resolution: {integrity: sha512-yxDeaQIAJlMav7fH5AQqPH1u8YIuhYJXYBzxaQ4PifsU0GDO38MSdmEDeRlIxrKbC6NbEaaEHDanWb+y30U8SQ==}
     dev: true
 
   /@types/web-bluetooth/0.0.14:
@@ -1028,7 +1126,7 @@ packages:
       '@unocss/scope': 0.44.0
       '@unocss/transformer-directives': 0.44.0
       magic-string: 0.26.2
-      vite: 2.9.13
+      vite: registry.npmmirror.com/vite/2.9.13
     dev: true
 
   /@vitejs/plugin-vue-jsx/1.3.10:
@@ -1053,7 +1151,7 @@ packages:
       vue: ^3.2.25
     dependencies:
       vite: 2.9.13
-      vue: 3.2.37
+      vue: registry.npmmirror.com/vue/3.2.37
     dev: true
 
   /@vue/babel-helper-vue-transform-on/1.0.2:
@@ -1252,6 +1350,12 @@ packages:
       picomatch: 2.3.1
     dev: true
 
+  /argparse/1.0.10:
+    resolution: {integrity: sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==}
+    dependencies:
+      sprintf-js: 1.0.3
+    dev: true
+
   /argparse/2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
     dev: true
@@ -1447,6 +1551,10 @@ packages:
       wrap-ansi: 7.0.0
     dev: true
 
+  /code-block-writer/11.0.1:
+    resolution: {integrity: sha512-0ch9DeCY8v/BWA9n1/Qu1ALG3lpesel4PYL2eNlGLgvGl+J7k74i+dSXSF3wLvF5SYII8/GUT/Ic+fycBR/DUQ==}
+    dev: true
+
   /color-convert/1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
     dependencies:
@@ -1470,6 +1578,11 @@ packages:
 
   /colorette/2.0.19:
     resolution: {integrity: sha512-3tlv/dIP7FWvj3BsbHrGLJ6l/oKh1O3TcgBqMn+yyCagOxc23fyzDS6HypQbgxWbkpDnf52p1LuR4eWDQ/K9WQ==}
+    dev: true
+
+  /colors/1.2.5:
+    resolution: {integrity: sha512-erNRLao/Y3Fv54qUa0LBB+//Uf3YwMUmdJinN20yMXm9zdKKqH9wt7R9IIVZ+K7ShzfpLV/Zg8+VyrBJYB4lpg==}
+    engines: {node: '>=0.1.90'}
     dev: true
 
   /combined-stream/1.0.8:
@@ -2193,6 +2306,15 @@ packages:
       universalify: 2.0.0
     dev: true
 
+  /fs-extra/7.0.1:
+    resolution: {integrity: sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==}
+    engines: {node: '>=6 <7 || >=8'}
+    dependencies:
+      graceful-fs: 4.2.10
+      jsonfile: 4.0.0
+      universalify: 0.1.2
+    dev: true
+
   /fs.realpath/1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
     dev: true
@@ -2271,6 +2393,17 @@ packages:
       minimatch: 3.1.2
       once: 1.4.0
       path-is-absolute: 1.0.1
+    dev: true
+
+  /glob/8.0.3:
+    resolution: {integrity: sha512-ull455NHSHI/Y1FqGaaYFaLGkNMMJbavMrEGFXG/PGrg6y7sutWHUHrz6gy6WEBH6akM1M414dWKCNs+IhKdiQ==}
+    engines: {node: '>=12'}
+    dependencies:
+      fs.realpath: registry.npmmirror.com/fs.realpath/1.0.0
+      inflight: registry.npmmirror.com/inflight/1.0.6
+      inherits: registry.npmmirror.com/inherits/2.0.4
+      minimatch: registry.npmmirror.com/minimatch/5.1.0
+      once: registry.npmmirror.com/once/1.4.0
     dev: true
 
   /globals/11.12.0:
@@ -2383,6 +2516,11 @@ packages:
       resolve-from: 4.0.0
     dev: true
 
+  /import-lazy/4.0.0:
+    resolution: {integrity: sha512-rKtvo6a868b5Hu3heneU+L4yEQ4jYKLtjpnPeUdK7h0yzXGmyBTypknlkCvHFBqfX9YlorEiMM6Dnq/5atfHkw==}
+    engines: {node: '>=8'}
+    dev: true
+
   /imurmurhash/0.1.4:
     resolution: {integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==}
     engines: {node: '>=0.8.19'}
@@ -2474,6 +2612,10 @@ packages:
     hasBin: true
     dev: true
 
+  /jju/1.4.0:
+    resolution: {integrity: sha512-8wb9Yw966OSxApiCt0K3yNJL8pnNeIv+OEq2YMidz4FKP6nonSRoOXc80iXY4JaN2FC11B9qsNmDsm+ZOfMROA==}
+    dev: true
+
   /joycon/3.1.1:
     resolution: {integrity: sha512-34wB/Y7MW7bzjKRjUKTa46I2Z7eV62Rkhva+KkopW7Qvv/OSWBqvkSY7vusOPrNuZcUG3tApvdVgNB8POj3SPw==}
     engines: {node: '>=10'}
@@ -2508,6 +2650,12 @@ packages:
     resolution: {integrity: sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==}
     engines: {node: '>=6'}
     hasBin: true
+    dev: true
+
+  /jsonfile/4.0.0:
+    resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
+    optionalDependencies:
+      graceful-fs: 4.2.10
     dev: true
 
   /jsonfile/6.1.0:
@@ -2558,6 +2706,14 @@ packages:
 
   /lodash.debounce/4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
+
+  /lodash.get/4.4.2:
+    resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}
+    dev: true
+
+  /lodash.isequal/4.5.0:
+    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    dev: true
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
@@ -2660,6 +2816,12 @@ packages:
     dependencies:
       minimist: 1.2.6
     dev: false
+
+  /mkdirp/1.0.4:
+    resolution: {integrity: sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dev: true
 
   /mrmime/1.0.1:
     resolution: {integrity: sha512-hzzEagAgDyoU1Q6yg5uI+AorQgdvMCur3FcKf7NhMKWsaYg+RnbTyHRa/9IlLF9rf455MOCtcqqrQQ83pPP7Uw==}
@@ -2824,6 +2986,10 @@ packages:
     dependencies:
       no-case: 3.0.4
       tslib: 2.4.0
+    dev: true
+
+  /path-browserify/1.0.1:
+    resolution: {integrity: sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==}
     dev: true
 
   /path-exists/4.0.0:
@@ -3022,6 +3188,19 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /resolve/1.17.0:
+    resolution: {integrity: sha512-ic+7JYiV8Vi2yzQGFWOkiZD5Z9z7O2Zhm9XMaTxdJExKasieFCr+yXZ/WmXsckHiKl12ar0y6XiXDx3m4RHn1w==}
+    dependencies:
+      path-parse: 1.0.7
+    dev: true
+
+  /resolve/1.19.0:
+    resolution: {integrity: sha512-rArEXAgsBG4UgRGcynxWIWKFvh/XZCcS8UJdHhwy91zwAvCZIbcs+vAbflgBnNjYMs/i/i+/Ux6IZhML1yPvxg==}
+    dependencies:
+      is-core-module: 2.9.0
+      path-parse: 1.0.7
+    dev: true
+
   /resolve/1.22.1:
     resolution: {integrity: sha512-nBpuuYuY5jFsli/JIs1oldw6fOQCBioohqWZg/2hiaOybXOft4lonv85uDOKXdf8rhyK159cxU5cDcK/NKk8zw==}
     hasBin: true
@@ -3170,6 +3349,10 @@ packages:
   /sourcemap-codec/1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
 
+  /sprintf-js/1.0.3:
+    resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
+    dev: true
+
   /stable/0.1.8:
     resolution: {integrity: sha512-ji9qxRnOVfcuLDySj9qzhGSEFVobyt1kIOSkj1qZzYLzq7Tos/oUUWvotUPQLlrsidqsK6tBH89Bc9kL5zHA6w==}
     deprecated: 'Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility'
@@ -3179,6 +3362,11 @@ packages:
     resolution: {integrity: sha512-zDgl+muIlWzXNsXeyUfOk9dChMjlpkq0DRsxujtYPgyJ676yQ8jEm6zzaaWHFDg5BNcLuif0eD2MTyJdZqXpdg==}
     engines: {node: '>=0.10'}
     dev: false
+
+  /string-argv/0.3.1:
+    resolution: {integrity: sha512-a1uQGz7IyVy9YwhqjZIZu1c8JO8dNIe20xBmSS6qu9kv++k3JGzCVmprbNN5Kn+BgzD5E7YYwg1CcjuJMRNsvg==}
+    engines: {node: '>=0.6.19'}
+    dev: true
 
   /string-width/4.2.3:
     resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
@@ -3302,6 +3490,10 @@ packages:
       any-promise: 1.3.0
     dev: true
 
+  /timsort/0.3.0:
+    resolution: {integrity: sha512-qsdtZH+vMoCARQtyod4imc2nIJwg9Cc7lPRrw9CzF8ZKR0khdr8+2nX80PBhET3tcyTtJDxAffGh2rXH4tyU8A==}
+    dev: true
+
   /to-buffer/1.1.1:
     resolution: {integrity: sha512-lx9B5iv7msuFYE3dytT+KE5tap+rNYw+K4jVkb9R/asAb+pbBSM17jtunHplhBe6RRJdZx3Pn2Jph24O32mOVg==}
     dev: false
@@ -3335,6 +3527,13 @@ packages:
 
   /ts-interface-checker/0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
+    dev: true
+
+  /ts-morph/14.0.0:
+    resolution: {integrity: sha512-tO8YQ1dP41fw8GVmeQAdNsD8roZi1JMqB7YwZrqU856DvmG5/710e41q2XauzTYrygH9XmMryaFeLo+kdCziyA==}
+    dependencies:
+      '@ts-morph/common': 0.13.0
+      code-block-writer: 11.0.1
     dev: true
 
   /tslib/1.14.1:
@@ -3404,6 +3603,12 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /typescript/4.6.4:
+    resolution: {integrity: sha512-9ia/jWHIEbo49HfjrLGfKbZSuWo9iTMwXO+Ca3pRsSpbsMbc7/IU8NKdCZVRRBafVPGnoJeFL76ZOAA84I9fEg==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
+    dev: true
+
   /typescript/4.7.4:
     resolution: {integrity: sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==}
     engines: {node: '>=4.2.0'}
@@ -3425,6 +3630,11 @@ packages:
   /undici/5.6.1:
     resolution: {integrity: sha512-yYVqywdCbNb99f/w045wqmv++WExXDjY0FEvLSB7QUZZH6izxrVkF4dJn1aimcvN0+WAhv75Gg7v6VJoqmRtJQ==}
     engines: {node: '>=12.18'}
+    dev: true
+
+  /universalify/0.1.2:
+    resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
+    engines: {node: '>= 4.0.0'}
     dev: true
 
   /universalify/2.0.0:
@@ -3571,6 +3781,29 @@ packages:
     resolution: {integrity: sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==}
     dev: true
 
+  /validator/13.7.0:
+    resolution: {integrity: sha512-nYXQLCBkpJ8X6ltALua9dRrZDHVYxjJ1wgskNt1lH9fzGjs3tgojGSCBjmEPwkWS1y29+DrizMTW19Pr9uB2nw==}
+    engines: {node: '>= 0.10'}
+    dev: true
+
+  /vite-plugin-dts/1.2.1_vite@2.9.13:
+    resolution: {integrity: sha512-V59rsKQnPI6FTGybh/ED4+dyK3UeSkvC1CJzpuDNoXb7mKNUcWmg66EM0N5Ijoc8xDAfZIXYxQjg675YHIDvFw==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      vite: '>=2.4.4'
+    dependencies:
+      '@microsoft/api-extractor': 7.28.4
+      '@rushstack/node-core-library': 3.49.0
+      chalk: 4.1.2
+      debug: 4.3.4
+      fast-glob: 3.2.11
+      fs-extra: 10.1.0
+      ts-morph: 14.0.0
+      vite: 2.9.13
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /vite-plugin-html/3.2.0_vite@2.9.13:
     resolution: {integrity: sha512-2VLCeDiHmV/BqqNn5h2V+4280KRgQzCFN47cst3WiNK848klESPQnzuC3okH5XHtgwHH/6s1Ho/YV6yIO0pgoQ==}
     peerDependencies:
@@ -3633,7 +3866,7 @@ packages:
       '@vue/composition-api':
         optional: true
     dependencies:
-      vue: 3.2.37
+      vue: registry.npmmirror.com/vue/3.2.37
 
   /vue-eslint-parser/9.0.3_eslint@8.19.0:
     resolution: {integrity: sha512-yL+ZDb+9T0ELG4VIFo/2anAOz8SvBdlqEnQnvJ3M7Scq56DvtjY0VY88bByRZB0D4J0u8olBcfrXTVONXsh4og==}
@@ -3659,7 +3892,7 @@ packages:
       vue: ^3.2.0
     dependencies:
       '@vue/devtools-api': 6.2.0
-      vue: 3.2.37
+      vue: registry.npmmirror.com/vue/3.2.37
 
   /vue-template-compiler/2.7.4:
     resolution: {integrity: sha512-FgaeXI80FzhtDEsixq3WBrHLWpU2gzLb2DFusm62TrmCQyETsnUp0kTLpbExrTUw7g5YOnRf+xkh73nuEX+jGQ==}
@@ -3781,6 +4014,18 @@ packages:
   /yocto-queue/0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    dev: true
+
+  /z-schema/5.0.3:
+    resolution: {integrity: sha512-sGvEcBOTNum68x9jCpCVGPFJ6mWnkD0YxOcddDlJHRx3tKdB2q8pCHExMVZo/AV/6geuVJXG7hljDaWG8+5GDw==}
+    engines: {node: '>=8.0.0'}
+    hasBin: true
+    dependencies:
+      lodash.get: 4.4.2
+      lodash.isequal: 4.5.0
+      validator: 13.7.0
+    optionalDependencies:
+      commander: 2.20.3
     dev: true
 
   registry.npmmirror.com/@ampproject/remapping/2.2.0:
@@ -4693,7 +4938,7 @@ packages:
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dependencies:
       mkdirp: registry.npmmirror.com/mkdirp/1.0.4
-      rimraf: registry.npmmirror.com/rimraf/3.0.2
+      rimraf: 3.0.2
     dev: true
 
   registry.npmmirror.com/@npmcli/node-gyp/2.0.0:
@@ -5530,7 +5775,7 @@ packages:
       istanbul-lib-coverage: registry.npmmirror.com/istanbul-lib-coverage/3.2.0
       istanbul-lib-report: registry.npmmirror.com/istanbul-lib-report/3.0.0
       istanbul-reports: registry.npmmirror.com/istanbul-reports/3.1.4
-      rimraf: registry.npmmirror.com/rimraf/3.0.2
+      rimraf: 3.0.2
       test-exclude: registry.npmmirror.com/test-exclude/6.0.0
       v8-to-istanbul: registry.npmmirror.com/v8-to-istanbul/9.0.1
       yargs: registry.npmmirror.com/yargs/16.2.0
@@ -5547,7 +5792,7 @@ packages:
       '@npmcli/move-file': registry.npmmirror.com/@npmcli/move-file/2.0.0
       chownr: registry.npmmirror.com/chownr/2.0.0
       fs-minipass: registry.npmmirror.com/fs-minipass/2.1.0
-      glob: registry.npmmirror.com/glob/8.0.3
+      glob: 8.0.3
       infer-owner: registry.npmmirror.com/infer-owner/1.0.4
       lru-cache: registry.npmmirror.com/lru-cache/7.12.0
       minipass: registry.npmmirror.com/minipass/3.3.4
@@ -5557,7 +5802,7 @@ packages:
       mkdirp: registry.npmmirror.com/mkdirp/1.0.4
       p-map: registry.npmmirror.com/p-map/4.0.0
       promise-inflight: registry.npmmirror.com/promise-inflight/1.0.1
-      rimraf: registry.npmmirror.com/rimraf/3.0.2
+      rimraf: 3.0.2
       ssri: registry.npmmirror.com/ssri/9.0.1
       tar: registry.npmmirror.com/tar/6.1.11
       unique-filename: registry.npmmirror.com/unique-filename/1.1.1
@@ -6837,7 +7082,7 @@ packages:
     engines: {node: ^10.12.0 || >=12.0.0}
     dependencies:
       flatted: registry.npmmirror.com/flatted/3.2.6
-      rimraf: registry.npmmirror.com/rimraf/3.0.2
+      rimraf: 3.0.2
     dev: true
 
   registry.npmmirror.com/flatted/3.2.6:
@@ -7086,19 +7331,6 @@ packages:
       minimatch: registry.npmmirror.com/minimatch/3.1.2
       once: registry.npmmirror.com/once/1.4.0
       path-is-absolute: registry.npmmirror.com/path-is-absolute/1.0.1
-    dev: true
-
-  registry.npmmirror.com/glob/8.0.3:
-    resolution: {integrity: sha512-ull455NHSHI/Y1FqGaaYFaLGkNMMJbavMrEGFXG/PGrg6y7sutWHUHrz6gy6WEBH6akM1M414dWKCNs+IhKdiQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/glob/-/glob-8.0.3.tgz}
-    name: glob
-    version: 8.0.3
-    engines: {node: '>=12'}
-    dependencies:
-      fs.realpath: registry.npmmirror.com/fs.realpath/1.0.0
-      inflight: registry.npmmirror.com/inflight/1.0.6
-      inherits: registry.npmmirror.com/inherits/2.0.4
-      minimatch: registry.npmmirror.com/minimatch/5.1.0
-      once: registry.npmmirror.com/once/1.4.0
     dev: true
 
   registry.npmmirror.com/global-dirs/0.1.1:
@@ -8536,12 +8768,12 @@ packages:
     hasBin: true
     dependencies:
       env-paths: registry.npmmirror.com/env-paths/2.2.1
-      glob: registry.npmmirror.com/glob/7.2.3
+      glob: 7.2.3
       graceful-fs: registry.npmmirror.com/graceful-fs/4.2.10
       make-fetch-happen: registry.npmmirror.com/make-fetch-happen/10.1.8
       nopt: registry.npmmirror.com/nopt/5.0.0
       npmlog: registry.npmmirror.com/npmlog/6.0.2
-      rimraf: registry.npmmirror.com/rimraf/3.0.2
+      rimraf: 3.0.2
       semver: registry.npmmirror.com/semver/7.3.7
       tar: registry.npmmirror.com/tar/6.1.11
       which: registry.npmmirror.com/which/2.0.2
@@ -8650,7 +8882,7 @@ packages:
       prompts-ncu: registry.npmmirror.com/prompts-ncu/2.5.1
       rc-config-loader: registry.npmmirror.com/rc-config-loader/4.1.0
       remote-git-tags: registry.npmmirror.com/remote-git-tags/3.0.0
-      rimraf: registry.npmmirror.com/rimraf/3.0.2
+      rimraf: 3.0.2
       semver: registry.npmmirror.com/semver/7.3.7
       semver-utils: registry.npmmirror.com/semver-utils/1.1.4
       source-map-support: registry.npmmirror.com/source-map-support/0.5.21
@@ -8696,7 +8928,7 @@ packages:
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     hasBin: true
     dependencies:
-      glob: registry.npmmirror.com/glob/8.0.3
+      glob: 8.0.3
       ignore-walk: registry.npmmirror.com/ignore-walk/5.0.1
       npm-bundled: registry.npmmirror.com/npm-bundled/1.1.2
       npm-normalize-package-bin: registry.npmmirror.com/npm-normalize-package-bin/1.0.1
@@ -8954,7 +9186,7 @@ packages:
       promise-retry: registry.npmmirror.com/promise-retry/2.0.1
       read-package-json: registry.npmmirror.com/read-package-json/5.0.1
       read-package-json-fast: registry.npmmirror.com/read-package-json-fast/2.0.3
-      rimraf: registry.npmmirror.com/rimraf/3.0.2
+      rimraf: 3.0.2
       ssri: registry.npmmirror.com/ssri/9.0.1
       tar: registry.npmmirror.com/tar/6.1.11
     transitivePeerDependencies:
@@ -9318,7 +9550,7 @@ packages:
     version: 5.0.1
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dependencies:
-      glob: registry.npmmirror.com/glob/8.0.3
+      glob: 8.0.3
       json-parse-even-better-errors: registry.npmmirror.com/json-parse-even-better-errors/2.3.1
       normalize-package-data: registry.npmmirror.com/normalize-package-data/4.0.0
       npm-normalize-package-bin: registry.npmmirror.com/npm-normalize-package-bin/1.0.1
@@ -9534,15 +9766,6 @@ packages:
     resolution: {integrity: sha512-V2hovdzFbOi77/WajaSMXk2OLm+xNIeQdMMuB7icj7bk6zi2F8GGAxigcnDFpJHbNyNcgyJDiP+8nOrY5cZGrA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/rfdc/-/rfdc-1.3.0.tgz}
     name: rfdc
     version: 1.3.0
-    dev: true
-
-  registry.npmmirror.com/rimraf/3.0.2:
-    resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/rimraf/-/rimraf-3.0.2.tgz}
-    name: rimraf
-    version: 3.0.2
-    hasBin: true
-    dependencies:
-      glob: registry.npmmirror.com/glob/7.2.3
     dev: true
 
   registry.npmmirror.com/run-parallel/1.2.0:

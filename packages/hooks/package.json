@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dus/tools": "workspace:*",
+    "@dus/tools": "workspace:^",
     "@vueuse/core": "^8.9.1",
     "lodash.debounce": "^4.0.8"
   },
