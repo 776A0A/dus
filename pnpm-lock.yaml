@@ -13,6 +13,7 @@ importers:
       '@dus/gzip-public': workspace:*
       '@dus/types': workspace:*
       '@iconify/json': ^2.1.73
+      '@types/lodash': ^4.14.182
       '@types/lodash.clonedeep': ^4.5.7
       '@types/lodash.debounce': ^4.0.7
       '@types/lodash.merge': ^4.6.7
@@ -28,7 +29,9 @@ importers:
       husky: ^7.0.4
       jsdom: ^20.0.0
       lint-staged: ^12.5.0
+      lodash.debounce: ^4.0.8
       npm-check-updates: ^15.2.1
+      outdent: ^0.8.0
       postcss: ^8.4.14
       postcss-nested: ^5.0.6
       prettier: ^2.7.1
@@ -43,6 +46,7 @@ importers:
       '@iconify/json': registry.npmmirror.com/@iconify/json/2.1.73
       '@vue/test-utils': registry.npmmirror.com/@vue/test-utils/2.0.2_vue@3.2.37
       '@vueuse/core': registry.npmmirror.com/@vueuse/core/8.9.0_vue@3.2.37
+      lodash.debounce: 4.0.8
       unplugin-icons: registry.npmmirror.com/unplugin-icons/0.14.7_jibip4scem3yqqqljuega3e4bq
       vue: registry.npmmirror.com/vue/3.2.37
     devDependencies:
@@ -54,6 +58,7 @@ importers:
       '@dus/eslint': link:packages/eslint
       '@dus/gzip-public': link:packages/gzip-public
       '@dus/types': link:packages/types
+      '@types/lodash': 4.14.182
       '@types/lodash.clonedeep': registry.npmmirror.com/@types/lodash.clonedeep/4.5.7
       '@types/lodash.debounce': registry.npmmirror.com/@types/lodash.debounce/4.0.7
       '@types/lodash.merge': registry.npmmirror.com/@types/lodash.merge/4.6.7
@@ -68,6 +73,7 @@ importers:
       jsdom: registry.npmmirror.com/jsdom/20.0.0
       lint-staged: registry.npmmirror.com/lint-staged/12.5.0
       npm-check-updates: registry.npmmirror.com/npm-check-updates/15.2.1
+      outdent: 0.8.0
       postcss: registry.npmmirror.com/postcss/8.4.14
       postcss-nested: registry.npmmirror.com/postcss-nested/5.0.6_postcss@8.4.14
       prettier: registry.npmmirror.com/prettier/2.7.1
@@ -214,12 +220,16 @@ importers:
 
   packages/tools:
     specifiers:
+      '@types/lodash': ^4.14.182
+      '@types/lodash.debounce': ^4.0.7
       '@types/spark-md5': ^3.0.2
       lodash.debounce: ^4.0.8
       qs: ^6.11.0
       spark-md5: ^3.0.2
       split.js: ^1.6.5
     devDependencies:
+      '@types/lodash': 4.14.182
+      '@types/lodash.debounce': 4.0.7
       '@types/spark-md5': registry.npmmirror.com/@types/spark-md5/3.0.2
       lodash.debounce: 4.0.8
       qs: 6.11.0
@@ -745,6 +755,16 @@ packages:
 
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
+    dev: true
+
+  /@types/lodash.debounce/4.0.7:
+    resolution: {integrity: sha512-X1T4wMZ+gT000M2/91SYj0d/7JfeNZ9PeeOldSNoE/lunLeQXKvkmIumI29IaKMotU/ln/McOIvgzZcQ/3TrSA==}
+    dependencies:
+      '@types/lodash': 4.14.182
+    dev: true
+
+  /@types/lodash/4.14.182:
+    resolution: {integrity: sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==}
     dev: true
 
   /@types/web-bluetooth/0.0.14:
@@ -2763,6 +2783,14 @@ packages:
       word-wrap: 1.2.3
     dev: true
 
+  /outdent/0.5.0:
+    resolution: {integrity: sha512-/jHxFIzoMXdqPzTaCpFzAAWhpkSjZPF4Vsn6jAfNpmbH/ymsmd7Qc6VE9BGn0L6YMj6uwpQLxCECpus4ukKS9Q==}
+    dev: true
+
+  /outdent/0.8.0:
+    resolution: {integrity: sha512-KiOAIsdpUTcAXuykya5fnVVT+/5uS0Q1mrkRHcF89tpieSmY33O/tmc54CqwA+bfhbtEfZUNLHaPUiB9X3jt1A==}
+    dev: true
+
   /p-limit/3.1.0:
     resolution: {integrity: sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ==}
     engines: {node: '>=10'}
@@ -4034,7 +4062,7 @@ packages:
       detect-indent: registry.npmmirror.com/detect-indent/6.1.0
       fs-extra: registry.npmmirror.com/fs-extra/7.0.1
       lodash.startcase: registry.npmmirror.com/lodash.startcase/4.4.0
-      outdent: registry.npmmirror.com/outdent/0.5.0
+      outdent: 0.5.0
       prettier: registry.npmmirror.com/prettier/1.19.1
       resolve-from: registry.npmmirror.com/resolve-from/5.0.0
       semver: registry.npmmirror.com/semver/5.7.1
@@ -4092,7 +4120,7 @@ packages:
       human-id: registry.npmmirror.com/human-id/1.0.2
       is-ci: registry.npmmirror.com/is-ci/3.0.1
       meow: registry.npmmirror.com/meow/6.1.1
-      outdent: registry.npmmirror.com/outdent/0.5.0
+      outdent: 0.5.0
       p-limit: registry.npmmirror.com/p-limit/2.3.0
       preferred-pm: registry.npmmirror.com/preferred-pm/3.0.3
       resolve-from: registry.npmmirror.com/resolve-from/5.0.0
@@ -4838,7 +4866,7 @@ packages:
     name: '@types/lodash.clonedeep'
     version: 4.5.7
     dependencies:
-      '@types/lodash': registry.npmmirror.com/@types/lodash/4.14.182
+      '@types/lodash': 4.14.182
     dev: true
 
   registry.npmmirror.com/@types/lodash.debounce/4.0.7:
@@ -4846,7 +4874,7 @@ packages:
     name: '@types/lodash.debounce'
     version: 4.0.7
     dependencies:
-      '@types/lodash': registry.npmmirror.com/@types/lodash/4.14.182
+      '@types/lodash': 4.14.182
     dev: true
 
   registry.npmmirror.com/@types/lodash.merge/4.6.7:
@@ -4854,7 +4882,7 @@ packages:
     name: '@types/lodash.merge'
     version: 4.6.7
     dependencies:
-      '@types/lodash': registry.npmmirror.com/@types/lodash/4.14.182
+      '@types/lodash': 4.14.182
     dev: true
 
   registry.npmmirror.com/@types/lodash.mergewith/4.6.7:
@@ -4862,7 +4890,7 @@ packages:
     name: '@types/lodash.mergewith'
     version: 4.6.7
     dependencies:
-      '@types/lodash': registry.npmmirror.com/@types/lodash/4.14.182
+      '@types/lodash': 4.14.182
     dev: true
 
   registry.npmmirror.com/@types/lodash.throttle/4.1.7:
@@ -4870,13 +4898,7 @@ packages:
     name: '@types/lodash.throttle'
     version: 4.1.7
     dependencies:
-      '@types/lodash': registry.npmmirror.com/@types/lodash/4.14.182
-    dev: true
-
-  registry.npmmirror.com/@types/lodash/4.14.182:
-    resolution: {integrity: sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/lodash/-/lodash-4.14.182.tgz}
-    name: '@types/lodash'
-    version: 4.14.182
+      '@types/lodash': 4.14.182
     dev: true
 
   registry.npmmirror.com/@types/minimist/1.2.2:
@@ -8820,12 +8842,6 @@ packages:
     name: os-tmpdir
     version: 1.0.2
     engines: {node: '>=0.10.0'}
-    dev: true
-
-  registry.npmmirror.com/outdent/0.5.0:
-    resolution: {integrity: sha512-/jHxFIzoMXdqPzTaCpFzAAWhpkSjZPF4Vsn6jAfNpmbH/ymsmd7Qc6VE9BGn0L6YMj6uwpQLxCECpus4ukKS9Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/outdent/-/outdent-0.5.0.tgz}
-    name: outdent
-    version: 0.5.0
     dev: true
 
   registry.npmmirror.com/p-cancelable/3.0.0:

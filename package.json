@@ -12,8 +12,8 @@
     "prepare": "husky install",
     "test": "vitest run",
     "test:w": "vitest",
-    "release": "changeset add && changeset version",
-    "pub": "changeset publish"
+    "release": "changeset add && changeset version && changeset publish",
+    "build": "pnpm -r --filter=./packages/** run build"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",
@@ -24,6 +24,7 @@
     "@dus/eslint": "workspace:*",
     "@dus/gzip-public": "workspace:*",
     "@dus/types": "workspace:*",
+    "@types/lodash": "^4.14.182",
     "@types/lodash.clonedeep": "^4.5.7",
     "@types/lodash.debounce": "^4.0.7",
     "@types/lodash.merge": "^4.6.7",
@@ -38,6 +39,7 @@
     "jsdom": "^20.0.0",
     "lint-staged": "^12.5.0",
     "npm-check-updates": "^15.2.1",
+    "outdent": "^0.8.0",
     "postcss": "^8.4.14",
     "postcss-nested": "^5.0.6",
     "prettier": "^2.7.1",
@@ -51,6 +53,7 @@
     "@iconify/json": "^2.1.73",
     "@vue/test-utils": "^2.0.2",
     "@vueuse/core": "^8.9.0",
+    "lodash.debounce": "^4.0.8",
     "unplugin-icons": "^0.14.7",
     "vue": "^3.2.37"
   }
