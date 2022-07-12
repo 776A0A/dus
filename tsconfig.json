@@ -19,7 +19,7 @@
     "types": [
       "node",
       "unplugin-icons/types/vue",
-      "@dus"
+      "@dus/types"
     ],
     "skipLibCheck": true,
     "allowJs": true,
