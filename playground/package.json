@@ -1,6 +1,6 @@
 {
   "name": "@dus/playground",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -9,7 +9,7 @@
   "dependencies": {
     "@dus/slider": "workspace:^",
     "@dus/styles": "workspace:^",
-    "@dus/tools": "workspace:^1.0.3",
+    "@dus/tools": "workspace:^1.0.4",
     "@vue/runtime-core": "^3.2.37",
     "axios": "^0.27.2",
     "pinia": "^2.0.15",

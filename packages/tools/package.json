@@ -1,6 +1,6 @@
 {
   "name": "@dus/tools",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -14,16 +14,12 @@
   "author": "Darenome",
   "license": "ISC",
   "devDependencies": {
-    "@types/lodash": "^4.14.182",
-    "@types/lodash.debounce": "^4.0.7",
     "@types/spark-md5": "^3.0.2",
-    "lodash.debounce": "^4.0.8",
     "qs": "^6.11.0",
     "spark-md5": "^3.0.2",
     "split.js": "^1.6.5"
   },
   "peerDependencies": {
-    "lodash.debounce": "^4.0.8",
     "qs": "^6.11.0",
     "spark-md5": "^3.0.2",
     "split.js": "^1.6.5"

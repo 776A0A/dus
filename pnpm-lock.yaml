@@ -230,18 +230,12 @@ importers:
 
   packages/tools:
     specifiers:
-      '@types/lodash': ^4.14.182
-      '@types/lodash.debounce': ^4.0.7
       '@types/spark-md5': ^3.0.2
-      lodash.debounce: ^4.0.8
       qs: ^6.11.0
       spark-md5: ^3.0.2
       split.js: ^1.6.5
     devDependencies:
-      '@types/lodash': 4.14.182
-      '@types/lodash.debounce': 4.0.7
       '@types/spark-md5': registry.npmmirror.com/@types/spark-md5/3.0.2
-      lodash.debounce: 4.0.8
       qs: 6.11.0
       spark-md5: registry.npmmirror.com/spark-md5/3.0.2
       split.js: registry.npmmirror.com/split.js/1.6.5
@@ -849,12 +843,6 @@ packages:
 
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
-    dev: true
-
-  /@types/lodash.debounce/4.0.7:
-    resolution: {integrity: sha512-X1T4wMZ+gT000M2/91SYj0d/7JfeNZ9PeeOldSNoE/lunLeQXKvkmIumI29IaKMotU/ln/McOIvgzZcQ/3TrSA==}
-    dependencies:
-      '@types/lodash': 4.14.182
     dev: true
 
   /@types/lodash/4.14.182:
@@ -2706,6 +2694,7 @@ packages:
 
   /lodash.debounce/4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
+    dev: false
 
   /lodash.get/4.4.2:
     resolution: {integrity: sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==}

@@ -1,6 +1,6 @@
 {
   "name": "@dus/slider",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "./index.ts",
   "scripts": {
@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@dus/test-utils": "workspace:^",
-    "@dus/vite": "workspace:^1.0.5",
+    "@dus/vite": "workspace:^1.0.6",
     "vue": "^3.2.37"
   },
   "peerDependencies": {
