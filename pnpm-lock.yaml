@@ -1126,7 +1126,7 @@ packages:
       '@unocss/scope': 0.44.0
       '@unocss/transformer-directives': 0.44.0
       magic-string: 0.26.2
-      vite: registry.npmmirror.com/vite/2.9.13
+      vite: 2.9.13
     dev: true
 
   /@vitejs/plugin-vue-jsx/1.3.10:
@@ -1151,7 +1151,7 @@ packages:
       vue: ^3.2.25
     dependencies:
       vite: 2.9.13
-      vue: registry.npmmirror.com/vue/3.2.37
+      vue: 3.2.37
     dev: true
 
   /@vue/babel-helper-vue-transform-on/1.0.2:
@@ -3866,7 +3866,7 @@ packages:
       '@vue/composition-api':
         optional: true
     dependencies:
-      vue: registry.npmmirror.com/vue/3.2.37
+      vue: 3.2.37
 
   /vue-eslint-parser/9.0.3_eslint@8.19.0:
     resolution: {integrity: sha512-yL+ZDb+9T0ELG4VIFo/2anAOz8SvBdlqEnQnvJ3M7Scq56DvtjY0VY88bByRZB0D4J0u8olBcfrXTVONXsh4og==}
@@ -3892,7 +3892,7 @@ packages:
       vue: ^3.2.0
     dependencies:
       '@vue/devtools-api': 6.2.0
-      vue: registry.npmmirror.com/vue/3.2.37
+      vue: 3.2.37
 
   /vue-template-compiler/2.7.4:
     resolution: {integrity: sha512-FgaeXI80FzhtDEsixq3WBrHLWpU2gzLb2DFusm62TrmCQyETsnUp0kTLpbExrTUw7g5YOnRf+xkh73nuEX+jGQ==}
