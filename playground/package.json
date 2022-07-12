@@ -1,6 +1,6 @@
 {
   "name": "@dus/playground",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "author": "Dus",
   "license": "MIT",
   "description": "@dus/playground",
@@ -21,7 +21,7 @@
   "dependencies": {
     "@dus/slider": "workspace:*",
     "@dus/styles": "workspace:*",
-    "@dus/tools": "workspace:*2.0.0",
+    "@dus/tools": "workspace:2.0.1",
     "@vue/runtime-core": "^3.2.37",
     "axios": "^0.27.2",
     "pinia": "^2.0.15",

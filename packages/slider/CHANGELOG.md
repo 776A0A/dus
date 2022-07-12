@@ -1,5 +1,14 @@
 # @dus/slider
 
+## 1.0.7
+
+### Patch Changes
+
+- update package.json config
+- Updated dependencies
+  - @dus/styles@1.1.3
+  - @dus/tools@2.0.1
+
 ## 1.0.6
 
 ### Patch Changes
