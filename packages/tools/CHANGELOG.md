@@ -1,5 +1,11 @@
 # @dus/tools
 
+## 2.0.0
+
+### Major Changes
+
+- 使用未打包的版本发布
+
 ## 1.1.0
 
 ### Minor Changes

@@ -1,5 +1,7 @@
 {
   "version": "0.0.0",
+  "private": true,
+  "author": "Dus",
   "engines": {
     "node": ">=16.14.0"
   },
@@ -21,9 +23,9 @@
     "@changesets/types": "^5.0.0",
     "@commitlint/cli": "^16.3.0",
     "@commitlint/config-conventional": "^16.2.4",
-    "@dus/eslint": "workspace:^",
-    "@dus/gzip-public": "workspace:^",
-    "@dus/types": "workspace:^",
+    "@dus/eslint": "workspace:*",
+    "@dus/gzip-public": "workspace:*",
+    "@dus/types": "workspace:*",
     "@types/lodash": "^4.14.182",
     "@types/lodash.clonedeep": "^4.5.7",
     "@types/lodash.debounce": "^4.0.7",

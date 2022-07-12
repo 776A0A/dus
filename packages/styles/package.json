@@ -2,11 +2,18 @@
   "name": "@dus/styles",
   "version": "1.1.2",
   "main": "index.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "Dus",
+  "license": "MIT",
+  "description": "@dus/styles",
+  "homepage": "https://github.com/776A0A/dus/tree/main/packages/styles",
+  "bugs": {
+    "url": "https://github.com/776A0A/dus/issues"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/776A0A/dus.git",
+    "directory": "packages/styles"
+  },
   "devDependencies": {
     "@unocss/preset-icons": "^0.44.0",
     "@unocss/preset-uno": "^0.44.0",
