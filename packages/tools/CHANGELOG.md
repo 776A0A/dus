@@ -1,5 +1,11 @@
 # @dus/tools
 
+## 1.1.0
+
+### Minor Changes
+
+- 删除所有 reload 相关工具
+
 ## 1.0.4
 
 ### Patch Changes
