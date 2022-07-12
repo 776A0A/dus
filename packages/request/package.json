@@ -1,6 +1,6 @@
 {
   "name": "@dus/request",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.ts",
   "scripts": {
@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dus/tools": "workspace:*",
+    "@dus/tools": "workspace:^",
     "axios": "^0.27.2",
     "lodash.merge": "^4.6.2"
   }

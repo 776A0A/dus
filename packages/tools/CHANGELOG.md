@@ -1,5 +1,11 @@
 # @dus/tools
 
+## 1.0.3
+
+### Patch Changes
+
+- update build commmand
+
 ## 1.0.2
 
 ### Patch Changes

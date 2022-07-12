@@ -1,10 +1,13 @@
 import split from 'split.js'
+import { callInSafe } from './callInSafe'
+import { logError } from './logError'
 
 interface SplitScreen {
   (getElements: () => (HTMLElement | string)[], options?: split.Options): {
     open: VoidFunction
     close: VoidFunction
   }
+
   createGutter: typeof createGutter
 }
 
@@ -28,8 +31,13 @@ const splitScreen: SplitScreen = (getElements, options) => {
   }
 
   const close = () => {
-    splitIns?.destroy()
-    splitIns = undefined
+    callInSafe(
+      () => {
+        splitIns?.destroy()
+        splitIns = undefined
+      },
+      () => logError('----- From splitScreen, should be ignored. -----')
+    )
   }
 
   return { open, close }

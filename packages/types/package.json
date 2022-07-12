@@ -1,12 +1,15 @@
 {
   "name": "@dus/types",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "./types.d.ts",
   "types": "./types.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "types.d.ts"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC"
