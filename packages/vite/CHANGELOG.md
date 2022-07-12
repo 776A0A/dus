@@ -1,5 +1,11 @@
 # @dus/vite
 
+## 1.0.5
+
+### Patch Changes
+
+- update build commmand
+
 ## 1.0.4
 
 ### Patch Changes

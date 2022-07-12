@@ -1,11 +1,16 @@
 {
   "name": "@dus/slider",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "index.ts",
+    "Slider.vue",
+    "utils.ts"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",

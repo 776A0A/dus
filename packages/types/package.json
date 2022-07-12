@@ -1,6 +1,6 @@
 {
   "name": "@dus/types",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "./types.d.ts",
   "types": "./types.d.ts",
