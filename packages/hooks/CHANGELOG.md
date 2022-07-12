@@ -1,5 +1,12 @@
 # @dus/hooks
 
+## 1.0.4
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@1.0.4
+
 ## 1.0.3
 
 ### Patch Changes

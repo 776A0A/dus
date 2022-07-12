@@ -1,5 +1,11 @@
 # @dus/tools
 
+## 1.0.4
+
+### Patch Changes
+
+- 优化 tools 打包
+
 ## 1.0.3
 
 ### Patch Changes

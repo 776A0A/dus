@@ -1,5 +1,13 @@
 # @dus/slider
 
+## 1.0.4
+
+### Patch Changes
+
+- 优化 tools 打包
+- Updated dependencies
+  - @dus/tools@1.0.4
+
 ## 1.0.3
 
 ### Patch Changes
