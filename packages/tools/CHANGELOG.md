@@ -1,5 +1,11 @@
 # @dus/tools
 
+## 2.0.3
+
+### Patch Changes
+
+- 修改依赖类型
+
 ## 2.0.2
 
 ### Patch Changes
