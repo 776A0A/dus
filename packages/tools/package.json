@@ -1,11 +1,19 @@
 {
   "name": "@dus/tools",
-  "version": "2.0.3",
-  "main": "./dist/index.js",
+  "version": "2.0.5",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "types": ".index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./index.d.ts"
+    }
+  },
   "files": [
-    "dist"
+    "dist",
+    "*.d.ts"
   ],
   "author": "Dus",
   "license": "MIT",
@@ -20,7 +28,8 @@
     "directory": "packages/tools"
   },
   "scripts": {
-    "build": "tsup src/* --format esm,cjs --dts src/index.ts --clean"
+    "build": "tsup src/* --format esm,cjs --dts src/index.ts --clean",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@types/qs": "^6.9.7",

@@ -1,5 +1,26 @@
 # @dus/router-helper
 
+## 1.0.12
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.5
+
+## 1.0.11
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.5
+
+## 1.0.10
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.4
+
 ## 1.0.9
 
 ### Patch Changes

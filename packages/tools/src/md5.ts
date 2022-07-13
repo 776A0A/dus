@@ -1,6 +1,4 @@
-import Md5 from 'spark-md5'
-
-const AB = Md5.ArrayBuffer
+import { ArrayBuffer as AB } from 'spark-md5'
 
 export function md5(blob: Blob) {
   return new Promise<string>((resolve, reject) => {
