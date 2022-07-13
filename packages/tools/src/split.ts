@@ -1,9 +1,9 @@
-import split from 'split.js'
+import Split from 'split.js'
 import { callInSafe } from './callInSafe'
 import { logError } from './logError'
 
 interface SplitScreen {
-  (getElements: () => (HTMLElement | string)[], options?: split.Options): {
+  (getElements: () => (HTMLElement | string)[], options?: Split.Options): {
     open: VoidFunction
     close: VoidFunction
   }
@@ -11,11 +11,11 @@ interface SplitScreen {
   createGutter: typeof createGutter
 }
 
-const splitScreen: SplitScreen = (getElements, options) => {
-  let splitIns: split.Instance | undefined = undefined
+const split: SplitScreen = (getElements, options) => {
+  let splitIns: Split.Instance | undefined = undefined
 
   const open = () => {
-    splitIns = split(
+    splitIns = Split(
       getElements(),
       Object.assign(
         {
@@ -43,9 +43,9 @@ const splitScreen: SplitScreen = (getElements, options) => {
   return { open, close }
 }
 
-splitScreen.createGutter = createGutter
+split.createGutter = createGutter
 
-export { splitScreen }
+export { split as splitScreen }
 
 function createGutter(gutterStyle?: Record<string, string | number>) {
   const gutterBgImage = `url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==')`
