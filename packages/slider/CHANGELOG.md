@@ -1,5 +1,12 @@
 # @dus/slider
 
+## 1.0.8
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.2
+
 ## 1.0.7
 
 ### Patch Changes

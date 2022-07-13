@@ -1,5 +1,11 @@
 # @dus/tools
 
+## 2.0.2
+
+### Patch Changes
+
+- build package
+
 ## 2.0.1
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@dus/slider",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "./index.ts",
   "description": "@dus/slider",
   "homepage": "https://github.com/776A0A/dus/tree/main/packages/slider",
@@ -26,7 +26,7 @@
   "dependencies": {
     "@dus/styles": "workspace:*",
     "@dus/tools": "workspace:*",
-    "@vueuse/core": "^8.9.1"
+    "@vueuse/core": "^8.9.2"
   },
   "devDependencies": {
     "@dus/test-utils": "workspace:*",

@@ -1,6 +1,6 @@
 {
   "name": "@dus/hooks",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "index.ts",
   "author": "Dus",
   "license": "MIT",
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@dus/tools": "workspace:*",
-    "@vueuse/core": "^8.9.1",
+    "@vueuse/core": "^8.9.2",
     "lodash.debounce": "^4.0.8"
   },
   "devDependencies": {
