@@ -1,6 +1,6 @@
 {
   "name": "@dus/storage",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "main": "index.ts",
   "author": "Dus",
   "license": "MIT",
