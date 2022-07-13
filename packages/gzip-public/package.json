@@ -1,15 +1,21 @@
 {
   "name": "@dus/gzip-public",
-  "version": "1.0.2",
-  "description": "",
+  "version": "1.0.3",
   "bin": {
     "gp": "./index.js"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "Dus",
+  "license": "MIT",
+  "description": "@dus/gzip-public",
+  "homepage": "https://github.com/776A0A/dus/tree/main/packages/gzip-public",
+  "bugs": {
+    "url": "https://github.com/776A0A/dus/issues"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/776A0A/dus.git",
+    "directory": "packages/gzip-public"
+  },
   "dependencies": {
     "chalk": "^5.0.1",
     "compressing": "^1.6.2"

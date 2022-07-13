@@ -1,15 +1,21 @@
 {
   "name": "@dus/request",
-  "version": "1.0.5",
-  "description": "",
+  "version": "1.0.8",
   "main": "index.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "Dus",
+  "license": "MIT",
+  "description": "@dus/request",
+  "homepage": "https://github.com/776A0A/dus/tree/main/packages/request",
+  "bugs": {
+    "url": "https://github.com/776A0A/dus/issues"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/776A0A/dus.git",
+    "directory": "packages/request"
+  },
   "dependencies": {
-    "@dus/tools": "workspace:^",
+    "@dus/tools": "workspace:*",
     "axios": "^0.27.2",
     "lodash.merge": "^4.6.2"
   }

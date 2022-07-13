@@ -1,5 +1,11 @@
 # @dus/vite
 
+## 1.0.7
+
+### Patch Changes
+
+- update package.json config
+
 ## 1.0.6
 
 ### Patch Changes

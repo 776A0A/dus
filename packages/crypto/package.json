@@ -1,11 +1,23 @@
 {
   "name": "@dus/crypto",
-  "version": "1.0.2",
-  "description": "",
+  "version": "1.0.3",
   "main": "index.ts",
   "scripts": {},
-  "author": "",
-  "license": "ISC",
+  "author": "Dus",
+  "license": "MIT",
+  "description": "@dus/crypto",
+  "homepage": "https://github.com/776A0A/dus/tree/main/packages/crypto",
+  "bugs": {
+    "url": "https://github.com/776A0A/dus/issues"
+  },
+  "files": [
+    "index.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/776A0A/dus.git",
+    "directory": "packages/crypto"
+  },
   "dependencies": {
     "jsencrypt": "^3.2.1"
   }

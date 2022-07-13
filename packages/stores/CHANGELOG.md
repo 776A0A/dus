@@ -1,5 +1,33 @@
 # @dus/stores
 
+## 1.0.5
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.2
+  - @dus/hooks@1.0.8
+  - @dus/storage@1.0.8
+
+## 1.0.4
+
+### Patch Changes
+
+- update package.json config
+- Updated dependencies
+  - @dus/hooks@1.0.7
+  - @dus/storage@1.0.7
+  - @dus/tools@2.0.1
+
+## 1.0.3
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.0
+  - @dus/hooks@1.0.6
+  - @dus/storage@1.0.6
+
 ## 1.0.2
 
 ### Patch Changes

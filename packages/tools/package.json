@@ -1,24 +1,32 @@
 {
   "name": "@dus/tools",
-  "version": "1.1.0",
-  "description": "",
-  "main": "./src/index.ts",
+  "version": "2.0.2",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "files": [
-    "src"
+    "dist"
   ],
+  "author": "Dus",
+  "license": "MIT",
+  "description": "@dus/tools",
+  "homepage": "https://github.com/776A0A/dus/tree/main/packages/tools",
+  "bugs": {
+    "url": "https://github.com/776A0A/dus/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/776A0A/dus.git",
+    "directory": "packages/tools"
+  },
   "scripts": {
-    "build": "tsup src/* --format esm,cjs --dts-resolve --minify --clean"
+    "build": "tsup src/* --format esm,cjs --dts src/index.ts --clean"
   },
-  "keywords": [],
-  "author": "Darenome",
-  "license": "ISC",
   "devDependencies": {
-    "@types/spark-md5": "^3.0.2",
-    "qs": "^6.11.0",
-    "spark-md5": "^3.0.2",
-    "split.js": "^1.6.5"
+    "@types/qs": "^6.9.7",
+    "@types/spark-md5": "^3.0.2"
   },
-  "peerDependencies": {
+  "dependencies": {
     "qs": "^6.11.0",
     "spark-md5": "^3.0.2",
     "split.js": "^1.6.5"

@@ -1,5 +1,31 @@
 # @dus/playground
 
+## 1.0.10
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.2
+  - @dus/slider@1.0.8
+
+## 1.0.9
+
+### Patch Changes
+
+- update package.json config
+- Updated dependencies
+  - @dus/slider@1.0.7
+  - @dus/styles@1.1.3
+  - @dus/tools@2.0.1
+
+## 1.0.8
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.0
+  - @dus/slider@1.0.6
+
 ## 1.0.7
 
 ### Patch Changes
