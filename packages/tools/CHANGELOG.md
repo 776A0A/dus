@@ -1,5 +1,11 @@
 # @dus/tools
 
+## 2.0.6
+
+### Patch Changes
+
+- update boundle
+
 ## 2.0.5
 
 ### Patch Changes
