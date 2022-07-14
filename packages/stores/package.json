@@ -1,6 +1,6 @@
 {
   "name": "@dus/stores",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "main": "index.ts",
   "author": "Dus",
   "license": "MIT",
@@ -15,9 +15,9 @@
     "directory": "packages/stores"
   },
   "dependencies": {
-    "@dus/hooks": "workspace:1.0.14",
-    "@dus/storage": "workspace:1.0.14",
-    "@dus/tools": "workspace:2.0.7"
+    "@dus/hooks": "workspace:1.0.15",
+    "@dus/storage": "workspace:1.0.15",
+    "@dus/tools": "workspace:2.0.8"
   },
   "devDependencies": {
     "pinia": "^2.0.16",

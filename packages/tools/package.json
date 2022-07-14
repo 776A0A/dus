@@ -1,6 +1,6 @@
 {
   "name": "@dus/tools",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "main": "./src/index.ts",
   "author": "Dus",
   "license": "MIT",
