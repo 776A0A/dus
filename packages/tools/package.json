@@ -1,20 +1,7 @@
 {
   "name": "@dus/tools",
   "version": "2.0.7",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
-    }
-  },
-  "files": [
-    "dist",
-    "*.d.ts"
-  ],
+  "main": "./src/index.ts",
   "author": "Dus",
   "license": "MIT",
   "description": "@dus/tools",

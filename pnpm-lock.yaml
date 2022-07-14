@@ -187,9 +187,9 @@ importers:
 
   packages/stores:
     specifiers:
-      '@dus/hooks': workspace:1.0.9
-      '@dus/storage': workspace:1.0.9
-      '@dus/tools': workspace:2.0.3
+      '@dus/hooks': workspace:1.0.14
+      '@dus/storage': workspace:1.0.14
+      '@dus/tools': workspace:2.0.7
       pinia: ^2.0.16
       vue: ^3.2.37
     dependencies:
@@ -1303,7 +1303,7 @@ packages:
       vue: ^3.2.25
     dependencies:
       vite: 2.9.14
-      vue: registry.npmmirror.com/vue/3.2.37
+      vue: 3.2.37
     dev: true
 
   /@volar/code-gen/0.38.5:
@@ -1455,7 +1455,7 @@ packages:
       '@types/web-bluetooth': 0.0.14
       '@vueuse/metadata': 8.9.2
       '@vueuse/shared': 8.9.2_vue@3.2.37
-      vue: registry.npmmirror.com/vue/3.2.37
+      vue: 3.2.37
       vue-demi: 0.13.2_vue@3.2.37
     dev: false
 
@@ -1474,7 +1474,7 @@ packages:
       vue:
         optional: true
     dependencies:
-      vue: registry.npmmirror.com/vue/3.2.37
+      vue: 3.2.37
       vue-demi: 0.13.2_vue@3.2.37
     dev: false
 
@@ -5317,7 +5317,7 @@ packages:
       '@vue/composition-api':
         optional: true
     dependencies:
-      vue: registry.npmmirror.com/vue/3.2.37
+      vue: 3.2.37
 
   /vue-eslint-parser/9.0.3_eslint@8.19.0:
     resolution: {integrity: sha512-yL+ZDb+9T0ELG4VIFo/2anAOz8SvBdlqEnQnvJ3M7Scq56DvtjY0VY88bByRZB0D4J0u8olBcfrXTVONXsh4og==}
