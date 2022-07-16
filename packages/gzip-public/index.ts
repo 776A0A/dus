@@ -5,19 +5,35 @@ import chalk from 'chalk'
 
 const rootPath = path.resolve(process.cwd())
 
-compress()
+const distPath = resolve('./dist')
+const publicPath = resolve('./public')
 
-async function compress() {
+compress(publicPath)
+
+async function compress(dirPath: string) {
   try {
-    const files = fs.readdirSync(resolve('./public'))
-    const absPathOfFiles = files.map((file) => resolve(`./public/${file}`))
+    const files = fs.readdirSync(dirPath)
+    const absPathOfFiles = files.map((file) => resolve(`${dirPath}/${file}`))
 
     await Promise.all(
-      absPathOfFiles.map((item, idx) => {
-        return compressing.gzip.compressFile(
-          item,
-          resolve(`./dist/${files[idx].replace(/\..+/, '.gz')}`)
-        )
+      absPathOfFiles.map((p) => {
+        if (fs.statSync(p).isDirectory()) return compress(p)
+        else {
+          const extLength = p.split('.').pop()?.length
+
+          if (!extLength) return
+
+          const filePathOfRaw = (p.slice(0, -extLength) + 'gz').replace(
+            publicPath,
+            distPath
+          )
+
+          const parentFolder = path.resolve(filePathOfRaw, '..')
+
+          fs.mkdirSync(parentFolder, { recursive: true })
+
+          return compressing.gzip.compressFile(p, path.resolve(filePathOfRaw))
+        }
       })
     )
   } catch (error) {
