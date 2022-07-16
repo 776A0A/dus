@@ -1,5 +1,65 @@
 # @dus/tools
 
+## 2.0.8
+
+### Patch Changes
+
+- delete package.json module import
+
+## 2.0.7
+
+### Patch Changes
+
+- upadte type file
+
+## 2.0.6
+
+### Patch Changes
+
+- update boundle
+
+## 2.0.5
+
+### Patch Changes
+
+- update boundle
+
+## 2.0.5
+
+### Patch Changes
+
+- update boundle
+
+## 2.0.4
+
+### Patch Changes
+
+- test boundle
+
+## 2.0.3
+
+### Patch Changes
+
+- 修改依赖类型
+
+## 2.0.2
+
+### Patch Changes
+
+- build package
+
+## 2.0.1
+
+### Patch Changes
+
+- update package.json config
+
+## 2.0.0
+
+### Major Changes
+
+- 使用未打包的版本发布
+
 ## 1.1.0
 
 ### Minor Changes

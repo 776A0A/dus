@@ -1,5 +1,76 @@
 # @dus/router-helper
 
+## 1.0.15
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.8
+
+## 1.0.14
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.7
+
+## 1.0.13
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.6
+
+## 1.0.12
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.5
+
+## 1.0.11
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.5
+
+## 1.0.10
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.4
+
+## 1.0.9
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.3
+
+## 1.0.8
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.2
+
+## 1.0.7
+
+### Patch Changes
+
+- update package.json config
+- Updated dependencies
+  - @dus/tools@2.0.1
+
+## 1.0.6
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.0
+
 ## 1.0.5
 
 ### Patch Changes

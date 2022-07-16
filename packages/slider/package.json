@@ -1,8 +1,12 @@
 {
   "name": "@dus/slider",
-  "version": "1.0.5",
-  "description": "",
+  "version": "1.0.15",
   "main": "./index.ts",
+  "description": "@dus/slider",
+  "homepage": "https://github.com/776A0A/dus/tree/main/packages/slider",
+  "bugs": {
+    "url": "https://github.com/776A0A/dus/issues"
+  },
   "scripts": {
     "build": "rimraf ./dist && vite build"
   },
@@ -12,16 +16,21 @@
     "utils.ts"
   ],
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Dus",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/776A0A/dus.git",
+    "directory": "packages/slider"
+  },
   "dependencies": {
-    "@dus/styles": "workspace:^",
-    "@dus/tools": "workspace:^",
-    "@vueuse/core": "^8.9.1"
+    "@dus/styles": "workspace:*",
+    "@dus/tools": "workspace:*",
+    "@vueuse/core": "^8.9.2"
   },
   "devDependencies": {
-    "@dus/test-utils": "workspace:^",
-    "@dus/vite": "workspace:^1.0.6",
+    "@dus/test-utils": "workspace:*",
+    "@dus/vite": "workspace:1.0.7",
     "vue": "^3.2.37"
   },
   "peerDependencies": {

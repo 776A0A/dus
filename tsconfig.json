@@ -26,16 +26,12 @@
     "jsx": "preserve",
     "noImplicitOverride": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
-    // "paths": {
-    //   "lodash": [
-    //     "node_modules/@types/lodash"
-    //   ]
-    // }
+    "baseUrl": "."
   },
   "include": [
     "packages",
-    "env.d.ts"
+    "env.d.ts",
+    "playground"
   ],
   "exclude": [
     "node_modules",

@@ -1,16 +1,21 @@
 {
   "name": "@dus/router-helper",
-  "version": "1.0.5",
-  "description": "",
+  "version": "1.0.15",
   "main": "index.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "Dus",
+  "license": "MIT",
+  "description": "@dus/router-helper",
+  "homepage": "https://github.com/776A0A/dus/tree/main/packages/router-helper",
+  "bugs": {
+    "url": "https://github.com/776A0A/dus/issues"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/776A0A/dus.git",
+    "directory": "packages/router-helper"
+  },
   "dependencies": {
-    "@dus/tools": "workspace:^"
+    "@dus/tools": "workspace:*"
   },
   "devDependencies": {
     "vue": "^3.2.37",

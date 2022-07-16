@@ -1,5 +1,17 @@
 # @dus/gzip-public
 
+## 1.1.0
+
+### Minor Changes
+
+- gzip nested folder
+
+## 1.0.3
+
+### Patch Changes
+
+- update package.json config
+
 ## 1.0.2
 
 ### Patch Changes

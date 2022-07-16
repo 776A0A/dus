@@ -1,12 +1,20 @@
 {
   "name": "@dus/storage",
-  "version": "1.0.5",
-  "description": "",
+  "version": "1.0.15",
   "main": "index.ts",
-  "scripts": {},
-  "author": "",
-  "license": "ISC",
+  "author": "Dus",
+  "license": "MIT",
+  "description": "@dus/storage",
+  "homepage": "https://github.com/776A0A/dus/tree/main/packages/storage",
+  "bugs": {
+    "url": "https://github.com/776A0A/dus/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/776A0A/dus.git",
+    "directory": "packages/storage"
+  },
   "dependencies": {
-    "@dus/tools": "workspace:^"
+    "@dus/tools": "workspace:*"
   }
 }

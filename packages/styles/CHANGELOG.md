@@ -1,5 +1,11 @@
 # @dus/styles
 
+## 1.1.3
+
+### Patch Changes
+
+- update package.json config
+
 ## 1.1.2
 
 ### Patch Changes

@@ -1,16 +1,22 @@
 {
   "name": "@dus/hooks",
-  "version": "1.0.5",
-  "description": "",
+  "version": "1.0.15",
   "main": "index.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "Dus",
+  "license": "MIT",
+  "description": "@dus/hooks",
+  "homepage": "https://github.com/776A0A/dus/tree/main/packages/hooks",
+  "bugs": {
+    "url": "https://github.com/776A0A/dus/issues"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/776A0A/dus.git",
+    "directory": "packages/hooks"
+  },
   "dependencies": {
-    "@dus/tools": "workspace:^",
-    "@vueuse/core": "^8.9.1",
+    "@dus/tools": "workspace:*",
+    "@vueuse/core": "^8.9.2",
     "lodash.debounce": "^4.0.8"
   },
   "devDependencies": {
