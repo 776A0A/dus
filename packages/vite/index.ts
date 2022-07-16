@@ -77,7 +77,10 @@ export function getBasePlugins(): PluginOption[] {
     vue(),
     vueJsx(),
     Unocss(),
-    gzip({ filter: /\.(js|mjs|json|css|html|dat|png|svg)$/ }),
+    gzip({
+      filter:
+        /\.(js|mjs|json|css|html|dat|png|jpg|jpeg|ico|webp|svg|ttf|woff|woff2)$/,
+    }),
     svgLoader(),
     visualizer({ gzipSize: true }),
     Components({ dts: true }),
