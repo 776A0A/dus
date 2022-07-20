@@ -17,6 +17,7 @@ type ConvertObjName = <
  * @returns 替换后的对象，源对象中被替换的key将会删除，同时保留类型
  */
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 export const convertNames: ConvertObjName = (obj, namesMap, options) => {
   if (!obj || typeof obj !== 'object') {
     return obj
