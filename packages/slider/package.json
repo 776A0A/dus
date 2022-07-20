@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@dus/test-utils": "workspace:*",
-    "@dus/vite": "workspace:1.0.7",
+    "@dus/vite": "workspace:1.0.8",
     "vue": "^3.2.37"
   },
   "peerDependencies": {
