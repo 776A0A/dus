@@ -1,5 +1,11 @@
 # @dus/tools
 
+## 2.0.9
+
+### Patch Changes
+
+- convertNames 可递归替换属性名
+
 ## 2.0.8
 
 ### Patch Changes
