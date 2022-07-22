@@ -51,4 +51,91 @@ describe('convertNames', () => {
 
     expect(newObj).toEqual({ name: 'xx', newAge: 11 })
   })
+
+  describe('deep', () => {
+    const obj = {
+      name: 'yyy',
+      age: 12,
+      children: [{ name: 'yyy child', age: 2 }],
+    }
+
+    it('可传入第三个参数，递归转换名称，默认子属性名称为 children 的数组', () => {
+      const newObj = convertNames(
+        obj,
+        { name: 'fullName', age: 'years old' },
+        { deep: true }
+      )
+
+      expect(newObj).toEqual({
+        fullName: 'yyy',
+        'years old': 12,
+        children: [{ fullName: 'yyy child', 'years old': 2 }],
+      })
+    })
+
+    it('更多的嵌套', () => {
+      const obj = {
+        name: 'yyy',
+        age: 12,
+        children: [
+          {
+            name: 'yyy child',
+            age: 2,
+            children: [{ name: 'yyy child 3', age: 0 }],
+          },
+        ],
+      }
+
+      const newObj = convertNames(
+        obj,
+        { name: 'fullName', age: 'years old' },
+        { deep: true }
+      )
+
+      expect(newObj).toEqual({
+        fullName: 'yyy',
+        'years old': 12,
+        children: [
+          {
+            fullName: 'yyy child',
+            'years old': 2,
+            children: [{ fullName: 'yyy child 3', 'years old': 0 }],
+          },
+        ],
+      })
+    })
+
+    it('传入 childKey', () => {
+      const obj = {
+        name: 'yyy',
+        age: 12,
+        c: [{ name: 'yyy child', age: 2 }],
+      }
+      const newObj = convertNames(
+        obj,
+        { name: 'fullName' },
+        { deep: true, childKey: 'c' }
+      )
+
+      expect(newObj).toEqual({
+        fullName: 'yyy',
+        age: 12,
+        c: [{ fullName: 'yyy child', age: 2 }],
+      })
+    })
+
+    it('当子属性名称也需要被转换时', () => {
+      const newObj = convertNames(
+        obj,
+        { name: 'fullName', children: 'childNodes' },
+        { deep: true, childKey: 'childNodes' }
+      )
+
+      expect(newObj).toEqual({
+        fullName: 'yyy',
+        age: 12,
+        childNodes: [{ fullName: 'yyy child', age: 2 }],
+      })
+    })
+  })
 })

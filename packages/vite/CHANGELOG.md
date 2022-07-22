@@ -1,5 +1,11 @@
 # @dus/vite
 
+## 1.0.8
+
+### Patch Changes
+
+- support more gzip file type
+
 ## 1.0.7
 
 ### Patch Changes

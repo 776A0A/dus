@@ -1,5 +1,35 @@
 # @dus/tools
 
+## 2.0.13
+
+### Patch Changes
+
+- rename some utils
+
+## 2.0.12
+
+### Patch Changes
+
+- rename sleep -> wait
+
+## 2.0.11
+
+### Patch Changes
+
+- add reloadPage util
+
+## 2.0.10
+
+### Patch Changes
+
+- try use boundle
+
+## 2.0.9
+
+### Patch Changes
+
+- convertNames 可递归替换属性名
+
 ## 2.0.8
 
 ### Patch Changes

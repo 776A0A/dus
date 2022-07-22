@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
-import { sleep } from '../sleep'
+import { wait } from '../wait'
 
-describe('sleep', () => {
+describe('wait', () => {
   it('预计会在指定时间后往后执行', async () => {
     vi.useFakeTimers()
 
@@ -9,7 +9,7 @@ describe('sleep', () => {
 
     const startTime = Date.now()
 
-    sleep(TIME)
+    wait(TIME)
 
     vi.runAllTimers()
 

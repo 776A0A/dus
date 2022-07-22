@@ -1,7 +1,12 @@
 {
   "name": "@dus/tools",
-  "version": "2.0.8",
-  "main": "./src/index.ts",
+  "version": "2.0.13",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "author": "Dus",
   "license": "MIT",
   "description": "@dus/tools",
@@ -15,14 +20,19 @@
     "directory": "packages/tools"
   },
   "scripts": {
-    "build": "tsup src/* --format esm,cjs --dts src/index.ts --clean",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "build": "rimraf ./dist && rollup -c rollup.config.js"
   },
   "devDependencies": {
     "@types/qs": "^6.9.7",
-    "@types/spark-md5": "^3.0.2"
+    "@types/spark-md5": "^3.0.2",
+    "lodash.debounce": "^4.0.8",
+    "qs": "^6.11.0",
+    "spark-md5": "^3.0.2",
+    "split.js": "^1.6.5"
   },
-  "dependencies": {
+  "peerDependencies": {
+    "lodash.debounce": "^4.0.8",
     "qs": "^6.11.0",
     "spark-md5": "^3.0.2",
     "split.js": "^1.6.5"

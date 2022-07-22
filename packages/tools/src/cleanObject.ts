@@ -4,7 +4,7 @@
  * @param {boolean} [options.cleanEmptyString=true] - 是否需要过滤空值，默认 true
  * @returns 过滤后的对象
  */
-export const cleanNullable: <T extends Record<keyof any, any>>(
+export const cleanObject: <T extends Record<keyof any, any>>(
   obj: T,
   options?: { cleanEmptyString?: boolean }
 ) => T = (obj, options = { cleanEmptyString: true }) => {

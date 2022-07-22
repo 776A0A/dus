@@ -1,5 +1,50 @@
 # @dus/stores
 
+## 1.0.17
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.13
+  - @dus/hooks@1.0.20
+  - @dus/storage@1.0.20
+
+## 1.0.16
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.12
+  - @dus/hooks@1.0.19
+  - @dus/storage@1.0.19
+
+## 1.0.15
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.11
+  - @dus/hooks@1.0.18
+  - @dus/storage@1.0.18
+
+## 1.0.14
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.10
+  - @dus/hooks@1.0.17
+  - @dus/storage@1.0.17
+
+## 1.0.13
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.9
+  - @dus/hooks@1.0.16
+  - @dus/storage@1.0.16
+
 ## 1.0.12
 
 ### Patch Changes
