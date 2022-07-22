@@ -1,25 +1,28 @@
-import { defineConfig } from 'rollup'
-import typescript from '@rollup/plugin-typescript'
 import commonjs from '@rollup/plugin-commonjs'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
+import typescript from '@rollup/plugin-typescript'
+import { defineConfig } from 'rollup'
 import dts from 'rollup-plugin-dts'
+import pkg from './package.json'
 
-export default defineConfig({
-  input: './src/index.ts',
-  output: [
-    {
-      format: 'es',
-      file: 'dist/index.mjs',
-    },
-    {
-      format: 'cjs',
-      file: 'dist/index.cjs',
-    },
-    {
-      format: 'es',
-      file: 'dist/index.d.ts',
-    },
-  ],
-  plugins: [commonjs(), typescript(), nodeResolve(), dts()],
+const sharedConfig = {
+  input: 'src/index.ts',
+  plugins: [commonjs(), typescript(), nodeResolve()],
   external: ['qs', 'spark-md5', 'split.js'],
-})
+}
+
+export default defineConfig([
+  {
+    output: [{ file: pkg.module, format: 'es', sourcemap: true }],
+    ...sharedConfig,
+  },
+  {
+    output: [{ file: pkg.main, format: 'cjs', sourcemap: true }],
+    ...sharedConfig,
+  },
+  {
+    input: 'src/index.ts',
+    output: [{ file: pkg.types }],
+    plugins: [dts()],
+  },
+])
