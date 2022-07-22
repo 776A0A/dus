@@ -12,6 +12,21 @@ compress(publicPath)
 
 async function compress(dirPath: string) {
   try {
+    let exist = false
+
+    try {
+      fs.accessSync(dirPath)
+      exist = true
+    } catch (error) {
+      exist = false
+    }
+
+    if (!exist) {
+      console.log(`No public directory exists.`)
+
+      return
+    }
+
     const files = fs.readdirSync(dirPath)
     const absPathOfFiles = files.map((file) => resolve(`${dirPath}/${file}`))
 
