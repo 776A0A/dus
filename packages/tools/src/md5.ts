@@ -1,8 +1,6 @@
-import { ArrayBuffer as AB } from 'spark-md5'
-
 export function md5(blob: Blob) {
-  return new Promise<string>((resolve, reject) => {
-    const spark = new AB()
+  return new Promise<string>(async (resolve, reject) => {
+    const spark = new (await import('spark-md5')).ArrayBuffer()
     const reader = new FileReader()
 
     reader.onload = (e) => {

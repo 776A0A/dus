@@ -1,4 +1,3 @@
-import qs from 'qs'
 import { isFirefox } from './browsers'
 import { callInSafe } from './callInSafe'
 import { callAsyncInSafe } from './callAsyncInSafe'
@@ -49,12 +48,15 @@ async function copyImage(
 
     return copyImageAsBase64(data, resolve, reject)
   } else {
-    return callAsyncInSafe(() => {
+    return callAsyncInSafe(async () => {
       const clipboardData = { [type]: data } as Record<string, any>
 
       if (extraData) {
         const type = 'text/plain'
-        clipboardData[type] = new Blob([qs.stringify(extraData)], { type })
+
+        const { stringify } = await import('qs')
+
+        clipboardData[type] = new Blob([stringify(extraData)], { type })
       }
 
       return navigator.clipboard.write([new ClipboardItem(clipboardData)])
