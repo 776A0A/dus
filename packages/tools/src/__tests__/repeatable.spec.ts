@@ -1,7 +1,7 @@
 import { beforeEach, expect, it, Mock, vi } from 'vitest'
 import { fast } from '../../../test-utils'
 import { repeatable } from '../repeatable'
-import { sleep } from '../sleep'
+import { wait } from '../wait'
 
 let callback: Mock<any, any>
 let re: ReturnType<typeof repeatable>
@@ -18,14 +18,14 @@ it('重复 3 次后停止', async () => {
     re.run()
   })
 
-  await sleep(16)
+  await wait(16)
   expect(callback).toHaveBeenCalledTimes(3)
 })
 
 it('调用 stop 后停止循环', async () => {
   re.run()
 
-  await sleep(20)
+  await wait(20)
 
   re.stop()
 
@@ -34,7 +34,7 @@ it('调用 stop 后停止循环', async () => {
 
 it('不调用 run 将不会开始', async () => {
   vi.useFakeTimers()
-  sleep(100)
+  wait(100)
   vi.runAllTimers()
 
   expect(callback).not.toHaveBeenCalled()
