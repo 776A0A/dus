@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { cleanNullable } from '../cleanNullable'
+import { cleanObject } from '../cleanObject'
 
-describe('cleanNullable', () => {
+describe('cleanObject', () => {
   it('清除空值、null和undefined', () => {
     const obj = {
       a: undefined,
@@ -11,7 +11,7 @@ describe('cleanNullable', () => {
       e: '',
     }
 
-    expect(cleanNullable(obj)).toEqual({ b: 1, d: 2 })
+    expect(cleanObject(obj)).toEqual({ b: 1, d: 2 })
   })
 
   it('NaN、0、false不会清除', () => {
@@ -24,7 +24,7 @@ describe('cleanNullable', () => {
       e: undefined,
     }
 
-    expect(cleanNullable(obj)).toEqual({
+    expect(cleanObject(obj)).toEqual({
       a: 1,
       b: NaN,
       c: 2,
@@ -39,7 +39,7 @@ describe('cleanNullable', () => {
       b: 1,
     }
 
-    expect(cleanNullable(obj)).toEqual({
+    expect(cleanObject(obj)).toEqual({
       a: ' ',
       b: 1,
     })
