@@ -42,7 +42,7 @@ const split: SplitScreen = (getElements, options) => {
         splitIns?.destroy()
         splitIns = undefined
       },
-      () => logError('----- From splitScreen, should be ignored. -----')
+      () => logError('----- From split, should be ignored. -----')
     )
   }
 
