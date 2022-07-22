@@ -8,7 +8,7 @@ import pkg from './package.json'
 const sharedConfig = {
   input: 'src/index.ts',
   plugins: [commonjs(), typescript(), nodeResolve()],
-  external: ['qs', 'spark-md5', 'split.js'],
+  external: ['qs', 'spark-md5', 'split.js', 'lodash.debounce'],
 }
 
 export default defineConfig([
