@@ -1,5 +1,11 @@
 # @dus/tools
 
+## 2.0.10
+
+### Patch Changes
+
+- try use boundle
+
 ## 2.0.9
 
 ### Patch Changes

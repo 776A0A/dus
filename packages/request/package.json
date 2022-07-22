@@ -1,6 +1,6 @@
 {
   "name": "@dus/request",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "main": "index.ts",
   "author": "Dus",
   "license": "MIT",
