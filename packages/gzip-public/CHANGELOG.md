@@ -1,5 +1,11 @@
 # @dus/gzip-public
 
+## 1.1.2
+
+### Patch Changes
+
+- Log message if no public directory exists.
+
 ## 1.1.1
 
 ### Patch Changes

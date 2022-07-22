@@ -1,5 +1,23 @@
 # @dus/tools
 
+## 2.0.13
+
+### Patch Changes
+
+- rename some utils
+
+## 2.0.12
+
+### Patch Changes
+
+- rename sleep -> wait
+
+## 2.0.11
+
+### Patch Changes
+
+- add reloadPage util
+
 ## 2.0.10
 
 ### Patch Changes
