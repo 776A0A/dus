@@ -21,7 +21,7 @@
   },
   "scripts": {
     "prepublishOnly": "npm run build",
-    "build": "rimraf ./dist && rollup -c rollup.config.js"
+    "build": "rimraf ./dist && rollup -c"
   },
   "devDependencies": {
     "@types/qs": "^6.9.7",
