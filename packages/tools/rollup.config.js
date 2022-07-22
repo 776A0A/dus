@@ -12,8 +12,8 @@ export default defineConfig([
       { file: pkg.module, format: 'es', sourcemap: true },
       { file: pkg.main, format: 'cjs', sourcemap: true },
     ],
-    plugins: [commonjs(), typescript(), nodeResolve()],
-    external: ['qs', 'spark-md5', 'split.js', 'lodash.debounce'],
+    plugins: [commonjs(), nodeResolve(), typescript()],
+    external: Object.keys(pkg.peerDependencies),
   },
   {
     input: 'src/index.ts',
