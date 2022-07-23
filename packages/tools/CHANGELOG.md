@@ -1,5 +1,11 @@
 # @dus/tools
 
+## 2.0.14
+
+### Patch Changes
+
+- lazy import some external deps
+
 ## 2.0.13
 
 ### Patch Changes

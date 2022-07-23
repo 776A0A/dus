@@ -1,5 +1,4 @@
-import type { Instance, Options } from 'split.js'
-import Split from 'split.js'
+import Split, { Instance, Options } from 'split.js'
 import { callInSafe } from './callInSafe'
 import { logError } from './logError'
 
@@ -12,11 +11,13 @@ interface SplitScreen {
   createGutter: typeof createGutter
 }
 
+let S: typeof Split | undefined
+
 const split: SplitScreen = (getElements, options) => {
   let splitIns: Instance | undefined = undefined
 
-  const open = () => {
-    splitIns = Split(
+  const open = async () => {
+    const args = [
       getElements(),
       Object.assign(
         {
@@ -27,8 +28,12 @@ const split: SplitScreen = (getElements, options) => {
             }),
         },
         options
-      )
-    )
+      ),
+    ] as const
+
+    splitIns = S
+      ? S(...args)
+      : (S = (await import('split.js')).default)(...args)
   }
 
   const close = () => {
@@ -37,7 +42,7 @@ const split: SplitScreen = (getElements, options) => {
         splitIns?.destroy()
         splitIns = undefined
       },
-      () => logError('----- From splitScreen, should be ignored. -----')
+      () => logError('----- From split, should be ignored. -----')
     )
   }
 

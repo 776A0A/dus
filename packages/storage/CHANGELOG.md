@@ -1,5 +1,12 @@
 # @dus/storage
 
+## 1.0.21
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.14
+
 ## 1.0.20
 
 ### Patch Changes

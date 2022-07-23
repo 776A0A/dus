@@ -22,7 +22,7 @@ async function compress(dirPath: string) {
     }
 
     if (!exist) {
-      console.log(`No public directory exists.`)
+      console.log(`gzip-public: No public directory exists.`)
 
       return
     }
@@ -53,7 +53,7 @@ async function compress(dirPath: string) {
     )
   } catch (error) {
     console.log(error)
-    console.log(chalk.red('I will get the exit code to 1.'))
+    console.log(chalk.red('gzip-public: exit 1'))
   }
 }
 
