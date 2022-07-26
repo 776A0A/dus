@@ -1,5 +1,11 @@
 # @dus/tools
 
+## 2.0.15
+
+### Patch Changes
+
+- add and remove some utils
+
 ## 2.0.14
 
 ### Patch Changes

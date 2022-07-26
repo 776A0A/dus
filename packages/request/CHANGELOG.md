@@ -1,5 +1,12 @@
 # @dus/request
 
+## 1.0.22
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.15
+
 ## 1.0.21
 
 ### Patch Changes

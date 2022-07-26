@@ -1,5 +1,14 @@
 # @dus/stores
 
+## 1.0.19
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/tools@2.0.15
+  - @dus/hooks@1.0.22
+  - @dus/storage@1.0.22
+
 ## 1.0.18
 
 ### Patch Changes
