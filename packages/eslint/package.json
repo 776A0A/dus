@@ -1,6 +1,6 @@
 {
   "name": "@dus/eslint-config",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "main": ".eslintrc.js",
   "author": "Dus",
   "license": "MIT",
