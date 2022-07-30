@@ -1,5 +1,5 @@
 {
-  "name": "@dus/eslint",
+  "name": "@dus/eslint-config",
   "version": "1.0.2",
   "main": ".eslintrc.js",
   "author": "Dus",

@@ -9,7 +9,7 @@ importers:
       '@changesets/types': ^5.0.0
       '@commitlint/cli': ^16.3.0
       '@commitlint/config-conventional': ^16.2.4
-      '@dus/eslint': workspace:*
+      '@dus/eslint-config': workspace:*
       '@dus/gzip-public': workspace:*
       '@dus/types': workspace:*
       '@iconify/json': ^2.1.77
@@ -63,7 +63,7 @@ importers:
       '@changesets/types': 5.0.0
       '@commitlint/cli': registry.npmmirror.com/@commitlint/cli/16.3.0
       '@commitlint/config-conventional': registry.npmmirror.com/@commitlint/config-conventional/16.2.4
-      '@dus/eslint': link:packages/eslint
+      '@dus/eslint-config': link:packages/eslint
       '@dus/gzip-public': link:packages/gzip-public
       '@dus/types': link:packages/types
       '@rollup/plugin-commonjs': 22.0.1_rollup@2.76.0
@@ -200,9 +200,9 @@ importers:
 
   packages/stores:
     specifiers:
-      '@dus/hooks': workspace:1.0.21
-      '@dus/storage': workspace:1.0.21
-      '@dus/tools': workspace:2.0.14
+      '@dus/hooks': workspace:1.0.22
+      '@dus/storage': workspace:1.0.22
+      '@dus/tools': workspace:2.0.15
       pinia: ^2.0.16
       vue: ^3.2.37
     dependencies:

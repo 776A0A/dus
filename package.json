@@ -23,7 +23,7 @@
     "@changesets/types": "^5.0.0",
     "@commitlint/cli": "^16.3.0",
     "@commitlint/config-conventional": "^16.2.4",
-    "@dus/eslint": "workspace:*",
+    "@dus/eslint-config": "workspace:*",
     "@dus/gzip-public": "workspace:*",
     "@dus/types": "workspace:*",
     "@rollup/plugin-commonjs": "^22.0.1",
