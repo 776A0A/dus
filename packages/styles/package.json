@@ -14,7 +14,7 @@
     "url": "git+https://github.com/776A0A/dus.git",
     "directory": "packages/styles"
   },
-  "devDependencies": {
+  "dependencies": {
     "@unocss/preset-icons": "^0.44.1",
     "@unocss/preset-uno": "^0.44.1",
     "@unocss/reset": "^0.44.1",
@@ -22,31 +22,5 @@
     "@unocss/transformer-variant-group": "^0.44.1",
     "unocss": "^0.44.1",
     "vite": "^2.9.14"
-  },
-  "peerDependencies": {
-    "@unocss/preset-icons": "^0.44.1",
-    "@unocss/preset-uno": "^0.44.1",
-    "@unocss/reset": "^0.44.1",
-    "@unocss/transformer-directives": "^0.44.1",
-    "@unocss/transformer-variant-group": "^0.44.1",
-    "unocss": "^0.44.1",
-    "vite": "^2.9.14"
-  },
-  "peerDependenciesMeta": {
-    "vite": {
-      "optional": true
-    },
-    "@unocss/transformer-variant-group": {
-      "optional": true
-    },
-    "@unocss/transformer-directives": {
-      "optional": true
-    },
-    "@unocss/preset-uno": {
-      "optional": true
-    },
-    "@unocss/preset-icons": {
-      "optional": true
-    }
   }
 }
