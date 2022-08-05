@@ -1,5 +1,11 @@
 # @dus/styles
 
+## 1.1.4
+
+### Patch Changes
+
+- 更改依赖并添加新的 util
+
 ## 1.1.3
 
 ### Patch Changes

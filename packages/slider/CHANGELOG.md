@@ -1,5 +1,12 @@
 # @dus/slider
 
+## 1.0.23
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/styles@1.1.4
+
 ## 1.0.22
 
 ### Patch Changes

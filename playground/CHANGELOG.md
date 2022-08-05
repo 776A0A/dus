@@ -1,5 +1,13 @@
 # @dus/playground
 
+## 1.0.25
+
+### Patch Changes
+
+- Updated dependencies
+  - @dus/styles@1.1.4
+  - @dus/slider@1.0.23
+
 ## 1.0.24
 
 ### Patch Changes
