@@ -58,5 +58,29 @@ export default <UserConfig>{
         'content-visibility': 'auto',
       },
     ],
+    [
+      /after-content/,
+      ([,], { rawSelector }) => {
+        const selector = e(rawSelector)
+
+        return `
+          ${selector}::after {
+            content: '';
+          }
+        `
+      },
+    ],
+    [
+      /before-content/,
+      ([,], { rawSelector }) => {
+        const selector = e(rawSelector)
+
+        return `
+          ${selector}::before {
+            content: '';
+          }
+        `
+      },
+    ],
   ],
 }
